@@ -4,7 +4,11 @@
 
 import UIKit
 
+<<<<<<< HEAD
 @available(iOS 13, *)
+=======
+@available (iOS 13, *)
+>>>>>>> 4516863417cd0148cc0c09c29925887c15f2aba2
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

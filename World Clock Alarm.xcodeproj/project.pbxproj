@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1B4FED251D5DCD00BCFC56 /* NewTimezone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */; };
 		AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA202518CE3600F27947 /* AppDelegate.swift */; };
 		AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA222518CE3600F27947 /* SceneDelegate.swift */; };
 		AB76AA252518CE3600F27947 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA242518CE3600F27947 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 		AB76AA302518CE3C00F27947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */; };
 		AB76AA3B2518CE3C00F27947 /* World_Clock_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA3A2518CE3C00F27947 /* World_Clock_AlarmTests.swift */; };
 		AB76AA462518CE3C00F27947 /* World_Clock_AlarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA452518CE3C00F27947 /* World_Clock_AlarmUITests.swift */; };
+		AB76AA5A2518D6D700F27947 /* WorldClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA592518D6D700F27947 /* WorldClock.storyboard */; };
+		AB76AA5F2518D8CF00F27947 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */; };
+		AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA63251A37B800F27947 /* NewReminder.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTimezone.storyboard; sourceTree = "<group>"; };
 		AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Clock Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA202518CE3600F27947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB76AA222518CE3600F27947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +56,9 @@
 		AB76AA412518CE3C00F27947 /* World Clock AlarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "World Clock AlarmUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA452518CE3C00F27947 /* World_Clock_AlarmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World_Clock_AlarmUITests.swift; sourceTree = "<group>"; };
 		AB76AA472518CE3C00F27947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB76AA592518D6D700F27947 /* WorldClock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorldClock.storyboard; sourceTree = "<group>"; };
+		AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
+		AB76AA63251A37B800F27947 /* NewReminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewReminder.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,10 @@
 				AB76AA222518CE3600F27947 /* SceneDelegate.swift */,
 				AB76AA242518CE3600F27947 /* ViewController.swift */,
 				AB76AA262518CE3700F27947 /* Main.storyboard */,
+				AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */,
+				AB76AA592518D6D700F27947 /* WorldClock.storyboard */,
+				AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */,
+				AB76AA63251A37B800F27947 /* NewReminder.storyboard */,
 				AB76AA2C2518CE3C00F27947 /* Assets.xcassets */,
 				AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */,
 				AB76AA312518CE3C00F27947 /* Info.plist */,
@@ -234,7 +246,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1B4FED251D5DCD00BCFC56 /* NewTimezone.storyboard in Resources */,
+				AB76AA5F2518D8CF00F27947 /* Reminders.storyboard in Resources */,
+				AB76AA5A2518D6D700F27947 /* WorldClock.storyboard in Resources */,
 				AB76AA302518CE3C00F27947 /* LaunchScreen.storyboard in Resources */,
+				AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */,
 				AB76AA2D2518CE3C00F27947 /* Assets.xcassets in Resources */,
 				AB76AA282518CE3700F27947 /* Main.storyboard in Resources */,
 			);
