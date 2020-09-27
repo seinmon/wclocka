@@ -1,4 +1,4 @@
-# World Clock App
+# World Clock Alarm
 World Clock Alarm allows users to view time and create reminders in different timezones.
 
 ### Motivation
