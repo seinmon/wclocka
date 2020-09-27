@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AB1B4FED251D5DCD00BCFC56 /* NewTimezone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */; };
+		AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */; };
 		AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA202518CE3600F27947 /* AppDelegate.swift */; };
 		AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA222518CE3600F27947 /* SceneDelegate.swift */; };
-		AB76AA252518CE3600F27947 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA242518CE3600F27947 /* ViewController.swift */; };
 		AB76AA282518CE3700F27947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA262518CE3700F27947 /* Main.storyboard */; };
 		AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */; };
 		AB76AA2D2518CE3C00F27947 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA2C2518CE3C00F27947 /* Assets.xcassets */; };
@@ -41,10 +41,10 @@
 
 /* Begin PBXFileReference section */
 		AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTimezone.storyboard; sourceTree = "<group>"; };
+		AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Clock Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA202518CE3600F27947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB76AA222518CE3600F27947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB76AA242518CE3600F27947 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AB76AA272518CE3700F27947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB76AA2A2518CE3700F27947 /* World_Clock_Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = World_Clock_Alarm.xcdatamodel; sourceTree = "<group>"; };
 		AB76AA2C2518CE3C00F27947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +86,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB2F42CD251DF96C00AF660B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB76AA202518CE3600F27947 /* AppDelegate.swift */,
+				AB76AA222518CE3600F27947 /* SceneDelegate.swift */,
+				AB76AA312518CE3C00F27947 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB2F42D1251DF99500AF660B /* Front-end */ = {
+			isa = PBXGroup;
+			children = (
+				AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */,
+				AB76AA262518CE3700F27947 /* Main.storyboard */,
+				AB2F42DA251DFA1700AF660B /* NewTimezone */,
+				AB2F42DB251DFA2200AF660B /* WorldClock */,
+				AB2F42DC251DFA2D00AF660B /* Reminders */,
+				AB2F42D2251DF9AA00AF660B /* Resources */,
+			);
+			path = "Front-end";
+			sourceTree = "<group>";
+		};
+		AB2F42D2251DF9AA00AF660B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB76AA2C2518CE3C00F27947 /* Assets.xcassets */,
+				AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB2F42D6251DF9F400AF660B /* Back-end */ = {
+			isa = PBXGroup;
+			children = (
+				AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */,
+			);
+			path = "Back-end";
+			sourceTree = "<group>";
+		};
+		AB2F42DA251DFA1700AF660B /* NewTimezone */ = {
+			isa = PBXGroup;
+			children = (
+				AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */,
+			);
+			path = NewTimezone;
+			sourceTree = "<group>";
+		};
+		AB2F42DB251DFA2200AF660B /* WorldClock */ = {
+			isa = PBXGroup;
+			children = (
+				AB76AA592518D6D700F27947 /* WorldClock.storyboard */,
+			);
+			path = WorldClock;
+			sourceTree = "<group>";
+		};
+		AB2F42DC251DFA2D00AF660B /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */,
+				AB2F42DD251DFA3700AF660B /* NewReminder */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		AB2F42DD251DFA3700AF660B /* NewReminder */ = {
+			isa = PBXGroup;
+			children = (
+				AB76AA63251A37B800F27947 /* NewReminder.storyboard */,
+			);
+			path = NewReminder;
+			sourceTree = "<group>";
+		};
 		AB76AA142518CE3600F27947 = {
 			isa = PBXGroup;
 			children = (
@@ -109,18 +182,9 @@
 		AB76AA1F2518CE3600F27947 /* World Clock Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				AB76AA202518CE3600F27947 /* AppDelegate.swift */,
-				AB76AA222518CE3600F27947 /* SceneDelegate.swift */,
-				AB76AA242518CE3600F27947 /* ViewController.swift */,
-				AB76AA262518CE3700F27947 /* Main.storyboard */,
-				AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */,
-				AB76AA592518D6D700F27947 /* WorldClock.storyboard */,
-				AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */,
-				AB76AA63251A37B800F27947 /* NewReminder.storyboard */,
-				AB76AA2C2518CE3C00F27947 /* Assets.xcassets */,
-				AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */,
-				AB76AA312518CE3C00F27947 /* Info.plist */,
-				AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */,
+				AB2F42D6251DF9F400AF660B /* Back-end */,
+				AB2F42D1251DF99500AF660B /* Front-end */,
+				AB2F42CD251DF96C00AF660B /* Supporting Files */,
 			);
 			path = "World Clock Alarm";
 			sourceTree = "<group>";
@@ -277,8 +341,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB76AA252518CE3600F27947 /* ViewController.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
+				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
 				AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */,
 			);
@@ -457,13 +521,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A4SX3F3V9B;
-				INFOPLIST_FILE = "World Clock Alarm/Info.plist";
+				INFOPLIST_FILE = "World Clock Alarm/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -477,13 +543,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A4SX3F3V9B;
-				INFOPLIST_FILE = "World Clock Alarm/Info.plist";
+				INFOPLIST_FILE = "World Clock Alarm/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
