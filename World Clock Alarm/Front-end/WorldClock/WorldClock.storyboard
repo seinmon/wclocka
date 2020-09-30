@@ -11,7 +11,7 @@
         <!--Timezones-->
         <scene sceneID="4iX-Ov-RDN">
             <objects>
-                <tableViewController id="ju7-Ni-eE9" sceneMemberID="viewController">
+                <tableViewController id="ju7-Ni-eE9" customClass="WorldClockTableViewController" customModule="World_Clock_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nRI-gh-HOY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-MJ-b1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="104"/>
+            <point key="canvasLocation" x="1243" y="104"/>
         </scene>
         <!--NewTimezone-->
         <scene sceneID="xtq-UC-mbO">

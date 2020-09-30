@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AB1B4FED251D5DCD00BCFC56 /* NewTimezone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */; };
 		AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */; };
+		AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */; };
+		AB40A2C825254C1100B31424 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2C725254C1100B31424 /* Presenter.swift */; };
+		AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */; };
+		AB40A2D225254C2C00B31424 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2D125254C2C00B31424 /* CellConfigurable.swift */; };
 		AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA202518CE3600F27947 /* AppDelegate.swift */; };
 		AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA222518CE3600F27947 /* SceneDelegate.swift */; };
 		AB76AA282518CE3700F27947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA262518CE3700F27947 /* Main.storyboard */; };
@@ -42,6 +46,10 @@
 /* Begin PBXFileReference section */
 		AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTimezone.storyboard; sourceTree = "<group>"; };
 		AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewController.swift; sourceTree = "<group>"; };
+		AB40A2C725254C1100B31424 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockPresenter.swift; sourceTree = "<group>"; };
+		AB40A2D125254C2C00B31424 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Clock Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA202518CE3600F27947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB76AA222518CE3600F27947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */,
+				AB40A2D125254C2C00B31424 /* CellConfigurable.swift */,
 				AB76AA262518CE3700F27947 /* Main.storyboard */,
 				AB2F42DA251DFA1700AF660B /* NewTimezone */,
 				AB2F42DB251DFA2200AF660B /* WorldClock */,
@@ -121,6 +130,7 @@
 		AB2F42D6251DF9F400AF660B /* Back-end */ = {
 			isa = PBXGroup;
 			children = (
+				AB40A2D625254C7700B31424 /* Presenter */,
 				AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */,
 			);
 			path = "Back-end";
@@ -137,6 +147,7 @@
 		AB2F42DB251DFA2200AF660B /* WorldClock */ = {
 			isa = PBXGroup;
 			children = (
+				AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */,
 				AB76AA592518D6D700F27947 /* WorldClock.storyboard */,
 			);
 			path = WorldClock;
@@ -157,6 +168,15 @@
 				AB76AA63251A37B800F27947 /* NewReminder.storyboard */,
 			);
 			path = NewReminder;
+			sourceTree = "<group>";
+		};
+		AB40A2D625254C7700B31424 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AB40A2C725254C1100B31424 /* Presenter.swift */,
+				AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		AB76AA142518CE3600F27947 = {
@@ -341,9 +361,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB40A2C825254C1100B31424 /* Presenter.swift in Sources */,
+				AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */,
+				AB40A2D225254C2C00B31424 /* CellConfigurable.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
+				AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */,
 				AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
