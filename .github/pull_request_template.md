@@ -1,5 +1,5 @@
 ### Summary of the Changes:
 
-**Related issue: **
+**Related issue:**
 
 ### List of Dependencies (if available):
