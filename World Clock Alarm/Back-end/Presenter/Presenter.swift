@@ -5,4 +5,9 @@
 
 import Foundation
 
-protocol Presenter { }
+protocol Presenter {
+
+//    var dataSource: [String] { get set }
+    var sectionCount: Int { get }
+    var rowCount: Int { get }
+}
