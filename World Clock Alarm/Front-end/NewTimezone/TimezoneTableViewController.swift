@@ -41,7 +41,12 @@ class TimezoneTableViewController: BaseTableViewController {
         return cell
     }
 
-
+    // MARK: - Helpers
+    override func setupNavigationBar() {
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "Search for a city"
+        self.navigationItem.searchController = searchController
+    }
     
     // MARK: - Navigation
 

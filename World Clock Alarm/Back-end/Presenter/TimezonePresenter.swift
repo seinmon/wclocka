@@ -9,7 +9,7 @@ struct TimezonePresenter: Presenter {
     
     //MARK: - Properties
     
-    var dataSource: [SectionedTimezone] = []
+    var dataSource: [TimezoneSection] = []
 
     var sectionIndexTitles: [String] {
         var sectionTitles: [String] = []
@@ -21,7 +21,7 @@ struct TimezonePresenter: Presenter {
         return sectionTitles
     }
     
-    struct SectionedTimezone {
+    struct TimezoneSection {
         let sectionTitle: String
         var RowTitles: [String]
         
@@ -62,10 +62,11 @@ struct TimezonePresenter: Presenter {
     
     mutating func populateDataSource() {
         let timezoneDict = makeTimezoneDict()
+        
         for item in timezoneDict {
-            let sectionedTimezone = SectionedTimezone(sectionTitle: item.key,
+            let timezoneSection = TimezoneSection(sectionTitle: item.key,
                                                       RowTitles: item.value)
-            dataSource.append(sectionedTimezone)
+            dataSource.append(timezoneSection)
         }
         
         dataSource.sort { $0.sectionTitle < $1.sectionTitle }
