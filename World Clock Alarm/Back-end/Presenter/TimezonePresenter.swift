@@ -3,24 +3,77 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
-import os.log
 
 struct TimezonePresenter: Presenter {
-    var dataSource = [String: [String]]()
+    typealias TimezoneDictionary = [String: [String]]
     
-    var sectionCount: Int {
-        return dataSource.keys.count
+    //MARK: - Properties
+    
+    var dataSource: [SectionedTimezone] = []
+
+    var sectionIndexTitles: [String] {
+        var sectionTitles: [String] = []
+        
+        for index in 0..<dataSource.count {
+            sectionTitles.append(self[index])
+        }
+        
+        return sectionTitles
     }
     
-    var rowCount: Int {
-        return dataSource.count
+    struct SectionedTimezone {
+        let sectionTitle: String
+        var RowTitles: [String]
+        
+        init(sectionTitle: String, RowTitles: [String]) {
+            self.sectionTitle = sectionTitle
+            self.RowTitles = RowTitles
+            sortRows()
+        }
+        
+        mutating func sortRows() {
+            RowTitles.sort(by: <)
+        }
     }
+    
+    //MARK: - Subscripts
+    
+    subscript(section: Int) -> String {
+        dataSource[section].sectionTitle
+    }
+    
+    subscript(indexPath: IndexPath) -> String {
+        dataSource[indexPath.section].RowTitles[indexPath.row]
+    }
+    
+    //MARK: - Functions
     
     init() {
         populateDataSource()
     }
     
+    func getSectionCount() -> Int {
+        dataSource.count
+    }
+    
+    func getRowCount(inSection section: Int) -> Int {
+        dataSource[section].RowTitles.count
+    }
+    
     mutating func populateDataSource() {
+        let timezoneDict = makeTimezoneDict()
+        for item in timezoneDict {
+            let sectionedTimezone = SectionedTimezone(sectionTitle: item.key,
+                                                      RowTitles: item.value)
+            dataSource.append(sectionedTimezone)
+        }
+        
+        dataSource.sort { $0.sectionTitle < $1.sectionTitle }
+    }
+    
+    func makeTimezoneDict() -> TimezoneDictionary {
+        var timezoneDict: TimezoneDictionary = [:]
+        
         for timeZone in TimeZone.knownTimeZoneIdentifiers {
             if let cityOptional = timeZone.split(separator: "/").last {
                 var city = String(cityOptional)
@@ -28,12 +81,12 @@ struct TimezonePresenter: Presenter {
                 
                 city = city.replacingOccurrences(of: "_", with: " ")
                 
-                if dataSource[key]?.append(city) == nil {
-                    dataSource[key] = [city]
+                if timezoneDict[key]?.append(city) == nil {
+                    timezoneDict[key] = [city]
                 }
             }
         }
         
-        print(dataSource)
+        return timezoneDict
     }
 }

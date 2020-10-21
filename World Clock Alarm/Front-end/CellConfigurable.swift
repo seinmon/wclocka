@@ -4,7 +4,15 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
+import CoreData
 
 protocol CellConfigurable {
-    func configure()
+    func configure(with data: NSFetchRequestResult)
+    func configure(with text: String)
 }
+
+extension CellConfigurable {
+    func configure(with data: NSFetchRequestResult) { }
+    func configure(with text: String) { }
+}
+

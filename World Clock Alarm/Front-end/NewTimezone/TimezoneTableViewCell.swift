@@ -5,7 +5,7 @@
 
 import UIKit
 
-class TimezoneTableViewCell: UITableViewCell {
+class TimezoneTableViewCell: UITableViewCell, CellConfigurable {
     
     @IBOutlet weak var timezoneTitle: UILabel!
     
@@ -19,5 +19,8 @@ class TimezoneTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func configure(with text: String) {
+        timezoneTitle.text = text
+    }
 }

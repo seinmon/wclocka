@@ -25,29 +25,31 @@ class BaseTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter?.sectionCount ?? 0
+        return presenter?.getSectionCount() ?? 0
     }
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return presenter?.rowCount ?? 0
+        return presenter?.getRowCount(inSection: section) ?? 0
     }
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier ?? "",
                                                  for: indexPath)
-
-        guard let cellConfigurable = cell as? CellConfigurable else {
-            fatalError("Cell cannot be configured")
-        }
-
-        cellConfigurable.configure()
+        
+//        guard let cellConfigurable = cell as? CellConfigurable else {
+//            fatalError("Cell cannot be configured")
+//        }
+//
+//        if let presenter = presenter as? CoreDataPresenter {
+//            fatalError("Not a CoreDataPresenter")
+//        }
         
         return cell
     }
     
-    private func setupNavigationBar() {
+    func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
@@ -69,4 +71,3 @@ extension BaseTableViewController: NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
 }
-
