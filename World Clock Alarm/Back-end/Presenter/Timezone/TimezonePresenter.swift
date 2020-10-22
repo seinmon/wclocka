@@ -4,24 +4,14 @@
 
 import Foundation
 
-struct TimezonePresenter: Presenter {
+struct TimezonePresenter {
     typealias TimezoneDictionary = [String: [String]]
     
     //MARK: - Properties
     
-    var dataSource: [TimezoneSection] = []
-
-    var sectionIndexTitles: [String] {
-        var sectionTitles: [String] = []
-        
-        for index in 0..<dataSource.count {
-            sectionTitles.append(self[index])
-        }
-        
-        return sectionTitles
-    }
+     var dataSource: [TimezoneSection] = []
     
-    struct TimezoneSection {
+     struct TimezoneSection {
         let sectionTitle: String
         var RowTitles: [String]
         
@@ -36,43 +26,25 @@ struct TimezonePresenter: Presenter {
         }
     }
     
-    //MARK: - Subscripts
-    
-    subscript(section: Int) -> String {
-        dataSource[section].sectionTitle
-    }
-    
-    subscript(indexPath: IndexPath) -> String {
-        dataSource[indexPath.section].RowTitles[indexPath.row]
-    }
-    
     //MARK: - Functions
     
     init() {
         populateDataSource()
     }
     
-    func getSectionCount() -> Int {
-        dataSource.count
-    }
-    
-    func getRowCount(inSection section: Int) -> Int {
-        dataSource[section].RowTitles.count
-    }
-    
-    mutating func populateDataSource() {
+    private mutating func populateDataSource() {
         let timezoneDict = makeTimezoneDict()
         
         for item in timezoneDict {
             let timezoneSection = TimezoneSection(sectionTitle: item.key,
-                                                      RowTitles: item.value)
+                                                  RowTitles: item.value)
             dataSource.append(timezoneSection)
         }
         
         dataSource.sort { $0.sectionTitle < $1.sectionTitle }
     }
     
-    func makeTimezoneDict() -> TimezoneDictionary {
+    private func makeTimezoneDict() -> TimezoneDictionary {
         var timezoneDict: TimezoneDictionary = [:]
         
         for timeZone in TimeZone.knownTimeZoneIdentifiers {
@@ -89,5 +61,41 @@ struct TimezonePresenter: Presenter {
         }
         
         return timezoneDict
+    }
+}
+
+extension TimezonePresenter: Presenter {
+    typealias DataSourceElement = String
+    
+    subscript(indexPath: IndexPath) -> String {
+        get {
+            dataSource[indexPath.section].RowTitles[indexPath.row]
+        } set { }
+    }
+    
+    func getSectionCount() -> Int {
+        dataSource.count
+    }
+    
+    func getSectionHeaderTitle(for section: Int) -> String? {
+        dataSource[section].sectionTitle
+    }
+    
+    func getSectionIndexTitles() -> [String]? {
+        var sectionTitles: [String] = []
+        
+        for index in 0..<dataSource.count {
+            guard let sectionHeader = getSectionHeaderTitle(for: index) else {
+                continue
+            }
+            
+            sectionTitles.append(sectionHeader)
+        }
+        
+        return sectionTitles
+    }
+    
+    func getRowCount(inSection section: Int) -> Int {
+        dataSource[section].RowTitles.count
     }
 }

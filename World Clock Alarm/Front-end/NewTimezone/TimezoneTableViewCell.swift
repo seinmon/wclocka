@@ -6,21 +6,12 @@
 import UIKit
 
 class TimezoneTableViewCell: UITableViewCell, CellConfigurable {
+    typealias DataSourceElement = String
     
+    static var cellId: String = "NewTimezoneCell"
     @IBOutlet weak var timezoneTitle: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func configure(with text: String) {
+    func configure(with text: DataSourceElement) {
         timezoneTitle.text = text
     }
 }

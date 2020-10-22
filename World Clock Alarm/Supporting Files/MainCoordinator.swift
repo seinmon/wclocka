@@ -6,35 +6,26 @@ import UIKit
 
 protocol Coordinator { }
 
-class MainCoordinator: Coordinator {
-    
+struct MainCoordinator: Coordinator {
     weak var windor: UIWindow?
     
     lazy var rootViewController: UINavigationController = {
         let storyboard = UIStoryboard(name: "NewTimezone", bundle: .main)
-        let viewController = storyboard
-            .instantiateInitialViewController() as? TimezoneTableViewController
-        
-        guard let initialViewController = viewController else {
+        guard let rootViewController = storyboard
+                .instantiateInitialViewController() as? TimezoneTableViewController else {
             fatalError("Failed to instantiate initial view controller in MainCoordinato")
         }
         
-        initialViewController.initialize(cellIdentifier: "NewTimezoneCell",
-                                         presenter: TimezonePresenter())
-        
-        return UINavigationController(rootViewController: initialViewController)
+        return UINavigationController(rootViewController: rootViewController)
     }()
     
     init(window: UIWindow?) {
-        guard let window = window else {
-            fatalError("Window is not initialized")
+        if let window = window {
+            start(window)
         }
-        
-        start(window)
     }
     
-    private func start(_ window: UIWindow) {
-        
+    private mutating func start(_ window: UIWindow) {
         window.rootViewController = rootViewController
         
         if #available(iOS 13, *) {

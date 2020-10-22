@@ -6,10 +6,16 @@ import Foundation
 import CoreData
 
 protocol Presenter {
+    associatedtype DataSourceElement
+    init()
+    subscript(indexPath: IndexPath) -> DataSourceElement { get set }
     func getSectionCount() -> Int
+    func getSectionHeaderTitle(for section: Int) -> String?
+    func getSectionIndexTitles() -> [String]?
     func getRowCount(inSection section: Int) -> Int
 }
 
-protocol CoreDataPresenter: Presenter {
-    var dataSource: NSFetchedResultsController<NSFetchRequestResult> { get set }
+extension Presenter {
+    func getSectionHeaderTitle(for section: Int) -> String? { nil }
+    func getSectionIndexTitles() -> [String]? { nil }
 }

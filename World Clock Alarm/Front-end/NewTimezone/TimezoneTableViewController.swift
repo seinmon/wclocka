@@ -5,49 +5,7 @@
 
 import UIKit
 
-class TimezoneTableViewController: BaseTableViewController {
-
-    override func tableView(_ tableView: UITableView,
-                            titleForHeaderInSection section: Int) -> String? {
-        if let presenter = presenter as? TimezonePresenter {
-            return presenter[section]
-        }
-        
-        return ""
-    }
-    
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        guard let presenter = presenter as? TimezonePresenter else {
-            return nil
-        }
-        
-        return presenter.sectionIndexTitles
-    }
-    
-    override func tableView(_ tableView: UITableView,
-                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier ?? "",
-                                                 for: indexPath)
-        
-        guard let cellConfigurable = cell as? CellConfigurable else {
-            fatalError("Cell cannot be configured")
-        }
-
-        guard let presenter = presenter as? TimezonePresenter else {
-            fatalError("Not a TimezonePresenter")
-        }
-        
-        cellConfigurable.configure(with: presenter[indexPath])
-        return cell
-    }
-
-    // MARK: - Helpers
-    override func setupNavigationBar() {
-        let searchController = UISearchController()
-        searchController.searchBar.placeholder = "Search for a city"
-        self.navigationItem.searchController = searchController
-    }
-    
-    // MARK: - Navigation
+class TimezoneTableViewController: BaseTableViewController<TimezonePresenter,
+                                                           TimezoneTableViewCell> {
 
 }

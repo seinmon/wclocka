@@ -4,10 +4,4 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
-import CoreData
 
-protocol CellConfigurable {
-    associatedtype DataSourceElement
-    static var cellId: String { get }
-    func configure(with data: DataSourceElement)
-}
