@@ -3,9 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-import UIKit
+import Foundation
 
-class WorldClockTableViewController: BaseTableViewController<TimezonePresenter, TimezoneTableViewCell> {
-
+public enum StoryboardName: String {
+    case timezone = "NewTimezone"
+    case worldClock = "WorldClock"
+    case reminders = "Reminders"
+    case newReminder = "NewReminder"
 }
-

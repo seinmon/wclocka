@@ -10,12 +10,8 @@ struct MainCoordinator: Coordinator {
     weak var windor: UIWindow?
     
     lazy var rootViewController: UINavigationController = {
-        let storyboard = UIStoryboard(name: "NewTimezone", bundle: .main)
-        guard let rootViewController = storyboard
-                .instantiateInitialViewController() as? TimezoneTableViewController else {
-            fatalError("Failed to instantiate initial view controller in MainCoordinato")
-        }
-        
+        let rootViewController = UIStoryboard
+            .instantiateInitialViewController(of: StoryboardName.worldClock)
         return UINavigationController(rootViewController: rootViewController)
     }()
     

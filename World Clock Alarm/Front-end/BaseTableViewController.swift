@@ -58,14 +58,8 @@ class BaseTableViewController<PresenterType: Presenter,
     
     // MARK: - Helpers
     
-    /*
-    public func initialize(cellIdentifier: String,
-                           presenter: PresenterType) {
-    }
-    */
-    
     public func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     

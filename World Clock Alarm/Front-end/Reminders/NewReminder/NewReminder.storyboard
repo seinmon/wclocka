@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bbX-lO-aiF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LC4-UD-dgm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,25 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="nb6-bi-Pzf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bbX-lO-aiF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0o6-aq-S5I">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="LC4-UD-dgm" kind="relationship" relationship="rootViewController" id="jPF-UH-q2M"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2kK-Fs-45A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1974" y="104"/>
-        </scene>
-        <!--New Reminder-->
+        <!--Table View Controller-->
         <scene sceneID="w33-Cd-fyP">
             <objects>
                 <tableViewController id="LC4-UD-dgm" sceneMemberID="viewController">
@@ -83,34 +65,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="Agi-BO-y3O">
-                                        <rect key="frame" x="0.0" y="382.5" width="414" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Agi-BO-y3O" id="6Ci-yj-gXJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timezone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hi8-bw-Bku">
-                                                    <rect key="frame" x="28" y="15" width="343" height="20"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hi8-bw-Bku" secondAttribute="trailing" constant="4" id="2aM-rx-bZ9"/>
-                                                <constraint firstItem="hi8-bw-Bku" firstAttribute="leading" secondItem="6Ci-yj-gXJ" secondAttribute="leadingMargin" constant="8" id="IPg-vT-7ZS"/>
-                                                <constraint firstItem="hi8-bw-Bku" firstAttribute="top" secondItem="6Ci-yj-gXJ" secondAttribute="topMargin" constant="4" id="Qca-fM-UTR"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hi8-bw-Bku" secondAttribute="bottom" constant="4" id="Tfx-TJ-1rB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                                        <connections>
-                                            <segue destination="KuT-7L-3H9" kind="show" id="dER-45-4Fg"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="dmS-ga-CcL">
-                                        <rect key="frame" x="0.0" y="432.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="382.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dmS-ga-CcL" id="u8M-Hd-iNf">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="50"/>
@@ -144,31 +100,18 @@
                             <outlet property="delegate" destination="LC4-UD-dgm" id="o7r-GU-E59"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Reminder" id="xzC-EI-Bcr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aXZ-qw-9u2"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y4O-ja-Qqk"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="xzC-EI-Bcr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdc-Pq-YeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2859" y="104"/>
-        </scene>
-        <!--NewTimezone-->
-        <scene sceneID="cjh-XJ-4m5">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NewTimezone" id="KuT-7L-3H9" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="yfm-Ol-K9z"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uoH-T3-cCy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3580" y="-188"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="IWD-dl-VdT">
             <objects>
                 <tableViewController id="IQh-WS-AH1" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1bh-Cu-XkO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -341,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9O-HQ-Av3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3762" y="445"/>
+            <point key="canvasLocation" x="3709" y="104"/>
         </scene>
     </scenes>
     <resources>

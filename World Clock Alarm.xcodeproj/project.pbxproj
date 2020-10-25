@@ -13,9 +13,11 @@
 		AB40A2C825254C1100B31424 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2C725254C1100B31424 /* Presenter.swift */; };
 		AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */; };
 		AB40A2D225254C2C00B31424 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2D125254C2C00B31424 /* CellConfigurable.swift */; };
+		AB5C0B5F2544FCCB0024C3C8 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */; };
+		AB5C0B672545021F0024C3C8 /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */; };
+		AB5C0B7525450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */; };
 		AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA202518CE3600F27947 /* AppDelegate.swift */; };
 		AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA222518CE3600F27947 /* SceneDelegate.swift */; };
-		AB76AA282518CE3700F27947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA262518CE3700F27947 /* Main.storyboard */; };
 		AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */; };
 		AB76AA2D2518CE3C00F27947 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA2C2518CE3C00F27947 /* Assets.xcassets */; };
 		AB76AA302518CE3C00F27947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */; };
@@ -55,10 +57,12 @@
 		AB40A2C725254C1100B31424 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockPresenter.swift; sourceTree = "<group>"; };
 		AB40A2D125254C2C00B31424 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
+		AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
+		AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
+		AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+instantiateInitialViewController.swift"; path = "World Clock Alarm/Front-end/UIStoryboard+instantiateInitialViewController.swift"; sourceTree = SOURCE_ROOT; };
 		AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Clock Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA202518CE3600F27947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB76AA222518CE3600F27947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB76AA272518CE3700F27947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB76AA2A2518CE3700F27947 /* World_Clock_Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = World_Clock_Alarm.xcdatamodel; sourceTree = "<group>"; };
 		AB76AA2C2518CE3C00F27947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB76AA2F2518CE3C00F27947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,7 +111,6 @@
 		AB2F42CD251DF96C00AF660B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */,
 				AB76AA202518CE3600F27947 /* AppDelegate.swift */,
 				AB76AA222518CE3600F27947 /* SceneDelegate.swift */,
 				AB76AA312518CE3C00F27947 /* Info.plist */,
@@ -118,9 +121,10 @@
 		AB2F42D1251DF99500AF660B /* Front-end */ = {
 			isa = PBXGroup;
 			children = (
+				AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */,
 				AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */,
 				AB40A2D125254C2C00B31424 /* CellConfigurable.swift */,
-				AB76AA262518CE3700F27947 /* Main.storyboard */,
+				AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */,
 				AB2F42DA251DFA1700AF660B /* NewTimezone */,
 				AB2F42DB251DFA2200AF660B /* WorldClock */,
 				AB2F42DC251DFA2D00AF660B /* Reminders */,
@@ -141,6 +145,7 @@
 		AB2F42D6251DF9F400AF660B /* Back-end */ = {
 			isa = PBXGroup;
 			children = (
+				AB5C0B5A2544FC900024C3C8 /* Coordinators */,
 				AB40A2D625254C7700B31424 /* Presenter */,
 				AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */,
 			);
@@ -161,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */,
+				AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */,
 				AB76AA592518D6D700F27947 /* WorldClock.storyboard */,
 			);
 			path = WorldClock;
@@ -191,6 +197,14 @@
 				AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AB5C0B5A2544FC900024C3C8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		AB76AA142518CE3600F27947 = {
@@ -359,7 +373,6 @@
 				AB76AA302518CE3C00F27947 /* LaunchScreen.storyboard in Resources */,
 				AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */,
 				AB76AA2D2518CE3C00F27947 /* Assets.xcassets in Resources */,
-				AB76AA282518CE3700F27947 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,11 +403,14 @@
 				AB8142B725409C3C00913F4D /* TimezonePresenter+Search.swift in Sources */,
 				ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */,
 				AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */,
+				AB5C0B672545021F0024C3C8 /* WorldClockTableViewCell.swift in Sources */,
 				AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
 				ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */,
+				AB5C0B5F2544FCCB0024C3C8 /* StoryboardName.swift in Sources */,
+				AB5C0B7525450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift in Sources */,
 				AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */,
 				AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */,
 			);
@@ -432,14 +448,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AB76AA262518CE3700F27947 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB76AA272518CE3700F27947 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

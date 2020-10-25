@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMO-F3-OVh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ju7-Ni-eE9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timezones-->
+        <!--World Clock Table View Controller-->
         <scene sceneID="4iX-Ov-RDN">
             <objects>
                 <tableViewController id="ju7-Ni-eE9" customClass="WorldClockTableViewController" customModule="World_Clock_Alarm" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TimezoneCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TimezoneCell" id="qeu-pm-VEs">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NewTimezoneCell" id="qeu-pm-VEs" customClass="WorldClockTableViewCell" customModule="World_Clock_Alarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qeu-pm-VEs" id="e9I-ya-4hD">
@@ -93,6 +93,13 @@
                                         <constraint firstAttribute="bottom" secondItem="Ybv-2z-o6E" secondAttribute="bottom" constant="8" id="c0J-uY-Lcf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AMPMLabel" destination="Ym1-4F-IsM" id="gkw-H3-RD2"/>
+                                    <outlet property="dateDifference" destination="jNt-uX-sFn" id="aif-2p-QFJ"/>
+                                    <outlet property="timeDifference" destination="7tw-a7-wIG" id="1AC-DB-LjF"/>
+                                    <outlet property="timeLabel" destination="5Gj-6i-xPH" id="LZq-Sq-hkh"/>
+                                    <outlet property="timezoneTitle" destination="mUu-3a-csd" id="X2F-36-yct"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -100,45 +107,11 @@
                             <outlet property="delegate" destination="ju7-Ni-eE9" id="2Rd-Qy-74t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Timezones" id="bBU-zU-Wr2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JAa-sS-3Db">
-                            <connections>
-                                <segue destination="sTq-rt-2uj" kind="popoverPresentation" popoverAnchorBarButtonItem="JAa-sS-3Db" id="rKy-fz-coJ">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="bBU-zU-Wr2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-MJ-b1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1243" y="104"/>
-        </scene>
-        <!--NewTimezone-->
-        <scene sceneID="xtq-UC-mbO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NewTimezone" id="sTq-rt-2uj" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i2w-hx-lCH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1956" y="104"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="neM-02-tkq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HMO-F3-OVh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8nk-Sd-0ws">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ju7-Ni-eE9" kind="relationship" relationship="rootViewController" id="wYG-6z-ePO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l1c-nU-JiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="421.73913043478262" y="103.79464285714285"/>
         </scene>
     </scenes>
     <resources>
