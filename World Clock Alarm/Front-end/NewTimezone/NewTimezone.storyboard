@@ -3,21 +3,21 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Timezone Table View Controller-->
         <scene sceneID="KOM-mS-sRL">
             <objects>
-                <tableViewController id="BQz-mV-FX2" sceneMemberID="viewController">
+                <tableViewController id="BQz-mV-FX2" customClass="TimezoneTableViewController" customModule="World_Clock_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rgq-Nu-K57">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NewTimezoneCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="m5g-AM-2De">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewTimezoneCell" id="m5g-AM-2De" customClass="TimezoneTableViewCell" customModule="World_Clock_Alarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m5g-AM-2De" id="n8L-QS-vJt">
@@ -38,6 +38,9 @@
                                         <constraint firstItem="G6T-5N-o8n" firstAttribute="top" secondItem="n8L-QS-vJt" secondAttribute="top" constant="16" id="PAS-27-Wke"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="timezoneTitle" destination="G6T-5N-o8n" id="n7F-GF-7tF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

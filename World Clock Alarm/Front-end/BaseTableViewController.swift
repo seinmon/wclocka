@@ -1,4 +1,3 @@
-//
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -6,60 +5,77 @@
 import UIKit
 import CoreData
 
-class BaseTableViewController: UITableViewController {
-    
-    private var cellIdentifier: String?
-    private var presenter: Presenter?
-    private var dataSource: NSFetchedResultsController<NSFetchRequestResult>?
+class BaseTableViewController<PresenterType: Presenter,
+                              ConfigurableCell: CellConfigurable>: UITableViewController,
+                                                         NSFetchedResultsControllerDelegate {
+    public var presenter: PresenterType = PresenterType()
+    private var cellIdentifier: String = ConfigurableCell.cellId
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupTableView()
     }
-    
-    public func initialize(presenter: Presenter,
-                           dataSource: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.presenter = presenter
-        self.dataSource = dataSource
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource?.sections?.count ?? 0
+        presenter.getSectionCount()
     }
 
+    override func tableView(_ tableView: UITableView,
+                            titleForHeaderInSection section: Int) -> String? {
+        presenter.getSectionHeaderTitle(for: section)
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        presenter.getSectionIndexTitles()
+    }
+
+    
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.sections?[section].numberOfObjects ?? 0
+        presenter.getRowCount(inSection: section)
     }
-
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier ?? "", for: indexPath)
-
-        guard let cellConfigurable = cell as? CellConfigurable else {
-            fatalError("Cell cannot be configured")
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
+                                                 for: indexPath)
+        
+        guard let cellConfigurable = cell as? ConfigurableCell else {
+            return cell
         }
 
-        cellConfigurable.configure()
+        guard let dataSource =
+                presenter[indexPath] as? ConfigurableCell.DataSourceElement else {
+            return cell
+        }
         
+        cellConfigurable.configure(with: dataSource)
         return cell
     }
     
-    private func setupNavigationBar() {
+    // MARK: - Helpers
+    
+    /*
+    public func initialize(cellIdentifier: String,
+                           presenter: PresenterType) {
+    }
+    */
+    
+    public func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
-    private func setupTableView() {
+    public func setupTableView() {
         self.clearsSelectionOnViewWillAppear = false
         tableView.tableFooterView = UIView()
     }
-}
-
-extension BaseTableViewController: NSFetchedResultsControllerDelegate {
+ 
+    // MARK: - NSFetchedResultsControllerDelegate
+    
     func controllerWillChangeContent(
         _ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -70,4 +86,3 @@ extension BaseTableViewController: NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
 }
-

@@ -24,6 +24,11 @@
 		AB76AA5A2518D6D700F27947 /* WorldClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA592518D6D700F27947 /* WorldClock.storyboard */; };
 		AB76AA5F2518D8CF00F27947 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */; };
 		AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA63251A37B800F27947 /* NewReminder.storyboard */; };
+		AB8142B725409C3C00913F4D /* TimezonePresenter+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8142B625409C3C00913F4D /* TimezonePresenter+Search.swift */; };
+		AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */; };
+		AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */; };
+		ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */; };
+		ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,11 @@
 		AB76AA592518D6D700F27947 /* WorldClock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorldClock.storyboard; sourceTree = "<group>"; };
 		AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
 		AB76AA63251A37B800F27947 /* NewReminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewReminder.storyboard; sourceTree = "<group>"; };
+		AB8142B625409C3C00913F4D /* TimezonePresenter+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimezonePresenter+Search.swift"; sourceTree = "<group>"; };
+		AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewCell.swift; sourceTree = "<group>"; };
+		AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePresenter.swift; sourceTree = "<group>"; };
+		ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewController.swift; sourceTree = "<group>"; };
+		ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 		AB2F42CD251DF96C00AF660B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */,
 				AB76AA202518CE3600F27947 /* AppDelegate.swift */,
 				AB76AA222518CE3600F27947 /* SceneDelegate.swift */,
 				AB76AA312518CE3C00F27947 /* Info.plist */,
@@ -139,6 +150,8 @@
 		AB2F42DA251DFA1700AF660B /* NewTimezone */ = {
 			isa = PBXGroup;
 			children = (
+				ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */,
+				AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */,
 				AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */,
 			);
 			path = NewTimezone;
@@ -174,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				AB40A2C725254C1100B31424 /* Presenter.swift */,
+				AB8142BE25409C7300913F4D /* Timezone */,
 				AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */,
 			);
 			path = Presenter;
@@ -225,6 +239,15 @@
 				AB76AA472518CE3C00F27947 /* Info.plist */,
 			);
 			path = "World Clock AlarmUITests";
+			sourceTree = "<group>";
+		};
+		AB8142BE25409C7300913F4D /* Timezone */ = {
+			isa = PBXGroup;
+			children = (
+				AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */,
+				AB8142B625409C3C00913F4D /* TimezonePresenter+Search.swift */,
+			);
+			path = Timezone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,9 +387,14 @@
 				AB40A2C825254C1100B31424 /* Presenter.swift in Sources */,
 				AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */,
 				AB40A2D225254C2C00B31424 /* CellConfigurable.swift in Sources */,
+				AB8142B725409C3C00913F4D /* TimezonePresenter+Search.swift in Sources */,
+				ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */,
+				AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */,
+				AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
+				ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */,
 				AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */,
 				AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */,
 			);
@@ -557,7 +585,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -579,7 +607,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
