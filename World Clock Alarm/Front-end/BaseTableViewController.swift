@@ -7,8 +7,9 @@ import CoreData
 
 class BaseTableViewController<PresenterType: Presenter,
                               ConfigurableCell: CellConfigurable>: UITableViewController,
-                                                         NSFetchedResultsControllerDelegate {
-    public var presenter: PresenterType = PresenterType()
+                                                                   NSFetchedResultsControllerDelegate {
+    
+    private var presenter: PresenterType = PresenterType()
     private var cellIdentifier: String = ConfigurableCell.cellId
     
     override func viewDidLoad() {
@@ -56,11 +57,26 @@ class BaseTableViewController<PresenterType: Presenter,
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let coordinator = self.coordinator {
+            presenter.coordinationIsNeeded(with: coordinator, for: indexPath)
+        }
+    }
+    
     // MARK: - Helpers
     
+    //Override these methods in the subclasses if needed.
     public func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                 target: self,
+                                                                 action: #selector((addNewItems)))
+    }
+    
+    @objc
+    public func addNewItems() {
+        presenter.coordinationIsNeeded(with: coordinator! , for: nil)
     }
     
     public func setupTableView() {

@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct TimezonePresenter {
+struct TimezonePresenter<T: WorldClockCoordinator> {
     typealias TimezoneDictionary = [String: [String]]
     
     //MARK: - Properties
@@ -70,7 +70,7 @@ extension TimezonePresenter: Presenter {
     subscript(indexPath: IndexPath) -> String {
         get {
             dataSource[indexPath.section].RowTitles[indexPath.row]
-        } set { }
+        }
     }
     
     func getSectionCount() -> Int {
@@ -97,5 +97,12 @@ extension TimezonePresenter: Presenter {
     
     func getRowCount(inSection section: Int) -> Int {
         dataSource[section].RowTitles.count
+    }
+    
+    func coordinationIsNeeded(with coordinator: Coordinator?, for indexPath: IndexPath? = nil) {
+//        guard let childCoordinator = coordinator as? T else {
+//            fatalError("FUCK")
+//        }
+        coordinator?.coordinate(data: "String")
     }
 }

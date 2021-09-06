@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AB1B4FED251D5DCD00BCFC56 /* NewTimezone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */; };
 		AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */; };
+		AB39057826E61E76005B7B86 /* UIViewController+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39057726E61E76005B7B86 /* UIViewController+Coordinator.swift */; };
+		AB39057A26E62B7D005B7B86 /* WorldClockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39057926E62B7D005B7B86 /* WorldClockCoordinator.swift */; };
+		AB39057C26E637ED005B7B86 /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39057B26E637ED005B7B86 /* ChildCoordinator.swift */; };
 		AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */; };
 		AB40A2C825254C1100B31424 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2C725254C1100B31424 /* Presenter.swift */; };
 		AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */; };
@@ -53,6 +56,9 @@
 /* Begin PBXFileReference section */
 		AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTimezone.storyboard; sourceTree = "<group>"; };
 		AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		AB39057726E61E76005B7B86 /* UIViewController+Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Coordinator.swift"; sourceTree = "<group>"; };
+		AB39057926E62B7D005B7B86 /* WorldClockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockCoordinator.swift; sourceTree = "<group>"; };
+		AB39057B26E637ED005B7B86 /* ChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinator.swift; sourceTree = "<group>"; };
 		AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewController.swift; sourceTree = "<group>"; };
 		AB40A2C725254C1100B31424 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockPresenter.swift; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 				AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */,
 				AB2F42BF251DF92F00AF660B /* BaseTableViewController.swift */,
 				AB40A2D125254C2C00B31424 /* CellConfigurable.swift */,
+				AB39057726E61E76005B7B86 /* UIViewController+Coordinator.swift */,
 				AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */,
 				AB2F42DA251DFA1700AF660B /* NewTimezone */,
 				AB2F42DB251DFA2200AF660B /* WorldClock */,
@@ -203,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */,
+				AB39057B26E637ED005B7B86 /* ChildCoordinator.swift */,
+				AB39057926E62B7D005B7B86 /* WorldClockCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -399,12 +408,15 @@
 			files = (
 				AB40A2C825254C1100B31424 /* Presenter.swift in Sources */,
 				AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */,
+				AB39057C26E637ED005B7B86 /* ChildCoordinator.swift in Sources */,
 				AB40A2D225254C2C00B31424 /* CellConfigurable.swift in Sources */,
 				AB8142B725409C3C00913F4D /* TimezonePresenter+Search.swift in Sources */,
 				ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */,
+				AB39057826E61E76005B7B86 /* UIViewController+Coordinator.swift in Sources */,
 				AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */,
 				AB5C0B672545021F0024C3C8 /* WorldClockTableViewCell.swift in Sources */,
 				AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */,
+				AB39057A26E62B7D005B7B86 /* WorldClockCoordinator.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,

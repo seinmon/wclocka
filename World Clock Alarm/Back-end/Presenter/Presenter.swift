@@ -8,11 +8,12 @@ import CoreData
 protocol Presenter {
     associatedtype DataSourceElement
     init()
-    subscript(indexPath: IndexPath) -> DataSourceElement { get set }
+    subscript(indexPath: IndexPath) -> DataSourceElement { get }
     func getSectionCount() -> Int
     func getSectionHeaderTitle(for section: Int) -> String?
     func getSectionIndexTitles() -> [String]?
     func getRowCount(inSection section: Int) -> Int
+    func coordinationIsNeeded(with coordinator: Coordinator?, for indexPath: IndexPath?)
 }
 
 extension Presenter {
