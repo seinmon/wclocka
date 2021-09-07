@@ -5,8 +5,16 @@
 import Foundation
 import UIKit
 
-// Change to TimezoneCoordinator
-class WorldClockTableViewController: BaseTableViewController<TimezonePresenter<WorldClockCoordinator>,
-                                                             TimezoneTableViewCell> {
+class WorldClockTableViewController: BaseTableViewController<WorldClockTableViewCell> {
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        title = "World Clocks"
+    }
+    
+    // TODO: Delete after implementing reminders
+    override func setupTableView() {
+        super.setupTableView()
+        tableView.allowsSelection = false
+    }
 }
-

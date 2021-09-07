@@ -6,12 +6,13 @@ import Foundation
 import UIKit
 
 class TimezoneTableViewCell: UITableViewCell, CellConfigurable {
-    typealias DataSourceElement = String
     
-    static var cellId: String = "NewTimezoneCell"
+    static var cellId: String = "TimezoneCell"
     @IBOutlet weak var timezoneTitle: UILabel!
     
-    func configure(with text: DataSourceElement) {
-        timezoneTitle.text = text
+    func configure(with data: Any) {
+        if let text = data as? String {
+            timezoneTitle.text = text
+        }
     }
 }

@@ -5,7 +5,20 @@
 import Foundation
 import UIKit
 
-class TimezoneTableViewController: BaseTableViewController<TimezonePresenter<WorldClockCoordinator>,
-                                                           TimezoneTableViewCell> {
+class TimezoneTableViewController: BaseTableViewController<TimezoneTableViewCell> {
+    
+    override func setupNavigationBar() {
+        let searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search Timezones"
+        navigationItem.titleView = searchBar
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                                 target: self,
+                                                                 action: #selector(cancel))
+    }
 
+    @objc
+    public func cancel() {
+        dismiss(animated: true)
+    }
 }

@@ -6,16 +6,21 @@ import Foundation
 import UIKit
 
 class WorldClockTableViewCell: UITableViewCell, CellConfigurable {
-    typealias DataSourceElement = String
     
-    static var cellId: String = "TimezoneCell"
+    static var cellId: String = "WorldClockCell"
     @IBOutlet weak var timezoneTitle: UILabel!
     @IBOutlet weak var dateDifference: UILabel!
     @IBOutlet weak var timeDifference: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var AMPMLabel: UILabel!
     
-    func configure(with data: DataSourceElement) {
-        
+    func configure(with data: Any) {
+        if let clockItem = data as? ClockModel {
+            timezoneTitle.text = clockItem.timezoneTitle
+            dateDifference.text = clockItem.dateDifference
+            timeDifference.text = clockItem.timeDifference
+            timeLabel.text = clockItem.time
+            AMPMLabel.text = clockItem.AMPM
+        }
     }
 }

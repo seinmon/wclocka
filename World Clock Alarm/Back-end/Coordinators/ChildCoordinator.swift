@@ -10,6 +10,9 @@ protocol SubCoordinator: Coordinator {
 }
 
 class ChildCoordinator: SubCoordinator {
+    weak var delegate: CoordinatorDelegate?
+    // TODO: ParentCoordinator must be weak, otherwise we'll have reference cycles
+    var parentCoordinator: Coordinator
     var navigationController: UINavigationController {
         get {
             parentCoordinator.navigationController
@@ -17,12 +20,15 @@ class ChildCoordinator: SubCoordinator {
             parentCoordinator.navigationController = newValue
         }
     }
-    
-    var parentCoordinator: Coordinator
-    
+
     init(parentCoordinator: Coordinator) {
         self.parentCoordinator = parentCoordinator
     }
-
-    func coordinate(data: Any?) {}
+    
+    func start(with data: Any) { }
+    func start() { }
+    
+    deinit {
+        debugPrint("Coordinator is being deinitialized")
+    }
 }

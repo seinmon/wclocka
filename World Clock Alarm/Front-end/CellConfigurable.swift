@@ -6,7 +6,6 @@ import Foundation
 import CoreData
 
 protocol CellConfigurable {
-    associatedtype DataSourceElement
     static var cellId: String { get }
-    func configure(with data: DataSourceElement)
+    func configure(with data: Any)
 }

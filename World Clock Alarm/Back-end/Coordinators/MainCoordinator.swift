@@ -5,37 +5,33 @@
 import Foundation
 import UIKit
 
-protocol Coordinator: AnyObject {
-    var navigationController: UINavigationController {get set}
-    func coordinate(data: Any?)
-}
-
 class MainCoordinator: Coordinator {
+    var delegate: CoordinatorDelegate?
     typealias CoordinationData = Void
     weak var window: UIWindow?
 
     lazy var navigationController: UINavigationController = {
-        let rootViewController = UIStoryboard
+        let worldClockController = UIStoryboard
             .instantiateInitialViewController(of: StoryboardName.worldClock)
-        rootViewController.coordinator = WorldClockCoordinator(parentCoordinator: self)
+        let worldClockCoordinator = WorldClockCoordinator(parentCoordinator: self)
+        let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator)
         
-        return UINavigationController(rootViewController: rootViewController)
+        worldClockCoordinator.delegate = worldClockPresenter
+        worldClockController.presenter = worldClockPresenter
+        
+        return UINavigationController(rootViewController: worldClockController)
     }()
     
     init(window: UIWindow?) {
         self.window = window
-        self.coordinate()
+        self.start()
     }
     
-    func coordinate(data: Any? = nil) {
+    func start(with data: Any) {}
+    
+    func start() {
         window?.rootViewController = navigationController
-        
-        if #available(iOS 13, *) {
-            window?.backgroundColor = UIColor.systemBackground
-        } else {
-            window?.backgroundColor = UIColor.white
-        }
-        
+        window?.backgroundColor = UIColor.black
         window?.makeKeyAndVisible()
     }
 }

@@ -4,3 +4,10 @@
 
 import Foundation
 
+struct ClockModel {
+    var timezoneTitle: String
+    var dateDifference: String
+    var timeDifference: String
+    var time: String
+    var AMPM: String
+}

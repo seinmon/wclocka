@@ -6,9 +6,22 @@ import Foundation
 import UIKit
 
 class WorldClockCoordinator: ChildCoordinator {
-    override func coordinate(data: Any?) {
-            parentCoordinator.navigationController
-                .present(UIStoryboard.instantiateInitialViewController(of: StoryboardName.timezone),
-                         animated: true)
+    override func start() {
+        let timezoneViewController =
+            UIStoryboard.instantiateInitialViewController(of: StoryboardName.timezone)
+        
+        let timezoneCoordinator = TimezoneCoordinator(parentCoordinator: self)
+        let timezonePresenter = TimezonePresenter(coordinator: timezoneCoordinator)
+        
+        timezoneViewController.presenter = timezonePresenter
+        
+        let timezoneNavigationController = UINavigationController(rootViewController:
+                                                                    timezoneViewController)
+        
+        navigationController.present(timezoneNavigationController, animated: true)
+    }
+    
+    override func start(with data: Any) {
+        // TODO: Start reminders from here
     }
 }
