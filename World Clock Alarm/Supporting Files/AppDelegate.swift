@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
+import Foundation
 import UIKit
 import CoreData
 
@@ -9,7 +10,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var coordinator: MainCoordinator?
+    var coordinator: Coordinator?
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions:

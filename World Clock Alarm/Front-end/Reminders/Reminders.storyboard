@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tSa-BB-Xfb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nYD-iP-jxb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reminders-->
+        <!--Table View Controller-->
         <scene sceneID="JGE-4i-wkN">
             <objects>
                 <tableViewController id="nYD-iP-jxb" sceneMemberID="viewController">
@@ -75,45 +75,11 @@
                             <outlet property="delegate" destination="nYD-iP-jxb" id="v2v-0I-kNO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Reminders" id="Ovu-CW-MLD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="O4G-7p-C82">
-                            <connections>
-                                <segue destination="LgS-MH-xYz" kind="popoverPresentation" popoverAnchorBarButtonItem="O4G-7p-C82" id="yt5-sc-khZ">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Ovu-CW-MLD"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTq-pV-kX1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1050.7246376811595" y="103.79464285714285"/>
-        </scene>
-        <!--NewReminder-->
-        <scene sceneID="rAm-im-jas">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NewReminder" id="LgS-MH-xYz" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pah-pp-Oct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1685" y="104"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FtM-pN-kc0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tSa-BB-Xfb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2zb-ri-2VR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nYD-iP-jxb" kind="relationship" relationship="rootViewController" id="GSS-Qx-6ET"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2KL-6O-rDE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="103.79464285714285"/>
         </scene>
     </scenes>
     <resources>

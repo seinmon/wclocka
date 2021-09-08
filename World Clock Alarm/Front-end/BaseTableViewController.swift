@@ -5,10 +5,9 @@
 import UIKit
 import CoreData
 
-class BaseTableViewController<PresenterType: Presenter,
-                              ConfigurableCell: CellConfigurable>: UITableViewController,
-                                                         NSFetchedResultsControllerDelegate {
-    public var presenter: PresenterType = PresenterType()
+class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewController,
+                                                                   NSFetchedResultsControllerDelegate {
+    
     private var cellIdentifier: String = ConfigurableCell.cellId
     
     override func viewDidLoad() {
@@ -20,22 +19,22 @@ class BaseTableViewController<PresenterType: Presenter,
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        presenter.getSectionCount()
+        return presenter?.getSectionCount() ?? 0
     }
 
     override func tableView(_ tableView: UITableView,
                             titleForHeaderInSection section: Int) -> String? {
-        presenter.getSectionHeaderTitle(for: section)
+        return presenter?.getSectionHeaderTitle(for: section)
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        presenter.getSectionIndexTitles()
+        return presenter?.getSectionIndexTitles()
     }
 
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        presenter.getRowCount(inSection: section)
+        return presenter?.getRowCount(inSection: section) ?? 0
     }
     
     override func tableView(_ tableView: UITableView,
@@ -47,31 +46,36 @@ class BaseTableViewController<PresenterType: Presenter,
             return cell
         }
 
-        guard let dataSource =
-                presenter[indexPath] as? ConfigurableCell.DataSourceElement else {
-            return cell
-        }
-        
-        cellConfigurable.configure(with: dataSource)
+        cellConfigurable.configure(with: presenter?[indexPath] as Any)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectRow(at: indexPath)
     }
     
     // MARK: - Helpers
     
-    /*
-    public func initialize(cellIdentifier: String,
-                           presenter: PresenterType) {
-    }
-    */
-    
+    //Override these methods in the subclasses if needed.
     public func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                 target: self,
+                                                                 action: #selector((addNewItems)))
+    }
+    
+    @objc
+    public func addNewItems() {
+        presenter?.didSelectBarButtonItem()
+        tableView.reloadData()
     }
     
     public func setupTableView() {
         self.clearsSelectionOnViewWillAppear = false
-        tableView.tableFooterView = UIView()
+        let footerView = UIView()
+        // TODO: Add a textView to say nothing to show if table is empty
+        tableView.tableFooterView = footerView
     }
  
     // MARK: - NSFetchedResultsControllerDelegate
