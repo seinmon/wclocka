@@ -17,6 +17,12 @@ class TimezoneTableViewController: BaseTableViewController<TimezoneTableViewCell
                                                                  action: #selector(cancel))
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dismiss(animated: true, completion: { [unowned self] () in
+            self.presenter?.didSelectRow(at: indexPath)
+        })
+    }
+    
     @objc
     public func cancel() {
         dismiss(animated: true)

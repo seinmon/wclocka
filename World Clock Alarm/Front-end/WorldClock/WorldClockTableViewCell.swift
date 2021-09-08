@@ -10,17 +10,38 @@ class WorldClockTableViewCell: UITableViewCell, CellConfigurable {
     static var cellId: String = "WorldClockCell"
     @IBOutlet weak var timezoneTitle: UILabel!
     @IBOutlet weak var dateDifference: UILabel!
-    @IBOutlet weak var timeDifference: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var AMPMLabel: UILabel!
+    
+    var timer: CADisplayLink?
+    weak var data: ClockModel?
     
     func configure(with data: Any) {
-        if let clockItem = data as? ClockModel {
-            timezoneTitle.text = clockItem.timezoneTitle
-            dateDifference.text = clockItem.dateDifference
-            timeDifference.text = clockItem.timeDifference
-            timeLabel.text = clockItem.time
-            AMPMLabel.text = clockItem.AMPM
+        guard let receivedData = data as? ClockModel else {
+            return
         }
+        
+        /*
+        // TODO: Uncomment and test this statement after implementing rename functionality
+        guard self.data != receivedData else {
+            return
+        }
+        */
+        
+        if timer != nil {
+            timer?.invalidate()
+        }
+        
+        self.data = receivedData
+        update()
+        
+        timer = CADisplayLink(target: self, selector: #selector(update))
+        timer?.add(to: .current, forMode: .common)
+    }
+    
+    @objc
+    func update() {
+            self.timezoneTitle.text = data?.timezoneTitle
+            self.dateDifference.text = data?.dateDifference
+            self.timeLabel.text = data?.time
     }
 }

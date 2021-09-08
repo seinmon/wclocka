@@ -14,9 +14,6 @@ class WorldClockPresenter {
 }
 
 extension WorldClockPresenter: Presenter {
-    
-    typealias DataSourceElement = ClockModel?
-    
     subscript(indexPath: IndexPath) -> Any {
         get {
             return dataSource[indexPath.row]
@@ -24,11 +21,11 @@ extension WorldClockPresenter: Presenter {
     }
     
     func getSectionCount() -> Int {
-        dataSource.count
+        1
     }
     
     func getRowCount(inSection section: Int) -> Int {
-        1
+        dataSource.count
     }
     
     func didSelectBarButtonItem() {
@@ -42,7 +39,11 @@ extension WorldClockPresenter: Presenter {
 
 extension WorldClockPresenter: CoordinatorDelegate {
     func didReceiveNewData(_ data: Any) {
-        let clockItem = ClockModel(timezoneTitle: "Something", dateDifference: "a lot", timeDifference: "00:00", time: "12:34", AMPM: "GM")
-        dataSource.append(clockItem)
+        if let receivedData = data as? (String, TimeZone) {
+            let clockItem = ClockModel(title: receivedData.0,
+                                       timezone: receivedData.1)
+            
+            dataSource.append(clockItem)
+        }
     }
 }

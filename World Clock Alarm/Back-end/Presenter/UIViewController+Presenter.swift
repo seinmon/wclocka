@@ -5,8 +5,7 @@
 import Foundation
 import UIKit
 
-/* This avoids the need to downcast tableViewController classes, which would result in a lot of
- * code replication.
+/* This avoids downcasting tableViewController classes.
  *
  * Documentation is here:
  * https://valv0.medium.com/computed-properties-and-extensions-a-pure-swift-approach-64733768112c */

@@ -58,7 +58,7 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     
     //Override these methods in the subclasses if needed.
     public func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                  target: self,

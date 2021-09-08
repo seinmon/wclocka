@@ -7,7 +7,6 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var delegate: CoordinatorDelegate?
-    typealias CoordinationData = Void
     weak var window: UIWindow?
 
     lazy var navigationController: UINavigationController = {

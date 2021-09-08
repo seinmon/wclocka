@@ -5,26 +5,25 @@
 import Foundation
 
 class TimezonePresenter {
-    typealias TimezoneDictionary = [String: [String]]
+    typealias TimezoneDictionary = [String: [(String, TimeZone)]]
     
     //MARK: - Properties
-    
     let coordinator: Coordinator
     var dataSource: [TimezoneSection] = []
     
-    // TODO: See if you can replace it with a dictionary of [String: [String]] and a sort function.
+    // TODO: See if it is better replace it with a dictionary of [String: [(String, Timezone)]]
     struct TimezoneSection {
         let sectionTitle: String
-        var RowTitles: [String]
+        var timezones: [(String, TimeZone)]
         
-        init(sectionTitle: String, RowTitles: [String]) {
+        init(sectionTitle: String, timezones: [(String, TimeZone)]) {
             self.sectionTitle = sectionTitle
-            self.RowTitles = RowTitles
+            self.timezones = timezones
             sortRows()
         }
         
         mutating func sortRows() {
-            RowTitles.sort(by: <)
+            timezones.sort { $0.0 < $1.0 }
         }
     }
     
@@ -40,7 +39,7 @@ class TimezonePresenter {
         
         for item in timezoneDict {
             let timezoneSection = TimezoneSection(sectionTitle: item.key,
-                                                  RowTitles: item.value)
+                                                  timezones: item.value)
             dataSource.append(timezoneSection)
         }
         
@@ -50,15 +49,17 @@ class TimezonePresenter {
     private func makeTimezoneDict() -> TimezoneDictionary {
         var timezoneDict: TimezoneDictionary = [:]
         
-        for timeZone in TimeZone.knownTimeZoneIdentifiers {
-            if let cityOptional = timeZone.split(separator: "/").last {
-                var city = String(cityOptional)
-                let key: String = String(city.prefix(1))
-                
-                city = city.replacingOccurrences(of: "_", with: " ")
-                
-                if timezoneDict[key]?.append(city) == nil {
-                    timezoneDict[key] = [city]
+        for timezoneIdentifier in TimeZone.knownTimeZoneIdentifiers {
+            if let timezone = TimeZone(identifier: timezoneIdentifier) {
+                if let cityOptional = timezoneIdentifier.split(separator: "/").last {
+                    var city = String(cityOptional)
+                    let key: String = String(city.prefix(1))
+                    
+                    city = city.replacingOccurrences(of: "_", with: " ")
+                    
+                    if timezoneDict[key]?.append((city, timezone)) == nil {
+                        timezoneDict[key] = [(city, timezone)]
+                    }
                 }
             }
         }
@@ -72,11 +73,9 @@ class TimezonePresenter {
 }
 
 extension TimezonePresenter: Presenter {
-    typealias DataSourceElement = String
-    
     subscript(indexPath: IndexPath) -> Any {
         get {
-            dataSource[indexPath.section].RowTitles[indexPath.row]
+            dataSource[indexPath.section].timezones[indexPath.row].0
         }
     }
     
@@ -103,7 +102,7 @@ extension TimezonePresenter: Presenter {
     }
     
     func getRowCount(inSection section: Int) -> Int {
-        return dataSource[section].RowTitles.count
+        return dataSource[section].timezones.count
     }
     
     func didSelectBarButtonItem() {
@@ -111,7 +110,6 @@ extension TimezonePresenter: Presenter {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        // TODO: Send the element(s) necessary to create world clock items.
-        coordinator.start(with: self[indexPath])
+        coordinator.start(with: dataSource[indexPath.section].timezones[indexPath.row])
     }
 }
