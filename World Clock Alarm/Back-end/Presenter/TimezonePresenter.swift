@@ -5,7 +5,9 @@
 import Foundation
 
 class TimezonePresenter {
-    typealias TimezoneDictionary = [String: [(String, TimeZone)]]
+
+    typealias rowContent = (String, TimeZone)
+    typealias TimezoneDictionary = [String: [rowContent]]
     
     //MARK: - Properties
     let coordinator: Coordinator
@@ -13,12 +15,11 @@ class TimezonePresenter {
     private var dataSource: [TimezoneSection] = []
     private var isFilteringDataSource: Bool = false
     
-    // TODO: See if it is better replace it with a dictionary of [String: [(String, Timezone)]]
     struct TimezoneSection {
         let sectionTitle: String
-        var timezones: [(String, TimeZone)]
+        var timezones: [rowContent]
         
-        init(sectionTitle: String, timezones: [(String, TimeZone)]) {
+        init(sectionTitle: String, timezones: [rowContent]) {
             self.sectionTitle = sectionTitle
             self.timezones = timezones
             sortRows()
@@ -27,6 +28,15 @@ class TimezonePresenter {
         mutating func sortRows() {
             timezones.sort { $0.0 < $1.0 }
         }
+//
+//        func filter(text: String) -> Bool {
+//            var timezones: [rowContent] = timezones.filter { (title, zone) in
+//                return title.lowercased().contains(text.lowercased())
+//            }
+//
+//            debugPrint(timezones)
+//            return true
+//        }
     }
     
     //MARK: - Functions
@@ -122,7 +132,20 @@ extension TimezonePresenter: Presenter {
             dataSource = allData
         } else {
             isFilteringDataSource = true
-            dataSource = [] // TODO: Filter results, and change dataSource here.
+            var filteredData: [TimezoneSection] = []
+            
+            for row in allData {
+                let filteredRow = row.timezones.filter { (title, zone) in
+                    return title.lowercased().contains(text!.lowercased())
+                }
+                
+                if !filteredRow.isEmpty {
+                    filteredData.append(TimezoneSection(sectionTitle: row.sectionTitle,
+                                                        timezones: filteredRow))
+                }
+            }
+            
+            dataSource = filteredData
         }
     }
 }
