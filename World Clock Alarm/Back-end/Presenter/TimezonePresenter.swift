@@ -10,7 +10,7 @@ class TimezonePresenter {
     typealias TimezoneDictionary = [String: [rowContent]]
     
     //MARK: - Properties
-    let coordinator: Coordinator
+    internal let coordinator: Coordinator
     private var allData: [TimezoneSection] = []
     private var dataSource: [TimezoneSection] = []
     private var isFilteringDataSource: Bool = false

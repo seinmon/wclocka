@@ -7,6 +7,7 @@ import CoreData
 
 protocol Presenter: AnyObject {
     var coordinator: Coordinator { get }
+    var allowsEditing: Bool { get }
     subscript(indexPath: IndexPath) -> Any { get }
     init(coordinator: Coordinator)
     func getSectionCount() -> Int
@@ -16,12 +17,17 @@ protocol Presenter: AnyObject {
     func didSelectBarButtonItem()
     func didSelectRow(at indexPath: IndexPath)
     func filterDataSource(text: String?)
+    func deleteFromDataSource(indexPath: IndexPath) -> Bool
+    func updateDataSource(at indexPath: IndexPath, to data: Any)
 }
 
 extension Presenter {
+    var allowsEditing: Bool { false }
     func getSectionHeaderTitle(for section: Int) -> String? { nil }
     func getSectionIndexTitles() -> [String]? { nil }
     func didSelectRow(at indexPath: IndexPath) { }
     func didSelectBarButtonItem() { }
     func filterDataSource(text: String?) { }
+    func deleteFromDataSource(indexPath: IndexPath) -> Bool { return false }
+    func updateDataSource(at indexPath: IndexPath, to data: Any) { }
 }

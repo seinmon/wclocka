@@ -5,9 +5,13 @@
 import Foundation
 
 class WorldClockPresenter {
-    let coordinator: Coordinator
+    internal let coordinator: Coordinator
     private var dataSource: [ClockModel] = []
 
+    internal var allowsEditing: Bool {
+        return !dataSource.isEmpty
+    }
+    
     required init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
@@ -21,7 +25,7 @@ extension WorldClockPresenter: Presenter {
     }
     
     func getSectionCount() -> Int {
-        1
+        return 1
     }
     
     func getRowCount(inSection section: Int) -> Int {
@@ -34,6 +38,11 @@ extension WorldClockPresenter: Presenter {
     
     func didSelectRow(at indexPath: IndexPath) {
         coordinator.start(with: self[indexPath])
+    }
+    
+    func deleteFromDataSource(indexPath: IndexPath) -> Bool {
+        dataSource.remove(at: indexPath.row)
+        return true
     }
 }
 
