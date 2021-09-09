@@ -87,7 +87,9 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
         activateEditButton()
     }
     
-    private func activateEditButton() {
+    
+    // TODO: Make private later
+    public func activateEditButton() {
         if (presenter?.allowsEditing ?? false) {
             self.navigationItem.leftBarButtonItem = self.editButtonItem
         } else {
@@ -98,8 +100,6 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     @objc
     public func addNewItems() {
         presenter?.didSelectBarButtonItem()
-        tableView.reloadData()
-        activateEditButton() // TODO: Delete this and the line above after implementing coredata
     }
     
     public func setupTableView() {
@@ -123,15 +123,30 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
         )]
     }
     
-    // MARK: - NSFetchedResultsControllerDelegate
-    
-    func controllerWillChangeContent(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        
+        let index = indexPath ?? (newIndexPath ?? nil)
+        guard let cellIndex = index else { return }
+        
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [cellIndex], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [cellIndex], with: .left)
+        default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 }

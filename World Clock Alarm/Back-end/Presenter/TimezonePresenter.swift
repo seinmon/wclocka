@@ -3,6 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
+import UIKit
 
 class TimezonePresenter {
 
@@ -11,6 +12,7 @@ class TimezonePresenter {
     
     //MARK: - Properties
     internal let coordinator: Coordinator
+    internal let viewController: UIViewController
     private var allData: [TimezoneSection] = []
     private var dataSource: [TimezoneSection] = []
     private var isFilteringDataSource: Bool = false
@@ -32,8 +34,9 @@ class TimezonePresenter {
     
     //MARK: - Functions
     
-    required init(coordinator: Coordinator) {
+    required init(coordinator: Coordinator, controller: UIViewController) {
         self.coordinator = coordinator
+        self.viewController = controller
         populateAllData()
     }
     

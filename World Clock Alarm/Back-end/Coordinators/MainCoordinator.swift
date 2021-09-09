@@ -13,7 +13,8 @@ class MainCoordinator: Coordinator {
         let worldClockController = UIStoryboard
             .instantiateInitialViewController(of: StoryboardName.worldClock)
         let worldClockCoordinator = WorldClockCoordinator(parentCoordinator: self)
-        let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator)
+        let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator,
+                                                      controller: worldClockController)
         
         worldClockCoordinator.delegate = worldClockPresenter
         worldClockController.presenter = worldClockPresenter

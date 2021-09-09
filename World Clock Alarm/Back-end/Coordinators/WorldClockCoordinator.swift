@@ -11,7 +11,8 @@ class WorldClockCoordinator: ChildCoordinator {
             UIStoryboard.instantiateInitialViewController(of: StoryboardName.timezone)
         
         let timezoneCoordinator = TimezoneCoordinator(parentCoordinator: self)
-        let timezonePresenter = TimezonePresenter(coordinator: timezoneCoordinator)
+        let timezonePresenter = TimezonePresenter(coordinator: timezoneCoordinator,
+                                                  controller: timezoneViewController)
         
         timezoneViewController.presenter = timezonePresenter
         

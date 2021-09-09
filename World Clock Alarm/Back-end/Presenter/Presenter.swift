@@ -3,13 +3,15 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
+import UIKit
 import CoreData
 
 protocol Presenter: AnyObject {
+    var viewController: UIViewController { get }
     var coordinator: Coordinator { get }
     var allowsEditing: Bool { get }
     subscript(indexPath: IndexPath) -> Any { get }
-    init(coordinator: Coordinator)
+    init(coordinator: Coordinator, controller: UIViewController)
     func getSectionCount() -> Int
     func getSectionHeaderTitle(for section: Int) -> String?
     func getSectionIndexTitles() -> [String]?

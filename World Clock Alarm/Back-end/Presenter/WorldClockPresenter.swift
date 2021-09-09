@@ -3,21 +3,25 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
+import UIKit
 
 class WorldClockPresenter {
     internal let coordinator: Coordinator
+    internal let viewController: UIViewController
     private var dataSource: [ClockModel] = []
 
     internal var allowsEditing: Bool {
         return !dataSource.isEmpty
     }
     
-    required init(coordinator: Coordinator) {
+    required init(coordinator: Coordinator, controller: UIViewController) {
         self.coordinator = coordinator
+        self.viewController = controller
     }
 }
 
-extension WorldClockPresenter: Presenter {    
+extension WorldClockPresenter: Presenter {
+    
     subscript(indexPath: IndexPath) -> Any {
         get {
             return dataSource[indexPath.row]
@@ -53,6 +57,11 @@ extension WorldClockPresenter: CoordinatorDelegate {
                                        timezone: receivedData.1)
             
             dataSource.append(clockItem)
+            
+            if let tableViewController = viewController as? WorldClockTableViewController {
+                tableViewController.tableView.reloadData()
+                tableViewController.activateEditButton()
+            }
         }
     }
 }
