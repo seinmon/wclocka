@@ -18,7 +18,7 @@ class WorldClockTableViewController: BaseTableViewController<WorldClockTableView
         super.setupTableView()
         tableView.allowsSelection = false
     }
-    
+
     /*
     override func setupContextualActions(for indexPath: IndexPath) -> [UIContextualAction] {
         var actions = super.setupContextualActions(for: indexPath)
