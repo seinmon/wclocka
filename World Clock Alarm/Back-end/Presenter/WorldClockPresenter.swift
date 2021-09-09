@@ -13,7 +13,7 @@ class WorldClockPresenter {
     }
 }
 
-extension WorldClockPresenter: Presenter {
+extension WorldClockPresenter: Presenter {    
     subscript(indexPath: IndexPath) -> Any {
         get {
             return dataSource[indexPath.row]

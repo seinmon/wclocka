@@ -9,7 +9,9 @@ class TimezonePresenter {
     
     //MARK: - Properties
     let coordinator: Coordinator
-    var dataSource: [TimezoneSection] = []
+    private var allData: [TimezoneSection] = []
+    private var dataSource: [TimezoneSection] = []
+    private var isFilteringDataSource: Bool = false
     
     // TODO: See if it is better replace it with a dictionary of [String: [(String, Timezone)]]
     struct TimezoneSection {
@@ -31,19 +33,20 @@ class TimezonePresenter {
     
     required init(coordinator: Coordinator) {
         self.coordinator = coordinator
-        populateDataSource()
+        populateAllData()
     }
     
-    private func populateDataSource() {
+    private func populateAllData() {
         let timezoneDict = makeTimezoneDict()
         
         for item in timezoneDict {
             let timezoneSection = TimezoneSection(sectionTitle: item.key,
                                                   timezones: item.value)
-            dataSource.append(timezoneSection)
+            allData.append(timezoneSection)
         }
         
-        dataSource.sort { $0.sectionTitle < $1.sectionTitle }
+        allData.sort { $0.sectionTitle < $1.sectionTitle }
+        dataSource = allData
     }
     
     private func makeTimezoneDict() -> TimezoneDictionary {
@@ -111,5 +114,15 @@ extension TimezonePresenter: Presenter {
     
     func didSelectRow(at indexPath: IndexPath) {
         coordinator.start(with: dataSource[indexPath.section].timezones[indexPath.row])
+    }
+    
+    func filterDataSource(text: String?) {
+        if (text?.isEmpty ?? true) {
+            isFilteringDataSource = false
+            dataSource = allData
+        } else {
+            isFilteringDataSource = true
+            dataSource = [] // TODO: Filter results, and change dataSource here.
+        }
     }
 }

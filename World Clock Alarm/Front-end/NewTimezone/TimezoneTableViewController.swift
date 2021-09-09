@@ -6,11 +6,15 @@ import Foundation
 import UIKit
 
 class TimezoneTableViewController: BaseTableViewController<TimezoneTableViewCell> {
-    
-    override func setupNavigationBar() {
+    lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.sizeToFit()
         searchBar.placeholder = "Search Timezones"
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
+    override func setupNavigationBar() {
         navigationItem.titleView = searchBar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                                  target: self,
@@ -26,5 +30,12 @@ class TimezoneTableViewController: BaseTableViewController<TimezoneTableViewCell
     @objc
     public func cancel() {
         dismiss(animated: true)
+    }
+}
+
+extension TimezoneTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.filterDataSource(text: searchText)
+        tableView.reloadData()
     }
 }

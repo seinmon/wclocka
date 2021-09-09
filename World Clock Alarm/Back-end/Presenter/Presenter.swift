@@ -15,6 +15,7 @@ protocol Presenter: AnyObject {
     func getRowCount(inSection section: Int) -> Int
     func didSelectBarButtonItem()
     func didSelectRow(at indexPath: IndexPath)
+    func filterDataSource(text: String?)
 }
 
 extension Presenter {
@@ -22,4 +23,5 @@ extension Presenter {
     func getSectionIndexTitles() -> [String]? { nil }
     func didSelectRow(at indexPath: IndexPath) { }
     func didSelectBarButtonItem() { }
+    func filterDataSource(text: String?) { }
 }
