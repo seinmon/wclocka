@@ -16,10 +16,10 @@ class TimezonePresenter {
     private var isFilteringDataSource: Bool = false
     
     struct TimezoneSection {
-        let sectionTitle: String
+        let sectionTitle: String?
         var timezones: [rowContent]
         
-        init(sectionTitle: String, timezones: [rowContent]) {
+        init(sectionTitle: String?, timezones: [rowContent]) {
             self.sectionTitle = sectionTitle
             self.timezones = timezones
             sortRows()
@@ -28,15 +28,6 @@ class TimezonePresenter {
         mutating func sortRows() {
             timezones.sort { $0.0 < $1.0 }
         }
-//
-//        func filter(text: String) -> Bool {
-//            var timezones: [rowContent] = timezones.filter { (title, zone) in
-//                return title.lowercased().contains(text.lowercased())
-//            }
-//
-//            debugPrint(timezones)
-//            return true
-//        }
     }
     
     //MARK: - Functions
@@ -55,7 +46,7 @@ class TimezonePresenter {
             allData.append(timezoneSection)
         }
         
-        allData.sort { $0.sectionTitle < $1.sectionTitle }
+        allData.sort { $0.sectionTitle ?? "" < $1.sectionTitle ?? "" }
         dataSource = allData
     }
     
@@ -140,7 +131,7 @@ extension TimezonePresenter: Presenter {
                 }
                 
                 if !filteredRow.isEmpty {
-                    filteredData.append(TimezoneSection(sectionTitle: row.sectionTitle,
+                    filteredData.append(TimezoneSection(sectionTitle: nil,
                                                         timezones: filteredRow))
                 }
             }
