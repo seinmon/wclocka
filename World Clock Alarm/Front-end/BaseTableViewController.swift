@@ -24,10 +24,7 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     // MARK: - Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let presenter = presenter else {
-            fatalError("fuck")
-        }
-        return presenter.getSectionCount() //?? 0
+        return (presenter?.getSectionCount() ?? 0)
     }
     
     override func tableView(_ tableView: UITableView,
@@ -42,10 +39,7 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        guard let presenter = presenter else {
-            fatalError("you")
-        }
-        return presenter.getRowCount(inSection: section)
+        return (presenter?.getRowCount(inSection: section) ?? 0)
     }
     
     override func tableView(_ tableView: UITableView,
@@ -92,13 +86,23 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
         activateEditButton()
     }
     
-    
-    // TODO: Make private later
-    public func activateEditButton() {
-        if (presenter?.allowsEditing ?? false) {
+    private func activateEditButton() {
+        if !(presenter?.dataSourceIsEmpty ?? true) {
             self.navigationItem.leftBarButtonItem = self.editButtonItem
+            self.tableView.backgroundView = UIView()
         } else {
             self.navigationItem.leftBarButtonItem = nil
+            let emptyLabel = UILabel(frame: UIScreen.main.bounds)
+            emptyLabel.text = "Nothing to Show!"
+            
+            if #available(iOS 13, *) {
+                emptyLabel.textColor = .tertiaryLabel
+            } else {
+                emptyLabel.textColor = .systemGray
+            }
+            
+            emptyLabel.textAlignment = .center
+            self.tableView.backgroundView = emptyLabel
         }
     }
     
@@ -110,7 +114,6 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     public func setupTableView() {
         self.clearsSelectionOnViewWillAppear = false
         let footerView = UIView()
-        // TODO: Add a label when the table is empty
         tableView.tableFooterView = footerView
     }
     
@@ -138,20 +141,18 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
                     for type: NSFetchedResultsChangeType,
                     newIndexPath: IndexPath?) {
         
-//        let index = indexPath ?? (newIndexPath ?? nil)
-//        guard let cellIndex = index else { return }
+        let index = indexPath ?? (newIndexPath ?? nil)
+        guard let cellIndex = index else { return }
         
         switch type {
         case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            tableView.insertRows(at: [cellIndex], with: .automatic)
         case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .left)
+            tableView.deleteRows(at: [cellIndex], with: .left)
         default:
             break
         }
     }
-    
-
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         activateEditButton()

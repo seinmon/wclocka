@@ -9,7 +9,7 @@ import CoreData
 protocol Presenter: AnyObject {
     var viewController: UIViewController { get }
     var coordinator: Coordinator { get }
-    var allowsEditing: Bool { get }
+    var dataSourceIsEmpty: Bool { get }
     subscript(indexPath: IndexPath) -> Any { get }
     init(coordinator: Coordinator, controller: UIViewController)
     func getSectionCount() -> Int
@@ -24,7 +24,7 @@ protocol Presenter: AnyObject {
 }
 
 extension Presenter {
-    var allowsEditing: Bool { false }
+    var dataSourceIsEmpty: Bool { false }
     func getSectionHeaderTitle(for section: Int) -> String? { nil }
     func getSectionIndexTitles() -> [String]? { nil }
     func didSelectRow(at indexPath: IndexPath) { }

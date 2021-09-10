@@ -11,8 +11,8 @@ class WorldClockPresenter {
     internal let viewController: UIViewController
     private var dataSource: NSFetchedResultsController<Timezone>?
 
-    internal var allowsEditing: Bool {
-        return !(dataSource?.fetchedObjects?.isEmpty ?? true)
+    internal var dataSourceIsEmpty: Bool {
+        return (dataSource?.fetchedObjects?.isEmpty ?? true)
     }
     
     required init(coordinator: Coordinator, controller: UIViewController) {
@@ -33,7 +33,7 @@ extension WorldClockPresenter: Presenter {
     }
     
     func getSectionCount() -> Int {
-        return 1
+        return dataSource?.sections?.count ?? 0
     }
     
     func getRowCount(inSection section: Int) -> Int {
@@ -49,7 +49,15 @@ extension WorldClockPresenter: Presenter {
     }
     
     func deleteFromDataSource(indexPath: IndexPath) -> Bool {
-        DatabaseManager.shared.delete((dataSource?.object(at: indexPath))!)
+        guard let managedObject = dataSource?.object(at: indexPath) else {
+            return false
+        }
+        
+        if (managedObject.reminders?.count ?? 0) > 0 {
+            return false
+        }
+        
+        DatabaseManager.shared.delete(managedObject)
         return true
     }
 }
