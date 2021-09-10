@@ -14,7 +14,6 @@
 		AB39057C26E637ED005B7B86 /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39057B26E637ED005B7B86 /* ChildCoordinator.swift */; };
 		AB39058026E74BC6005B7B86 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39057F26E74BC6005B7B86 /* Coordinator.swift */; };
 		AB39058226E7550F005B7B86 /* TimezoneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39058126E7550F005B7B86 /* TimezoneCoordinator.swift */; };
-		AB39058526E765BD005B7B86 /* ClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39058426E765BD005B7B86 /* ClockModel.swift */; };
 		AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */; };
 		AB40A2C825254C1100B31424 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2C725254C1100B31424 /* Presenter.swift */; };
 		AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */; };
@@ -34,7 +33,7 @@
 		AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA63251A37B800F27947 /* NewReminder.storyboard */; };
 		AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */; };
 		AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */; };
-		AB976E9626EA5717001409E0 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9526EA5717001409E0 /* PersistentContainer.swift */; };
+		AB976E9626EA5717001409E0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9526EA5717001409E0 /* DatabaseManager.swift */; };
 		AB976E9F26EA69CE001409E0 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9B26EA69CE001409E0 /* Reminder+CoreDataClass.swift */; };
 		AB976EA026EA69CE001409E0 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */; };
 		AB976EA126EA69CE001409E0 /* Timezone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */; };
@@ -68,7 +67,6 @@
 		AB39057B26E637ED005B7B86 /* ChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinator.swift; sourceTree = "<group>"; };
 		AB39057F26E74BC6005B7B86 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AB39058126E7550F005B7B86 /* TimezoneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneCoordinator.swift; sourceTree = "<group>"; };
-		AB39058426E765BD005B7B86 /* ClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockModel.swift; sourceTree = "<group>"; };
 		AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewController.swift; sourceTree = "<group>"; };
 		AB40A2C725254C1100B31424 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockPresenter.swift; sourceTree = "<group>"; };
@@ -94,11 +92,11 @@
 		AB76AA63251A37B800F27947 /* NewReminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewReminder.storyboard; sourceTree = "<group>"; };
 		AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewCell.swift; sourceTree = "<group>"; };
 		AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePresenter.swift; sourceTree = "<group>"; };
-		AB976E9526EA5717001409E0 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
-		AB976E9B26EA69CE001409E0 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timezone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timezone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9526EA5717001409E0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		AB976E9B26EA69CE001409E0 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "World Clock Alarm/Back-end/Model/Reminder+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "World Clock Alarm/Back-end/Model/Reminder+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataClass.swift"; path = "World Clock Alarm/Back-end/Model/Timezone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataProperties.swift"; path = "World Clock Alarm/Back-end/Model/Timezone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewController.swift; sourceTree = "<group>"; };
 		ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,7 +163,7 @@
 		AB2F42D6251DF9F400AF660B /* Back-end */ = {
 			isa = PBXGroup;
 			children = (
-				AB976E9526EA5717001409E0 /* PersistentContainer.swift */,
+				AB976E9526EA5717001409E0 /* DatabaseManager.swift */,
 				AB39058326E7659D005B7B86 /* Model */,
 				AB5C0B5A2544FC900024C3C8 /* Coordinators */,
 				AB40A2D625254C7700B31424 /* Presenter */,
@@ -217,7 +215,6 @@
 				AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */,
 				AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */,
 				AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */,
-				AB39058426E765BD005B7B86 /* ClockModel.swift */,
 				AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */,
 			);
 			path = Model;
@@ -444,10 +441,9 @@
 				AB976EA226EA69CE001409E0 /* Timezone+CoreDataProperties.swift in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
-				AB976E9626EA5717001409E0 /* PersistentContainer.swift in Sources */,
+				AB976E9626EA5717001409E0 /* DatabaseManager.swift in Sources */,
 				AB39058226E7550F005B7B86 /* TimezoneCoordinator.swift in Sources */,
 				ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */,
-				AB39058526E765BD005B7B86 /* ClockModel.swift in Sources */,
 				AB5C0B5F2544FCCB0024C3C8 /* StoryboardName.swift in Sources */,
 				AB5C0B7525450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift in Sources */,
 				AB40A2C025254BA000B31424 /* WorldClockTableViewController.swift in Sources */,

@@ -13,10 +13,10 @@ class WorldClockTableViewCell: UITableViewCell, CellConfigurable {
     @IBOutlet weak var timeLabel: UILabel!
     
     var timer: CADisplayLink?
-    weak var data: ClockModel?
+    weak var data: Timezone?
     
     func configure(with data: Any) {
-        guard let receivedData = data as? ClockModel else {
+        guard let receivedData = data as? Timezone else {
             return
         }
         
@@ -40,8 +40,8 @@ class WorldClockTableViewCell: UITableViewCell, CellConfigurable {
     
     @objc
     func update() {
-            self.timezoneTitle.text = data?.timezoneTitle
-            self.dateDifference.text = data?.dateDifference
+            self.timezoneTitle.text = data?.zoneTitle
+            self.dateDifference.text = data?.timeOffset
             self.timeLabel.text = data?.time
     }
 }

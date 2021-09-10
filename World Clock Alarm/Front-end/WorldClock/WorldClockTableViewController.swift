@@ -41,7 +41,5 @@ class WorldClockTableViewController: BaseTableViewController<WorldClockTableView
         if (!(presenter?.deleteFromDataSource(indexPath: indexPath) ?? true)) {
             //TODO: Show Alert if there are reminders for that timezone
         }
-        
-        tableView.deleteRows(at: [indexPath], with: .left)
     }
 }

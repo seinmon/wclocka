@@ -24,7 +24,10 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     // MARK: - Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter?.getSectionCount() ?? 0
+        guard let presenter = presenter else {
+            fatalError("fuck")
+        }
+        return presenter.getSectionCount() //?? 0
     }
     
     override func tableView(_ tableView: UITableView,
@@ -39,7 +42,10 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getRowCount(inSection: section) ?? 0
+        guard let presenter = presenter else {
+            fatalError("you")
+        }
+        return presenter.getRowCount(inSection: section)
     }
     
     override func tableView(_ tableView: UITableView,
@@ -73,7 +79,6 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     
     override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         setEditing(false, animated: true)
-        activateEditButton()
     }
     
     // MARK: - Helpers
@@ -133,20 +138,23 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
                     for type: NSFetchedResultsChangeType,
                     newIndexPath: IndexPath?) {
         
-        let index = indexPath ?? (newIndexPath ?? nil)
-        guard let cellIndex = index else { return }
+//        let index = indexPath ?? (newIndexPath ?? nil)
+//        guard let cellIndex = index else { return }
         
         switch type {
         case .insert:
-            tableView.insertRows(at: [cellIndex], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .delete:
-            tableView.deleteRows(at: [cellIndex], with: .left)
+            tableView.deleteRows(at: [indexPath!], with: .left)
         default:
             break
         }
     }
     
+
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        activateEditButton()
         tableView.endUpdates()
     }
 }

@@ -4,19 +4,23 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class WorldClockPresenter {
     internal let coordinator: Coordinator
     internal let viewController: UIViewController
-    private var dataSource: [ClockModel] = []
+    private var dataSource: NSFetchedResultsController<Timezone>?
 
     internal var allowsEditing: Bool {
-        return !dataSource.isEmpty
+        return !(dataSource?.fetchedObjects?.isEmpty ?? true)
     }
     
     required init(coordinator: Coordinator, controller: UIViewController) {
         self.coordinator = coordinator
         self.viewController = controller
+        
+        dataSource = DatabaseManager.shared.fetch()
+        dataSource?.delegate = viewController as? WorldClockTableViewController
     }
 }
 
@@ -24,7 +28,7 @@ extension WorldClockPresenter: Presenter {
     
     subscript(indexPath: IndexPath) -> Any {
         get {
-            return dataSource[indexPath.row]
+            return dataSource?.fetchedObjects?[indexPath.row] as Any
         }
     }
     
@@ -33,7 +37,7 @@ extension WorldClockPresenter: Presenter {
     }
     
     func getRowCount(inSection section: Int) -> Int {
-        dataSource.count
+        dataSource?.fetchedObjects?.count ?? 0
     }
     
     func didSelectBarButtonItem() {
@@ -45,23 +49,30 @@ extension WorldClockPresenter: Presenter {
     }
     
     func deleteFromDataSource(indexPath: IndexPath) -> Bool {
-        dataSource.remove(at: indexPath.row)
+        DatabaseManager.shared.delete((dataSource?.object(at: indexPath))!)
         return true
     }
 }
 
 extension WorldClockPresenter: CoordinatorDelegate {
     func didReceiveNewData(_ data: Any) {
-        if let receivedData = data as? (String, TimeZone) {
-            let clockItem = ClockModel(title: receivedData.0,
-                                       timezone: receivedData.1)
-            
-            dataSource.append(clockItem)
-            
-            if let tableViewController = viewController as? WorldClockTableViewController {
-                tableViewController.tableView.reloadData()
-                tableViewController.activateEditButton()
+        if let receivedData = data as? rowContent {
+            if !isDuplicate(receivedData) {
+                DatabaseManager.shared.saveData(data: receivedData)
             }
         }
     }
+    
+    private func isDuplicate(_ newData: rowContent) -> Bool {
+        if let dataSource = dataSource?.fetchedObjects  {
+            for entry in dataSource {
+                if entry.zoneTitle == newData.0 {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
 }

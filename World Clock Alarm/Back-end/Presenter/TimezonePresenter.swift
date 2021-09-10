@@ -5,9 +5,10 @@
 import Foundation
 import UIKit
 
+typealias rowContent = (String, TimeZone)
+
 class TimezonePresenter {
 
-    typealias rowContent = (String, TimeZone)
     typealias TimezoneDictionary = [String: [rowContent]]
     
     //MARK: - Properties
