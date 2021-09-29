@@ -13,11 +13,11 @@ class ChildCoordinator: SubCoordinator {
     weak var delegate: CoordinatorDelegate?
     // TODO: Maybe parentCoordinator should be weak to avoid reference cycles
     var parentCoordinator: Coordinator
-    var navigationController: UINavigationController {
+    var splitViewController: UISplitViewController {
         get {
-            parentCoordinator.navigationController
+            parentCoordinator.splitViewController
         } set {
-            parentCoordinator.navigationController = newValue
+            //parentCoordinator.splitViewController = newValue
         }
     }
 

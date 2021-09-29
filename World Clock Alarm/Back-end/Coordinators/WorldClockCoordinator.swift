@@ -19,10 +19,14 @@ class WorldClockCoordinator: ChildCoordinator {
         let timezoneNavigationController = UINavigationController(rootViewController:
                                                                     timezoneViewController)
         
-        navigationController.present(timezoneNavigationController, animated: true)
+        let masterViewController = splitViewController.viewControllers[0]
+        masterViewController.definesPresentationContext = true
+        timezoneNavigationController.modalPresentationStyle = .overCurrentContext
+        masterViewController.present(timezoneNavigationController, animated: true, completion: nil)
     }
     
     override func start(with data: Any) {
         // TODO: Start reminders from here
+        debugPrint(data)
     }
 }

@@ -30,7 +30,7 @@ class DatabaseManager {
         let sort = NSSortDescriptor(key: #keyPath(Timezone.zoneTitle), ascending: true)
         request.sortDescriptors = [sort]
         do {
-            let fetchedResults = NSFetchedResultsController<Timezone>(
+            let fetchedResults = NSFetchedResultsController(
                 fetchRequest: request,
                 managedObjectContext: persistentContainer.viewContext,
                 sectionNameKeyPath: nil,

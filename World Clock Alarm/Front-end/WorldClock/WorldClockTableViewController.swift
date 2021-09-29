@@ -16,7 +16,6 @@ class WorldClockTableViewController: BaseTableViewController<WorldClockTableView
     // TODO: Delete after implementing reminders
     override func setupTableView() {
         super.setupTableView()
-        tableView.allowsSelection = false
     }
 
     /*

@@ -9,7 +9,6 @@ class TimezoneCoordinator: ChildCoordinator {
     
     override func start(with data: Any) {
         parentCoordinator.delegate?.didReceiveNewData(data)
-        navigationController.popViewController(animated: true)
     }
     
     deinit {

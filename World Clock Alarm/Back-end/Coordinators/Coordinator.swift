@@ -7,7 +7,7 @@ import UIKit
 
 protocol Coordinator: AnyObject {
     var delegate: CoordinatorDelegate? {get set}
-    var navigationController: UINavigationController {get set}
+    var splitViewController: UISplitViewController {get set}
     func start()
     func start(with data: Any)
 }
