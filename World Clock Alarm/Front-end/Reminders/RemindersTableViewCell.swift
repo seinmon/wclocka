@@ -5,13 +5,10 @@
 import Foundation
 import UIKit
 
-class TimezoneCoordinator: ChildCoordinator {
+class RemindersTableViewCell: UITableViewCell, CellConfigurable {
+    static var cellId: String = "ReminderCell"
     
-    override func start(with data: Any) {
-        parentCoordinator?.delegate?.didReceiveNewData(data)
-    }
-    
-    deinit {
-        debugPrint("timezone coordinator is being deinitialized")
+    func configure(with data: Any) {
+        
     }
 }

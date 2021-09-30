@@ -9,10 +9,30 @@ class MainCoordinator: Coordinator {
     var delegate: CoordinatorDelegate?
     weak var window: UIWindow?
     
-    lazy var splitViewController: UISplitViewController = {
+    /*
+    lazy var splitViewController: UISplitViewController? = {
         let splitViewController = PrimarySplitViewController()
         splitViewController.viewControllers = initializeViewControllers()
+        
+        if #available(iOS 13, *) {
+            splitViewController.primaryBackgroundStyle = .sidebar
+        }
+        
         return splitViewController
+    }()
+    */
+    
+    lazy var navigationController: UINavigationController? = {
+        let worldClockController = UIStoryboard.instantiateInitialViewController(of: .worldClock)
+        let worldClockCoordinator = WorldClockCoordinator(parentCoordinator: self)
+        let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator,
+                                                      controller: worldClockController)
+        
+        worldClockCoordinator.delegate = worldClockPresenter
+        worldClockController.presenter = worldClockPresenter
+        
+        return UINavigationController(rootViewController: worldClockController)
+        
     }()
     
     init(window: UIWindow?) {
@@ -23,11 +43,12 @@ class MainCoordinator: Coordinator {
     func start(with data: Any) {}
     
     func start() {
-        window?.rootViewController = splitViewController
+        window?.rootViewController = navigationController //splitViewController
         window?.backgroundColor = UIColor.black
         window?.makeKeyAndVisible()
     }
     
+    /*
     private func initializeViewControllers() -> [UIViewController] {
         /// Initialize masterViewController
         let worldClockController = UIStoryboard.instantiateInitialViewController(of: .worldClock)
@@ -55,4 +76,5 @@ class MainCoordinator: Coordinator {
         
         return [masterNavigationController, detailsNavigationController]
     }
+     */
 }

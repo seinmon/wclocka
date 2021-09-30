@@ -10,7 +10,8 @@ class WorldClockPresenter {
     internal let coordinator: Coordinator
     internal let viewController: UIViewController
     private var dataSource: NSFetchedResultsController<Timezone>?
-
+    private lazy var databaseManager = DatabaseTransactionManager<Timezone>()
+    
     internal var dataSourceIsEmpty: Bool {
         return (dataSource?.fetchedObjects?.isEmpty ?? true)
     }
@@ -19,7 +20,9 @@ class WorldClockPresenter {
         self.coordinator = coordinator
         self.viewController = controller
         
-        dataSource = DatabaseManager.shared.fetch()
+        dataSource = databaseManager.fetch(sortDescriptor:
+                                            NSSortDescriptor(key: #keyPath(Timezone.zoneTitle),
+                                                             ascending: true))
         dataSource?.delegate = viewController as? WorldClockTableViewController
     }
 }
@@ -57,21 +60,21 @@ extension WorldClockPresenter: Presenter {
             return false
         }
         
-        DatabaseManager.shared.delete(managedObject)
+        databaseManager.delete(managedObject)
         return true
     }
 }
 
 extension WorldClockPresenter: CoordinatorDelegate {
     func didReceiveNewData(_ data: Any) {
-        if let receivedData = data as? rowContent {
+        if let receivedData = data as? RowContent {
             if !isDuplicate(receivedData) {
-                DatabaseManager.shared.saveData(data: receivedData)
+                databaseManager.saveData(data: receivedData)
             }
         }
     }
     
-    private func isDuplicate(_ newData: rowContent) -> Bool {
+    private func isDuplicate(_ newData: RowContent) -> Bool {
         if let dataSource = dataSource?.fetchedObjects  {
             for entry in dataSource {
                 if entry.zoneTitle == newData.0 {

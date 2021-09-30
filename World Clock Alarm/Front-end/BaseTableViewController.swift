@@ -86,25 +86,7 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
         activateEditButton()
     }
     
-    private func activateEditButton() {
-        if !(presenter?.dataSourceIsEmpty ?? true) {
-            self.navigationItem.leftBarButtonItem = self.editButtonItem
-            self.tableView.backgroundView = UIView()
-        } else {
-            self.navigationItem.leftBarButtonItem = nil
-            let emptyLabel = UILabel(frame: UIScreen.main.bounds)
-            emptyLabel.text = "Nothing to Show!"
-            
-            if #available(iOS 13, *) {
-                emptyLabel.textColor = .tertiaryLabel
-            } else {
-                emptyLabel.textColor = .systemGray
-            }
-            
-            emptyLabel.textAlignment = .center
-            self.tableView.backgroundView = emptyLabel
-        }
-    }
+    public func activateEditButton() { }
     
     @objc
     public func addNewItems() {
@@ -115,6 +97,7 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
         self.clearsSelectionOnViewWillAppear = false
         let footerView = UIView()
         tableView.tableFooterView = footerView
+        clearsSelectionOnViewWillAppear = true
     }
     
     public func setupContextualActions(for indexPath: IndexPath) -> [UIContextualAction] {

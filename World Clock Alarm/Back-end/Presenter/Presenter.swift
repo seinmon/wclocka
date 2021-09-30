@@ -8,6 +8,7 @@ import CoreData
 
 protocol Presenter: AnyObject {
     var viewController: UIViewController { get }
+    var viewControllerTitle: String { get }
     var coordinator: Coordinator { get }
     var dataSourceIsEmpty: Bool { get }
     subscript(indexPath: IndexPath) -> Any { get }
@@ -25,6 +26,7 @@ protocol Presenter: AnyObject {
 
 extension Presenter {
     var dataSourceIsEmpty: Bool { false }
+    var viewControllerTitle: String { "" }
     func getSectionHeaderTitle(for section: Int) -> String? { nil }
     func getSectionIndexTitles() -> [String]? { nil }
     func didSelectRow(at indexPath: IndexPath) { }

@@ -55,3 +55,23 @@ public class Timezone: NSManagedObject {
         return dateFormatter.string(from: Date())
     }
 }
+
+extension Timezone: SelfManagedObject {
+    func write(_ data: Any) {
+        guard let entry = data as? RowContent else {
+            return
+        }
+
+        self.timezone = entry.1
+        self.zoneTitle = entry.0
+        self.reminders = []
+    }
+    
+    func update(to newData: Any) {
+        guard let entry = newData as? String else {
+            return
+        }
+        
+        self.zoneTitle = entry
+    }
+}

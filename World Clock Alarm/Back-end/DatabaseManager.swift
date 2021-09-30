@@ -5,15 +5,12 @@
 import Foundation
 import CoreData
 
-class DatabaseManager {
-    
-    static var shared = DatabaseManager()
-    private var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
+private struct DatabaseConstants {
+    fileprivate static var context: NSManagedObjectContext {
+        return DatabaseConstants.persistentContainer.viewContext
     }
     
-    
-    lazy var persistentContainer: NSPersistentContainer = {
+    fileprivate static var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "World_Clock_Alarm")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -22,17 +19,24 @@ class DatabaseManager {
         })
         return container
     }()
+}
+
+class DatabaseTransactionManager<Model: SelfManagedObject> {
+    private var context: NSManagedObjectContext
     
-    // MARK: - Required Functionalities
+    init() {
+        self.context = DatabaseConstants.context
+    }
     
-    func fetch() -> NSFetchedResultsController<Timezone>? {
-        let request = Timezone.fetchRequest() as NSFetchRequest<Timezone>
-        let sort = NSSortDescriptor(key: #keyPath(Timezone.zoneTitle), ascending: true)
-        request.sortDescriptors = [sort]
+    func fetch(sortDescriptor: NSSortDescriptor) -> NSFetchedResultsController<Model>? {
+        guard let request = Model.fetchRequest() as? NSFetchRequest<Model> else {
+            return nil
+        }
+        request.sortDescriptors = [sortDescriptor]
         do {
             let fetchedResults = NSFetchedResultsController(
                 fetchRequest: request,
-                managedObjectContext: persistentContainer.viewContext,
+                managedObjectContext: context,
                 sectionNameKeyPath: nil,
                 cacheName: nil)
             
@@ -45,23 +49,21 @@ class DatabaseManager {
         }
     }
     
-    func saveData(data: (String, TimeZone)) {
-        let tz = Timezone(context: context)
-        tz.zoneTitle = data.0
-        tz.zoneIdentifier = data.1.identifier
+    func saveData(data: Any) {
+        let model = Model(context: context)
+        model.write(data)
         saveContext()
     }
     
-    func update(_ data: NSManagedObject) {
-        
+    func update(_ oldData: SelfManagedObject, newData: Any) {
+        oldData.update(to: newData)
+        saveContext()
     }
     
     func delete(_ object: NSManagedObject) {
         context.delete(object)
         saveContext()
     }
-    
-    // MARK: - Core Data Saving support
     
     func saveContext () {
         if context.hasChanges {

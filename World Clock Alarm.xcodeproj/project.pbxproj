@@ -39,8 +39,17 @@
 		AB976EA126EA69CE001409E0 /* Timezone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */; };
 		AB976EA226EA69CE001409E0 /* Timezone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */; };
 		ABC9F21527048D4800CF5D53 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21427048D4800CF5D53 /* PrimarySplitViewController.swift */; };
+		ABC9F2172704992800CF5D53 /* RemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */; };
+		ABC9F2192704994400CF5D53 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */; };
+		ABC9F21D270499CA00CF5D53 /* NewReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21C270499CA00CF5D53 /* NewReminderTableViewController.swift */; };
+		ABC9F21F270499EE00CF5D53 /* RemindersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21E270499EE00CF5D53 /* RemindersPresenter.swift */; };
+		ABC9F22127049A0500CF5D53 /* NewReminderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22027049A0500CF5D53 /* NewReminderPresenter.swift */; };
+		ABC9F22327049A4C00CF5D53 /* NewReminderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22227049A4C00CF5D53 /* NewReminderCoordinator.swift */; };
+		ABC9F22527049A5700CF5D53 /* RemindersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */; };
 		ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */; };
 		ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */; };
+		ABF14A0B270621A700832160 /* SelfManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A0A270621A700832160 /* SelfManagedObject.swift */; };
+		ABF14A0D2706248700832160 /* GlobalTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A0C2706248700832160 /* GlobalTypeAliases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,8 +108,18 @@
 		AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataClass.swift"; path = "World Clock Alarm/Back-end/Model/Timezone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataProperties.swift"; path = "World Clock Alarm/Back-end/Model/Timezone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		ABC9F21427048D4800CF5D53 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
+		ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewController.swift; sourceTree = "<group>"; };
+		ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
+		ABC9F21C270499CA00CF5D53 /* NewReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTableViewController.swift; sourceTree = "<group>"; };
+		ABC9F21E270499EE00CF5D53 /* RemindersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersPresenter.swift; sourceTree = "<group>"; };
+		ABC9F22027049A0500CF5D53 /* NewReminderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderPresenter.swift; sourceTree = "<group>"; };
+		ABC9F22227049A4C00CF5D53 /* NewReminderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderCoordinator.swift; sourceTree = "<group>"; };
+		ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCoordinator.swift; sourceTree = "<group>"; };
+		ABC9F2262704A96500CF5D53 /* World Clock Alarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "World Clock Alarm.entitlements"; sourceTree = "<group>"; };
 		ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewController.swift; sourceTree = "<group>"; };
 		ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		ABF14A0A270621A700832160 /* SelfManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfManagedObject.swift; sourceTree = "<group>"; };
+		ABF14A0C2706248700832160 /* GlobalTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTypeAliases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +185,9 @@
 		AB2F42D6251DF9F400AF660B /* Back-end */ = {
 			isa = PBXGroup;
 			children = (
+				ABF14A0C2706248700832160 /* GlobalTypeAliases.swift */,
 				AB976E9526EA5717001409E0 /* DatabaseManager.swift */,
+				ABF14A0A270621A700832160 /* SelfManagedObject.swift */,
 				AB39058326E7659D005B7B86 /* Model */,
 				AB5C0B5A2544FC900024C3C8 /* Coordinators */,
 				AB40A2D625254C7700B31424 /* Presenter */,
@@ -177,8 +198,8 @@
 		AB2F42DA251DFA1700AF660B /* NewTimezone */ = {
 			isa = PBXGroup;
 			children = (
-				ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */,
 				AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */,
+				ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */,
 				AB1B4FEC251D5DCD00BCFC56 /* NewTimezone.storyboard */,
 			);
 			path = NewTimezone;
@@ -187,8 +208,8 @@
 		AB2F42DB251DFA2200AF660B /* WorldClock */ = {
 			isa = PBXGroup;
 			children = (
-				AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */,
 				AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */,
+				AB40A2BF25254BA000B31424 /* WorldClockTableViewController.swift */,
 				AB76AA592518D6D700F27947 /* WorldClock.storyboard */,
 			);
 			path = WorldClock;
@@ -197,6 +218,8 @@
 		AB2F42DC251DFA2D00AF660B /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */,
+				ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */,
 				AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */,
 				AB2F42DD251DFA3700AF660B /* NewReminder */,
 			);
@@ -206,6 +229,7 @@
 		AB2F42DD251DFA3700AF660B /* NewReminder */ = {
 			isa = PBXGroup;
 			children = (
+				ABC9F21C270499CA00CF5D53 /* NewReminderTableViewController.swift */,
 				AB76AA63251A37B800F27947 /* NewReminder.storyboard */,
 			);
 			path = NewReminder;
@@ -230,6 +254,8 @@
 				AB39057726E61E76005B7B86 /* UIViewController+Presenter.swift */,
 				AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */,
 				AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */,
+				ABC9F21E270499EE00CF5D53 /* RemindersPresenter.swift */,
+				ABC9F22027049A0500CF5D53 /* NewReminderPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -242,6 +268,8 @@
 				ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */,
 				AB39057926E62B7D005B7B86 /* WorldClockCoordinator.swift */,
 				AB39058126E7550F005B7B86 /* TimezoneCoordinator.swift */,
+				ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */,
+				ABC9F22227049A4C00CF5D53 /* NewReminderCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -269,6 +297,7 @@
 		AB76AA1F2518CE3600F27947 /* World Clock Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				ABC9F2262704A96500CF5D53 /* World Clock Alarm.entitlements */,
 				AB2F42D6251DF9F400AF660B /* Back-end */,
 				AB2F42D1251DF99500AF660B /* Front-end */,
 				AB2F42CD251DF96C00AF660B /* Supporting Files */,
@@ -431,21 +460,30 @@
 				AB40A2CD25254C1E00B31424 /* WorldClockPresenter.swift in Sources */,
 				AB39057C26E637ED005B7B86 /* ChildCoordinator.swift in Sources */,
 				AB40A2D225254C2C00B31424 /* CellConfigurable.swift in Sources */,
+				ABC9F2172704992800CF5D53 /* RemindersTableViewController.swift in Sources */,
 				ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */,
 				AB39057826E61E76005B7B86 /* UIViewController+Presenter.swift in Sources */,
+				ABC9F2192704994400CF5D53 /* RemindersTableViewCell.swift in Sources */,
+				ABF14A0B270621A700832160 /* SelfManagedObject.swift in Sources */,
 				AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */,
 				AB5C0B672545021F0024C3C8 /* WorldClockTableViewCell.swift in Sources */,
 				AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */,
 				AB39057A26E62B7D005B7B86 /* WorldClockCoordinator.swift in Sources */,
+				ABC9F22127049A0500CF5D53 /* NewReminderPresenter.swift in Sources */,
+				ABC9F22527049A5700CF5D53 /* RemindersCoordinator.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
 				AB39058026E74BC6005B7B86 /* Coordinator.swift in Sources */,
 				AB976EA126EA69CE001409E0 /* Timezone+CoreDataClass.swift in Sources */,
 				AB976E9F26EA69CE001409E0 /* Reminder+CoreDataClass.swift in Sources */,
 				AB976EA226EA69CE001409E0 /* Timezone+CoreDataProperties.swift in Sources */,
+				ABC9F22327049A4C00CF5D53 /* NewReminderCoordinator.swift in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
 				AB976E9626EA5717001409E0 /* DatabaseManager.swift in Sources */,
 				AB39058226E7550F005B7B86 /* TimezoneCoordinator.swift in Sources */,
+				ABF14A0D2706248700832160 /* GlobalTypeAliases.swift in Sources */,
+				ABC9F21D270499CA00CF5D53 /* NewReminderTableViewController.swift in Sources */,
+				ABC9F21F270499EE00CF5D53 /* RemindersPresenter.swift in Sources */,
 				ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */,
 				AB5C0B5F2544FCCB0024C3C8 /* StoryboardName.swift in Sources */,
 				AB5C0B7525450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift in Sources */,
@@ -554,6 +592,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -620,6 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "World Clock Alarm/World Clock Alarm.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A4SX3F3V9B;
@@ -630,8 +670,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.3;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -642,6 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "World Clock Alarm/World Clock Alarm.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A4SX3F3V9B;
@@ -652,8 +696,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.3;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -9,3 +9,17 @@ import CoreData
 public class Reminder: NSManagedObject {
 
 }
+
+extension Reminder: SelfManagedObject {
+    func write(_ data: Any) {
+        guard let entry = data as? Reminder else {
+            return
+        }
+
+        self.timezone = entry.timezone
+        self.title = entry.title
+        self.details = entry.details
+        self.notificationTime = entry.notificationTime
+        self.reoccuring = entry.reoccuring
+    }
+}

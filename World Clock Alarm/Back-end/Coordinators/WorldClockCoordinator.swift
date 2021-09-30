@@ -7,26 +7,69 @@ import UIKit
 
 class WorldClockCoordinator: ChildCoordinator {
     override func start() {
-        let timezoneViewController =
-            UIStoryboard.instantiateInitialViewController(of: StoryboardName.timezone)
+        let timezoneViewController = UIStoryboard.instantiateInitialViewController(of: .timezone)
         
         let timezoneCoordinator = TimezoneCoordinator(parentCoordinator: self)
         let timezonePresenter = TimezonePresenter(coordinator: timezoneCoordinator,
                                                   controller: timezoneViewController)
-        
         timezoneViewController.presenter = timezonePresenter
         
         let timezoneNavigationController = UINavigationController(rootViewController:
                                                                     timezoneViewController)
         
-        let masterViewController = splitViewController.viewControllers[0]
-        masterViewController.definesPresentationContext = true
+        /*
         timezoneNavigationController.modalPresentationStyle = .overCurrentContext
+        
+        guard let masterViewController = splitViewController?.viewControllers[0] else {
+            return
+        }
+        
+        masterViewController.definesPresentationContext = true
         masterViewController.present(timezoneNavigationController, animated: true, completion: nil)
+        */
+        
+        navigationController?.present(timezoneNavigationController, animated: true)
     }
     
     override func start(with data: Any) {
-        // TODO: Start reminders from here
-        debugPrint(data)
+        guard let data = data as? Timezone else {
+            return
+        }
+        
+        let remindersViewController = UIStoryboard.instantiateInitialViewController(of: .reminders)
+        
+        let remindersCoordinator = RemindersCoordinator(parentCoordinator: self)
+        let remindersPresenter = RemindersPresenter(timezone: data,
+                                                    coordinator: remindersCoordinator,
+                                                    controller: remindersViewController)
+        remindersViewController.presenter = remindersPresenter
+        
+        remindersViewController.modalPresentationStyle = .overFullScreen
+        navigationController?.pushViewController(remindersViewController, animated: true)
+        
+        /*
+        guard let masterViewController = splitViewController?.viewControllers[0] else {
+            return
+        }
+        
+//        splitViewController?.viewControllers[1] = detailViewController
+//        splitViewController?.showDetailViewController(remindersNavigationController,
+//                                                      sender: masterViewController)
+        
+        if let top = masterViewController.navigationController?.topViewController,
+           top != masterViewController {
+            if let navController = splitViewController?.viewControllers[0] as? UINavigationController {
+                navController.popViewController(animated: false)
+                DispatchQueue.main.async {
+                    self.splitViewController?.showDetailViewController(remindersNavigationController,
+                                                                 sender: masterViewController)
+                }
+                return
+            }
+        }
+        
+        splitViewController?.showDetailViewController(remindersNavigationController,
+                                                     sender: masterViewController)
+        */
     }
 }

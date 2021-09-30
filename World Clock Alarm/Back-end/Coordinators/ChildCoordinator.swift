@@ -6,19 +6,18 @@ import Foundation
 import UIKit
 
 protocol SubCoordinator: Coordinator {
-    var parentCoordinator: Coordinator {get set}
+    var parentCoordinator: Coordinator? {get set}
 }
 
 class ChildCoordinator: SubCoordinator {
     weak var delegate: CoordinatorDelegate?
-    // TODO: Maybe parentCoordinator should be weak to avoid reference cycles
-    var parentCoordinator: Coordinator
-    var splitViewController: UISplitViewController {
+    weak var parentCoordinator: Coordinator?
+//    var splitViewController: UISplitViewController? {
+    var navigationController: UINavigationController? {
         get {
-            parentCoordinator.splitViewController
-        } set {
-            //parentCoordinator.splitViewController = newValue
-        }
+//            parentCoordinator?.splitViewController
+            parentCoordinator?.navigationController
+        } set { }
     }
 
     init(parentCoordinator: Coordinator) {

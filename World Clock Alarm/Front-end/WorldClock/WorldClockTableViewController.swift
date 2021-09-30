@@ -18,6 +18,26 @@ class WorldClockTableViewController: BaseTableViewController<WorldClockTableView
         super.setupTableView()
     }
 
+    override public func activateEditButton() {
+        if !(presenter?.dataSourceIsEmpty ?? true) {
+            self.navigationItem.leftBarButtonItem = self.editButtonItem
+            self.tableView.backgroundView = UIView()
+        } else {
+            self.navigationItem.leftBarButtonItem = nil
+            let emptyLabel = UILabel(frame: UIScreen.main.bounds)
+            emptyLabel.text = "Nothing to Show!"
+            
+            if #available(iOS 13, *) {
+                emptyLabel.textColor = .tertiaryLabel
+            } else {
+                emptyLabel.textColor = .systemGray
+            }
+            
+            emptyLabel.textAlignment = .center
+            self.tableView.backgroundView = emptyLabel
+        }
+    }
+    
     /*
     override func setupContextualActions(for indexPath: IndexPath) -> [UIContextualAction] {
         var actions = super.setupContextualActions(for: indexPath)
