@@ -6,6 +6,5 @@ import Foundation
 import CoreData
 
 protocol CellConfigurable {
-    static var cellId: String { get }
     func configure(with data: Any)
 }

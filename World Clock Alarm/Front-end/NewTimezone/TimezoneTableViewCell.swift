@@ -7,7 +7,6 @@ import UIKit
 
 class TimezoneTableViewCell: UITableViewCell, CellConfigurable {
     
-    static var cellId: String = "TimezoneCell"
     @IBOutlet weak var timezoneTitle: UILabel!
     
     func configure(with data: Any) {

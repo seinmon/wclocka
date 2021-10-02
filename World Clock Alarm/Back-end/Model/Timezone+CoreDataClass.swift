@@ -7,7 +7,9 @@ import CoreData
 
 
 public class Timezone: NSManagedObject {
-    lazy private var timezone = TimeZone(identifier: zoneIdentifier)
+    private var timezone: TimeZone! {
+        TimeZone(identifier: zoneIdentifier)
+    }
     
     @objc public var time: String {
         return getTime(at: timezone)
@@ -62,10 +64,11 @@ extension Timezone: SelfManagedObject {
             return
         }
 
-        self.timezone = entry.1
+        self.zoneIdentifier = entry.1.identifier
         self.zoneTitle = entry.0
         self.reminders = []
     }
+    
     
     func update(to newData: Any) {
         guard let entry = newData as? String else {

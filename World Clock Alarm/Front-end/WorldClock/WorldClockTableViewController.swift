@@ -5,36 +5,14 @@
 import Foundation
 import UIKit
 
-class WorldClockTableViewController: BaseTableViewController<WorldClockTableViewCell>,
-                                     ContextualActionOwner {
-    
-    override func setupNavigationBar() {
-        super.setupNavigationBar()
-        title = "World Clocks"
-    }
-    
-    // TODO: Delete after implementing reminders
-    override func setupTableView() {
-        super.setupTableView()
-    }
+class WorldClockTableViewController: BaseTableViewController, ContextualActionOwner {
 
-    override public func activateEditButton() {
-        if !(presenter?.dataSourceIsEmpty ?? true) {
-            self.navigationItem.leftBarButtonItem = self.editButtonItem
-            self.tableView.backgroundView = UIView()
-        } else {
+    override public func tableViewStateDidChange() {
+        super.tableViewStateDidChange()
+        if (presenter?.dataSourceIsEmpty ?? false) {
             self.navigationItem.leftBarButtonItem = nil
-            let emptyLabel = UILabel(frame: UIScreen.main.bounds)
-            emptyLabel.text = "Nothing to Show!"
-            
-            if #available(iOS 13, *) {
-                emptyLabel.textColor = .tertiaryLabel
-            } else {
-                emptyLabel.textColor = .systemGray
-            }
-            
-            emptyLabel.textAlignment = .center
-            self.tableView.backgroundView = emptyLabel
+        } else {
+            self.navigationItem.leftBarButtonItem = self.editButtonItem
         }
     }
     

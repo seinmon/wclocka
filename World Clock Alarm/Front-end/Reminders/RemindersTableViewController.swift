@@ -5,14 +5,9 @@
 import Foundation
 import UIKit
 
-class RemindersTableViewController: BaseTableViewController<RemindersTableViewCell>,
-                                    ContextualActionOwner {
-    override func setupTableView() {
-        super.setupTableView()
-        title = presenter?.viewControllerTitle
-    }
-    
+class RemindersTableViewController: BaseTableViewController, ContextualActionOwner {
+
     func didSelectDeleteAction(for indexPath: IndexPath) {
-        
+        presenter?.deleteFromDataSource(indexPath: indexPath)
     }
 }

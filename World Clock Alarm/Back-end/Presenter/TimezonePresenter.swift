@@ -111,12 +111,12 @@ extension TimezonePresenter: Presenter {
         return dataSource[section].timezones.count
     }
     
-    func didSelectBarButtonItem() {
-        coordinator.start()
-    }
-    
     func didSelectRow(at indexPath: IndexPath) {
         coordinator.start(with: dataSource[indexPath.section].timezones[indexPath.row])
+    }
+    
+    func getCellReusableIdentifier(for indexPath: IndexPath) -> String {
+        return "TimezoneCell"
     }
     
     func filterDataSource(text: String?) {

@@ -5,7 +5,7 @@
 import Foundation
 import CoreData
 
-private struct DatabaseConstants {
+fileprivate struct DatabaseConstants {
     fileprivate static var context: NSManagedObjectContext {
         return DatabaseConstants.persistentContainer.viewContext
     }

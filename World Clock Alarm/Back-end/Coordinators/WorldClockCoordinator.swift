@@ -43,6 +43,7 @@ class WorldClockCoordinator: ChildCoordinator {
                                                     coordinator: remindersCoordinator,
                                                     controller: remindersViewController)
         remindersViewController.presenter = remindersPresenter
+        remindersCoordinator.delegate = remindersPresenter
         
         remindersViewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(remindersViewController, animated: true)

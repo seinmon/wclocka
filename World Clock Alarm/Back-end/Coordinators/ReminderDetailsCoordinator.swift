@@ -4,9 +4,6 @@
 
 import Foundation
 
-public enum StoryboardName: String {
-    case timezone = "NewTimezone"
-    case worldClock = "WorldClock"
-    case reminders = "Reminders"
-    case reminderDetails = "ReminderDetails"
+class ReminderDetailsCoordinator: ChildCoordinator {
+    
 }

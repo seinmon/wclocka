@@ -9,12 +9,8 @@ import CoreData
 class WorldClockPresenter {
     internal let coordinator: Coordinator
     internal let viewController: UIViewController
-    private var dataSource: NSFetchedResultsController<Timezone>?
+    internal var dataSource: NSFetchedResultsController<Timezone>?
     private lazy var databaseManager = DatabaseTransactionManager<Timezone>()
-    
-    internal var dataSourceIsEmpty: Bool {
-        return (dataSource?.fetchedObjects?.isEmpty ?? true)
-    }
     
     required init(coordinator: Coordinator, controller: UIViewController) {
         self.coordinator = coordinator
@@ -27,28 +23,13 @@ class WorldClockPresenter {
     }
 }
 
-extension WorldClockPresenter: Presenter {
-    
-    subscript(indexPath: IndexPath) -> Any {
-        get {
-            return dataSource?.fetchedObjects?[indexPath.row] as Any
-        }
+extension WorldClockPresenter: CoreDataPresenter {
+    var viewControllerTitle: String {
+        return "Time Zones"
     }
     
-    func getSectionCount() -> Int {
-        return dataSource?.sections?.count ?? 0
-    }
-    
-    func getRowCount(inSection section: Int) -> Int {
-        dataSource?.fetchedObjects?.count ?? 0
-    }
-    
-    func didSelectBarButtonItem() {
-        coordinator.start()
-    }
-    
-    func didSelectRow(at indexPath: IndexPath) {
-        coordinator.start(with: self[indexPath])
+    func getCellReusableIdentifier(for indexPath: IndexPath) -> String {
+        return "WorldClockCell"
     }
     
     func deleteFromDataSource(indexPath: IndexPath) -> Bool {
@@ -85,5 +66,4 @@ extension WorldClockPresenter: CoordinatorDelegate {
         
         return false
     }
-    
 }

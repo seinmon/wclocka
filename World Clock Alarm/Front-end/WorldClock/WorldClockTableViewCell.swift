@@ -7,7 +7,6 @@ import UIKit
 
 class WorldClockTableViewCell: UITableViewCell, CellConfigurable {
     
-    static var cellId: String = "WorldClockCell"
     @IBOutlet weak var timezoneTitle: UILabel!
     @IBOutlet weak var dateDifference: UILabel!
     @IBOutlet weak var timeLabel: UILabel!

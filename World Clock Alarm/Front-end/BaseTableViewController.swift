@@ -10,10 +10,7 @@ protocol ContextualActionOwner: UITableViewController {
     func didSelectDeleteAction(for indexPath: IndexPath)
 }
 
-class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewController,
-                                                                   NSFetchedResultsControllerDelegate {
-    
-    private var cellIdentifier: String = ConfigurableCell.cellId
+class BaseTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +41,14 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
+        guard let cellID = presenter?.getCellReusableIdentifier(for: indexPath) else {
+            return UITableViewCell()
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID,
                                                  for: indexPath)
         
-        guard let cellConfigurable = cell as? ConfigurableCell else {
+        guard let cellConfigurable = cell as? CellConfigurable else {
             return cell
         }
         
@@ -79,14 +80,52 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     //Override these methods in the subclasses if needed.
     
     public func setupNavigationBar() {
+        title = presenter?.viewControllerTitle
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                  target: self,
                                                                  action: #selector((addNewItems)))
-        activateEditButton()
+        tableViewStateDidChange()
     }
     
-    public func activateEditButton() { }
+    @objc
+    public func cancel() {
+        dismiss(animated: true)
+    }
+    
+    public func tableViewStateDidChange() {
+        if (presenter?.dataSourceIsEmpty ?? false) {
+            lazy var items: String = {
+                if let title = presenter?.viewControllerTitle {
+                    if (title == "Time Zones") {
+                        return title.lowercased()
+                    } else {
+                        return "reminders"
+                    }
+                }
+                
+                return "items"
+            }()
+            
+            let emptyLabel = UILabel(frame: UIScreen.main.bounds)
+            emptyLabel.numberOfLines = 0
+            emptyLabel.textAlignment = .center
+            
+            emptyLabel.font = UIFont.systemFont(ofSize: 18)
+            emptyLabel.text = "No " + items + " to show! \n Tap on + button to add " + items + "."
+            
+            if #available(iOS 13, *) {
+                emptyLabel.textColor = .tertiaryLabel
+            } else {
+                emptyLabel.textColor = .systemGray
+            }
+            
+            emptyLabel.textAlignment = .center
+            self.tableView.backgroundView = emptyLabel
+        } else {
+            self.tableView.backgroundView = UIView()
+        }
+    }
     
     @objc
     public func addNewItems() {
@@ -104,14 +143,14 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
         return [UIContextualAction(style: .destructive,
                                    title: "Delete",
                                    handler: { [unowned self] (_, _, completion) in
-                                    guard let owner = self as? ContextualActionOwner else {
-                                        return
-                                    }
-                                    
-                                    owner.didSelectDeleteAction(for: indexPath)
-                                    completion(true)
-                                   }
-        )]
+            guard let owner = self as? ContextualActionOwner else {
+                return
+            }
+            
+            owner.didSelectDeleteAction(for: indexPath)
+            completion(true)
+        }
+                                  )]
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -138,7 +177,7 @@ class BaseTableViewController<ConfigurableCell: CellConfigurable>: UITableViewCo
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        activateEditButton()
+        tableViewStateDidChange()
         tableView.endUpdates()
     }
 }

@@ -7,7 +7,7 @@ import CoreData
 
 @objc(Reminder)
 public class Reminder: NSManagedObject {
-
+    
 }
 
 extension Reminder: SelfManagedObject {

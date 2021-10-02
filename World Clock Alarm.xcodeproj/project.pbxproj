@@ -30,7 +30,7 @@
 		AB76AA462518CE3C00F27947 /* World_Clock_AlarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA452518CE3C00F27947 /* World_Clock_AlarmUITests.swift */; };
 		AB76AA5A2518D6D700F27947 /* WorldClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA592518D6D700F27947 /* WorldClock.storyboard */; };
 		AB76AA5F2518D8CF00F27947 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */; };
-		AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA63251A37B800F27947 /* NewReminder.storyboard */; };
+		AB76AA64251A37B800F27947 /* ReminderDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA63251A37B800F27947 /* ReminderDetails.storyboard */; };
 		AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */; };
 		AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */; };
 		AB976E9626EA5717001409E0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB976E9526EA5717001409E0 /* DatabaseManager.swift */; };
@@ -41,15 +41,18 @@
 		ABC9F21527048D4800CF5D53 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21427048D4800CF5D53 /* PrimarySplitViewController.swift */; };
 		ABC9F2172704992800CF5D53 /* RemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */; };
 		ABC9F2192704994400CF5D53 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */; };
-		ABC9F21D270499CA00CF5D53 /* NewReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21C270499CA00CF5D53 /* NewReminderTableViewController.swift */; };
+		ABC9F21D270499CA00CF5D53 /* ReminderDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21C270499CA00CF5D53 /* ReminderDetailsTableViewController.swift */; };
 		ABC9F21F270499EE00CF5D53 /* RemindersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F21E270499EE00CF5D53 /* RemindersPresenter.swift */; };
-		ABC9F22127049A0500CF5D53 /* NewReminderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22027049A0500CF5D53 /* NewReminderPresenter.swift */; };
-		ABC9F22327049A4C00CF5D53 /* NewReminderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22227049A4C00CF5D53 /* NewReminderCoordinator.swift */; };
+		ABC9F22127049A0500CF5D53 /* ReminderDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22027049A0500CF5D53 /* ReminderDetailsPresenter.swift */; };
+		ABC9F22327049A4C00CF5D53 /* ReminderDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22227049A4C00CF5D53 /* ReminderDetailsCoordinator.swift */; };
 		ABC9F22527049A5700CF5D53 /* RemindersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */; };
 		ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */; };
 		ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */; };
 		ABF14A0B270621A700832160 /* SelfManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A0A270621A700832160 /* SelfManagedObject.swift */; };
 		ABF14A0D2706248700832160 /* GlobalTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A0C2706248700832160 /* GlobalTypeAliases.swift */; };
+		ABF14A0F2707219B00832160 /* TwoLabelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A0E2707219A00832160 /* TwoLabelsCell.swift */; };
+		ABF14A1527086C8A00832160 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A1427086C8A00832160 /* TextFieldCell.swift */; };
+		ABF14A172708792100832160 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A162708792100832160 /* DatePickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +102,7 @@
 		AB76AA472518CE3C00F27947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB76AA592518D6D700F27947 /* WorldClock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorldClock.storyboard; sourceTree = "<group>"; };
 		AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
-		AB76AA63251A37B800F27947 /* NewReminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewReminder.storyboard; sourceTree = "<group>"; };
+		AB76AA63251A37B800F27947 /* ReminderDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReminderDetails.storyboard; sourceTree = "<group>"; };
 		AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewCell.swift; sourceTree = "<group>"; };
 		AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePresenter.swift; sourceTree = "<group>"; };
 		AB976E9526EA5717001409E0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -110,16 +113,19 @@
 		ABC9F21427048D4800CF5D53 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
 		ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewController.swift; sourceTree = "<group>"; };
 		ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
-		ABC9F21C270499CA00CF5D53 /* NewReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTableViewController.swift; sourceTree = "<group>"; };
+		ABC9F21C270499CA00CF5D53 /* ReminderDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsTableViewController.swift; sourceTree = "<group>"; };
 		ABC9F21E270499EE00CF5D53 /* RemindersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersPresenter.swift; sourceTree = "<group>"; };
-		ABC9F22027049A0500CF5D53 /* NewReminderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderPresenter.swift; sourceTree = "<group>"; };
-		ABC9F22227049A4C00CF5D53 /* NewReminderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderCoordinator.swift; sourceTree = "<group>"; };
+		ABC9F22027049A0500CF5D53 /* ReminderDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsPresenter.swift; sourceTree = "<group>"; };
+		ABC9F22227049A4C00CF5D53 /* ReminderDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsCoordinator.swift; sourceTree = "<group>"; };
 		ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCoordinator.swift; sourceTree = "<group>"; };
 		ABC9F2262704A96500CF5D53 /* World Clock Alarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "World Clock Alarm.entitlements"; sourceTree = "<group>"; };
 		ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewController.swift; sourceTree = "<group>"; };
 		ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		ABF14A0A270621A700832160 /* SelfManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfManagedObject.swift; sourceTree = "<group>"; };
 		ABF14A0C2706248700832160 /* GlobalTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTypeAliases.swift; sourceTree = "<group>"; };
+		ABF14A0E2707219A00832160 /* TwoLabelsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLabelsCell.swift; sourceTree = "<group>"; };
+		ABF14A1427086C8A00832160 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		ABF14A162708792100832160 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,18 +227,21 @@
 				ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */,
 				ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */,
 				AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */,
-				AB2F42DD251DFA3700AF660B /* NewReminder */,
+				AB2F42DD251DFA3700AF660B /* ReminderDetails */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
 		};
-		AB2F42DD251DFA3700AF660B /* NewReminder */ = {
+		AB2F42DD251DFA3700AF660B /* ReminderDetails */ = {
 			isa = PBXGroup;
 			children = (
-				ABC9F21C270499CA00CF5D53 /* NewReminderTableViewController.swift */,
-				AB76AA63251A37B800F27947 /* NewReminder.storyboard */,
+				ABF14A1427086C8A00832160 /* TextFieldCell.swift */,
+				ABF14A0E2707219A00832160 /* TwoLabelsCell.swift */,
+				ABF14A162708792100832160 /* DatePickerCell.swift */,
+				ABC9F21C270499CA00CF5D53 /* ReminderDetailsTableViewController.swift */,
+				AB76AA63251A37B800F27947 /* ReminderDetails.storyboard */,
 			);
-			path = NewReminder;
+			path = ReminderDetails;
 			sourceTree = "<group>";
 		};
 		AB39058326E7659D005B7B86 /* Model */ = {
@@ -255,7 +264,7 @@
 				AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */,
 				AB40A2CC25254C1E00B31424 /* WorldClockPresenter.swift */,
 				ABC9F21E270499EE00CF5D53 /* RemindersPresenter.swift */,
-				ABC9F22027049A0500CF5D53 /* NewReminderPresenter.swift */,
+				ABC9F22027049A0500CF5D53 /* ReminderDetailsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -269,7 +278,7 @@
 				AB39057926E62B7D005B7B86 /* WorldClockCoordinator.swift */,
 				AB39058126E7550F005B7B86 /* TimezoneCoordinator.swift */,
 				ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */,
-				ABC9F22227049A4C00CF5D53 /* NewReminderCoordinator.swift */,
+				ABC9F22227049A4C00CF5D53 /* ReminderDetailsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -430,7 +439,7 @@
 				AB76AA5F2518D8CF00F27947 /* Reminders.storyboard in Resources */,
 				AB76AA5A2518D6D700F27947 /* WorldClock.storyboard in Resources */,
 				AB76AA302518CE3C00F27947 /* LaunchScreen.storyboard in Resources */,
-				AB76AA64251A37B800F27947 /* NewReminder.storyboard in Resources */,
+				AB76AA64251A37B800F27947 /* ReminderDetails.storyboard in Resources */,
 				AB76AA2D2518CE3C00F27947 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,21 +477,24 @@
 				AB8E9C302537E26F00B25403 /* TimezoneTableViewCell.swift in Sources */,
 				AB5C0B672545021F0024C3C8 /* WorldClockTableViewCell.swift in Sources */,
 				AB8E9C40253811D500B25403 /* TimezonePresenter.swift in Sources */,
+				ABF14A0F2707219B00832160 /* TwoLabelsCell.swift in Sources */,
 				AB39057A26E62B7D005B7B86 /* WorldClockCoordinator.swift in Sources */,
-				ABC9F22127049A0500CF5D53 /* NewReminderPresenter.swift in Sources */,
+				ABC9F22127049A0500CF5D53 /* ReminderDetailsPresenter.swift in Sources */,
 				ABC9F22527049A5700CF5D53 /* RemindersCoordinator.swift in Sources */,
 				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
 				AB39058026E74BC6005B7B86 /* Coordinator.swift in Sources */,
 				AB976EA126EA69CE001409E0 /* Timezone+CoreDataClass.swift in Sources */,
 				AB976E9F26EA69CE001409E0 /* Reminder+CoreDataClass.swift in Sources */,
+				ABF14A1527086C8A00832160 /* TextFieldCell.swift in Sources */,
 				AB976EA226EA69CE001409E0 /* Timezone+CoreDataProperties.swift in Sources */,
-				ABC9F22327049A4C00CF5D53 /* NewReminderCoordinator.swift in Sources */,
+				ABC9F22327049A4C00CF5D53 /* ReminderDetailsCoordinator.swift in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
+				ABF14A172708792100832160 /* DatePickerCell.swift in Sources */,
 				AB976E9626EA5717001409E0 /* DatabaseManager.swift in Sources */,
 				AB39058226E7550F005B7B86 /* TimezoneCoordinator.swift in Sources */,
 				ABF14A0D2706248700832160 /* GlobalTypeAliases.swift in Sources */,
-				ABC9F21D270499CA00CF5D53 /* NewReminderTableViewController.swift in Sources */,
+				ABC9F21D270499CA00CF5D53 /* ReminderDetailsTableViewController.swift in Sources */,
 				ABC9F21F270499EE00CF5D53 /* RemindersPresenter.swift in Sources */,
 				ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */,
 				AB5C0B5F2544FCCB0024C3C8 /* StoryboardName.swift in Sources */,

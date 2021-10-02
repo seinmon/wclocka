@@ -5,7 +5,8 @@
 import Foundation
 import UIKit
 
-class TimezoneTableViewController: BaseTableViewController<TimezoneTableViewCell> {
+class TimezoneTableViewController: BaseTableViewController {
+    
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.sizeToFit()
@@ -25,11 +26,6 @@ class TimezoneTableViewController: BaseTableViewController<TimezoneTableViewCell
         dismiss(animated: true, completion: { [unowned self] () in
             self.presenter?.didSelectRow(at: indexPath)
         })
-    }
-    
-    @objc
-    public func cancel() {
-        dismiss(animated: true)
     }
 }
 

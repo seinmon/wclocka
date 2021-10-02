@@ -28,9 +28,8 @@ class MainCoordinator: Coordinator {
         let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator,
                                                       controller: worldClockController)
         
-        worldClockCoordinator.delegate = worldClockPresenter
         worldClockController.presenter = worldClockPresenter
-        
+        worldClockCoordinator.delegate = worldClockPresenter
         return UINavigationController(rootViewController: worldClockController)
         
     }()

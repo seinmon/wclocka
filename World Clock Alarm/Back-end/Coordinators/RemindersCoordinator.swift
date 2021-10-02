@@ -6,30 +6,20 @@ import Foundation
 import UIKit
 
 class RemindersCoordinator: ChildCoordinator {
-    override func start() {
-        let newReminderViewController = UIStoryboard
-            .instantiateInitialViewController(of: .newReminder)
+    override func start(with data: Any) {
+        let reminderDetailsViewController = UIStoryboard
+            .instantiateInitialViewController(of: .reminderDetails)
         
-        let newReminderCoordinator = NewReminderCoordinator(parentCoordinator: self)
-        let newRemindersPresenter = NewReminderPresenter(coordinator: newReminderCoordinator,
-                                                       controller: newReminderViewController)
-//        newReminderViewController.presenter = newReminderViewController
+        let reminderDetailsCoordinator = ReminderDetailsCoordinator(parentCoordinator: self)
+        let reminderDetailsPresenter = ReminderDetailsPresenter(data: data,
+                                                         coordinator: reminderDetailsCoordinator,
+                                                         controller: reminderDetailsViewController)
+        reminderDetailsViewController.presenter = reminderDetailsPresenter
         
-//        let newReminderNavigationController = UINavigationController(rootViewController:
-//                                                                    newReminderViewController)
-//        newRemindersPresenter.viewController.modalPresentationStyle = .overCurrentContext
+        let reminderDetailsNavigationController = UINavigationController(
+            rootViewController: reminderDetailsViewController)
         
-//        debugPrint(splitViewController?.viewControllers.count)
-        
-        navigationController?.present(newReminderViewController, animated: true)
-//        guard let detailsViewController = splitViewController?.viewControllers[1] else {
-//            debugPrint("Else")
-//            return
-//        }
-        
-//        detailsViewController.definesPresentationContext = true
-//        detailsViewController.present(newReminderNavigationController,
-//                                     animated: true, completion: nil)
+        navigationController?.present(reminderDetailsNavigationController, animated: true)
+       
     }
-    
 }

@@ -9,7 +9,7 @@ import CoreData
 class RemindersPresenter {
     internal let coordinator: Coordinator
     internal let viewController: UIViewController
-    private var dataSource: NSFetchedResultsController<Reminder>?
+    internal var dataSource: NSFetchedResultsController<Reminder>?
     private var timezone: Timezone?
     private lazy var databaseManager = DatabaseTransactionManager<Reminder>()
     
@@ -25,6 +25,8 @@ class RemindersPresenter {
     convenience init(timezone: Timezone, coordinator: Coordinator, controller: UIViewController) {
         self.init(coordinator: coordinator, controller: controller)
         self.timezone = timezone
+        
+        // TODO: Change fetchRequest such that it only retrieves reminders in the selected timezone
         dataSource = databaseManager.fetch(sortDescriptor:
                                            NSSortDescriptor(key: #keyPath(Reminder.title),
                                                              ascending: true))
@@ -33,27 +35,30 @@ class RemindersPresenter {
     
 }
 
-extension RemindersPresenter: Presenter {
+extension RemindersPresenter: CoreDataPresenter {
     var viewControllerTitle: String {
         return timezone?.zoneTitle ?? "Reminders"
     }
     
-    subscript(indexPath: IndexPath) -> Any {
-        get {
-            return dataSource?.fetchedObjects?[indexPath.row] as Any
-        }
-    }
-    
-    func getSectionCount() -> Int {
-        return dataSource?.sections?.count ?? 0
-    }
-    
-    func getRowCount(inSection section: Int) -> Int {
-        dataSource?.fetchedObjects?.count ?? 0
-    }
-    
     func didSelectBarButtonItem() {
-        coordinator.start()
+        coordinator.start(with: timezone as Any)
+    }
+    
+    func didSelectRow(at indexPath: IndexPath) {
+        coordinator.start(with: self[indexPath])
+    }
+    
+    func getCellReusableIdentifier(for indexPath: IndexPath) -> String {
+        return "ReminderCell"
+    }
+    
+    func deleteFromDataSource(indexPath: IndexPath) -> Bool {
+        guard let managedObject = dataSource?.object(at: indexPath) else {
+            return false
+        }
+        
+        databaseManager.delete(managedObject)
+        return true
     }
 }
 
