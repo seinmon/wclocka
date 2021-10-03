@@ -48,14 +48,14 @@ extension WorldClockPresenter: CoreDataPresenter {
 
 extension WorldClockPresenter: CoordinatorDelegate {
     func didReceiveNewData(_ data: Any) {
-        if let receivedData = data as? RowContent {
+        if let receivedData = data as? NewTimezoneRow {
             if !isDuplicate(receivedData) {
                 databaseManager.saveData(data: receivedData)
             }
         }
     }
     
-    private func isDuplicate(_ newData: RowContent) -> Bool {
+    private func isDuplicate(_ newData: NewTimezoneRow) -> Bool {
         if let dataSource = dataSource?.fetchedObjects  {
             for entry in dataSource {
                 if entry.zoneTitle == newData.0 {

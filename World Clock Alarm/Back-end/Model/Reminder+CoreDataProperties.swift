@@ -14,7 +14,7 @@ extension Reminder {
 
     @NSManaged public var title: String
     @NSManaged public var details: String?
-    @NSManaged public var notificationTime: Date
+    @NSManaged public var notificationTime: Date?
     @NSManaged public var reoccuring: Bool
     @NSManaged public var timezone: Timezone?
 

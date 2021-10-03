@@ -50,6 +50,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="timeZoneOffset" destination="fhi-fj-AHw" id="UKI-uB-K4R"/>
+                                    <outlet property="timeZoneTitle" destination="HCt-93-9ED" id="Fw7-5h-pYE"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="hoM-vN-8Kh" customClass="TextFieldCell" customModule="World_Clock_Alarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114.66666603088379" width="428" height="53"/>
@@ -72,6 +76,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="textField" destination="rnb-P5-0g9" id="yV4-2e-cgv"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="CKx-M0-ypA" customClass="SwitchCell" customModule="World_Clock_Alarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="167.66666603088379" width="428" height="47"/>
@@ -107,6 +114,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <connections>
+                                    <outlet property="switchButton" destination="gLw-Mt-5dj" id="wbL-Ky-FhO"/>
                                     <outlet property="switchLabel" destination="Rlp-2l-VDb" id="BUd-T9-j2C"/>
                                 </connections>
                             </tableViewCell>

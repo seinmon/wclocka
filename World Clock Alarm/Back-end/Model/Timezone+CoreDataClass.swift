@@ -60,13 +60,15 @@ public class Timezone: NSManagedObject {
 
 extension Timezone: SelfManagedObject {
     func write(_ data: Any) {
-        guard let entry = data as? RowContent else {
-            return
+        if let entry = data as? NewTimezoneRow {
+            self.zoneIdentifier = entry.1.identifier
+            self.zoneTitle = entry.0
+            self.reminders = []
+        } else if let entry = data as? Timezone {
+            self.zoneIdentifier = entry.zoneIdentifier
+            self.zoneTitle = entry.zoneTitle
+            self.reminders = entry.reminders
         }
-
-        self.zoneIdentifier = entry.1.identifier
-        self.zoneTitle = entry.0
-        self.reminders = []
     }
     
     

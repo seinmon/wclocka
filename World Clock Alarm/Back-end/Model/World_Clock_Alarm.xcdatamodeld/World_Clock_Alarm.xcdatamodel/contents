@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Reminder" representedClassName="Reminder" syncable="YES">
         <attribute name="details" optional="YES" attributeType="String"/>
-        <attribute name="notificationTime" attributeType="Date" defaultDateTimeInterval="652897860" usesScalarValueType="NO"/>
-        <attribute name="reoccuring" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notificationTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reoccuring" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String" defaultValueString=""/>
         <relationship name="timezone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Timezone" inverseName="reminders" inverseEntity="Timezone"/>
     </entity>
@@ -15,7 +15,7 @@
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reminder" inverseName="timezone" inverseEntity="Reminder"/>
     </entity>
     <elements>
-        <element name="Reminder" positionX="113.9437255859375" positionY="103.9301452636719" width="128" height="118"/>
+        <element name="Reminder" positionX="113.9437255859375" positionY="103.9301452636719" width="128" height="104"/>
         <element name="Timezone" positionX="110.190185546875" positionY="-43.300048828125" width="128" height="104"/>
     </elements>
 </model>

@@ -6,7 +6,7 @@ import Foundation
 import CoreData
 
 fileprivate struct DatabaseConstants {
-    fileprivate static var context: NSManagedObjectContext {
+    fileprivate static var managedObjectContext: NSManagedObjectContext {
         return DatabaseConstants.persistentContainer.viewContext
     }
     
@@ -22,10 +22,10 @@ fileprivate struct DatabaseConstants {
 }
 
 class DatabaseTransactionManager<Model: SelfManagedObject> {
-    private var context: NSManagedObjectContext
+    weak var context: NSManagedObjectContext!
     
     init() {
-        self.context = DatabaseConstants.context
+        self.context = DatabaseConstants.persistentContainer.viewContext
     }
     
     func fetch(sortDescriptor: NSSortDescriptor) -> NSFetchedResultsController<Model>? {

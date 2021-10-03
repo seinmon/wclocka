@@ -10,7 +10,3 @@ protocol SelfManagedObject: NSManagedObject {
     func write(_ data: Any)
     func update(to newData: Any)
 }
-
-extension SelfManagedObject {
-    func update(to newData: Any) { }
-}

@@ -64,8 +64,10 @@ extension RemindersPresenter: CoreDataPresenter {
 
 extension RemindersPresenter: CoordinatorDelegate {
     func didReceiveNewData(_ data: Any) {
-        if let data = data as? Reminder {
-            databaseManager.saveData(data: data)
+        guard let tableViewController = viewController as? RemindersTableViewController else {
+            return
         }
+        
+        tableViewController.tableView.reloadData()
     }
 }

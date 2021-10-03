@@ -12,10 +12,21 @@ public class Reminder: NSManagedObject {
 
 extension Reminder: SelfManagedObject {
     func write(_ data: Any) {
-        guard let entry = data as? Reminder else {
+        guard let entry = data as? ReminderViewModel else {
             return
         }
-
+            self.timezone = entry.timezone
+            self.title = entry.title
+            self.details = entry.details
+            self.notificationTime = entry.notificationTime
+            self.reoccuring = entry.reoccuring
+    }
+    
+    func update(to newData: Any) {
+        guard let entry = newData as? ReminderViewModel else {
+            return
+        }
+        
         self.timezone = entry.timezone
         self.title = entry.title
         self.details = entry.details

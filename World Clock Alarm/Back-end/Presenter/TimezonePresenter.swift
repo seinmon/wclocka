@@ -7,7 +7,7 @@ import UIKit
 
 class TimezonePresenter {
 
-    typealias TimezoneDictionary = [String: [RowContent]]
+    typealias TimezoneDictionary = [String: [NewTimezoneRow]]
     
     //MARK: - Properties
     internal let coordinator: Coordinator
@@ -18,9 +18,9 @@ class TimezonePresenter {
     
     struct TimezoneSection {
         let sectionTitle: String?
-        var timezones: [RowContent]
+        var timezones: [NewTimezoneRow]
         
-        init(sectionTitle: String?, timezones: [RowContent]) {
+        init(sectionTitle: String?, timezones: [NewTimezoneRow]) {
             self.sectionTitle = sectionTitle
             self.timezones = timezones
             sortRows()

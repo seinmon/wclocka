@@ -3,5 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
+import UIKit
 
-typealias RowContent = (String, TimeZone)
+typealias NewTimezoneRow = (String, TimeZone)
+typealias ReminderDetailsCell = (ReminderViewModel, IndexPath, UIViewController)
