@@ -29,7 +29,6 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
         if (indexPath?.row == 0) {
             placeholder = "Reminder title"
             text = dataSource?.title
-            
         } else if (indexPath?.row == 1) {
             placeholder = "Notes"
             text = dataSource?.details
@@ -63,5 +62,4 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
                 .isEnabled = !(textField.text?.isEmpty ?? false)
         }
     }
-    
 }

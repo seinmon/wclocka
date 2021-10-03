@@ -25,11 +25,10 @@ class RemindersPresenter {
     convenience init(timezone: Timezone, coordinator: Coordinator, controller: UIViewController) {
         self.init(coordinator: coordinator, controller: controller)
         self.timezone = timezone
-        
-        // TODO: Change fetchRequest such that it only retrieves reminders in the selected timezone
-        dataSource = databaseManager.fetch(sortDescriptor:
-                                           NSSortDescriptor(key: #keyPath(Reminder.title),
-                                                             ascending: true))
+       
+        dataSource = databaseManager
+            .fetch(sortDescriptor: NSSortDescriptor(key: #keyPath(Reminder.title), ascending: true),
+                   predicate: NSPredicate(format: "timezone.zoneTitle == %@", timezone.zoneTitle))
         dataSource?.delegate = viewController as? RemindersTableViewController
     }
     

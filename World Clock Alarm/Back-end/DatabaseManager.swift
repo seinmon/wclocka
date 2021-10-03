@@ -28,11 +28,15 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
         self.context = DatabaseConstants.persistentContainer.viewContext
     }
     
-    func fetch(sortDescriptor: NSSortDescriptor) -> NSFetchedResultsController<Model>? {
+    func fetch(sortDescriptor: NSSortDescriptor,
+               predicate: NSPredicate? = nil) -> NSFetchedResultsController<Model>? {
         guard let request = Model.fetchRequest() as? NSFetchRequest<Model> else {
             return nil
         }
+        
         request.sortDescriptors = [sortDescriptor]
+        request.predicate = predicate
+        
         do {
             let fetchedResults = NSFetchedResultsController(
                 fetchRequest: request,
