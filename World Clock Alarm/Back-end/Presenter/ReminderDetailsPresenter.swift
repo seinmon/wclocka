@@ -6,9 +6,19 @@ import Foundation
 import UIKit
 
 class ReminderDetailsPresenter {
+    typealias numberOfCells = Int
+    
     internal let coordinator: Coordinator
     internal let viewController: UIViewController
     private var dataSource: Reminder?
+    
+    private enum CellID: String {
+        case TwoLabels = "TwoLabelsCell"
+        case TextField = "TextFieldCell"
+        case Switch = "SwitchCell"
+        case DatePicker = "DatePickerCell"
+        case DeleteButton = "DeleteButtonCell"
+    }
     
     required init(coordinator: Coordinator,
                   controller: UIViewController) {
@@ -25,6 +35,29 @@ class ReminderDetailsPresenter {
             
         }
     }
+    
+
+    private func getIndexAndCellID(for section: Int, row: Int? = nil) -> (CellID, numberOfCells){
+        switch section {
+            
+        case 0:
+            return (CellID.TwoLabels, 1)
+        case 1:
+            return (CellID.TextField, 2)
+        case 2:
+            if let rowIndex = row {
+              if (rowIndex % 2 == 1 && getRowCount(inSection: section) > 2) {
+                return (CellID.DatePicker, getRowCount(inSection: section) + 1)
+              }
+            }
+            // TODO: Change 2 if the reminder type is reoccuring
+            return (CellID.Switch, 2)
+        case 3:
+            return (CellID.DeleteButton, 1)
+        default:
+            return (CellID.TwoLabels, 0)
+        }
+    }
 }
 
 extension ReminderDetailsPresenter: Presenter {
@@ -37,34 +70,18 @@ extension ReminderDetailsPresenter: Presenter {
     }
     
     func getSectionCount() -> Int {
-        3
+        return 4
+    }
+    
+    func getSectionHeaderTitle(for section: Int) -> String? {
+        return " "
     }
     
     func getRowCount(inSection section: Int) -> Int {
-        switch section {
-            
-        case 0:
-            return 1
-        case 1:
-            return 1
-        case 2:
-            return 2
-        default:
-            return 0
-        }
+        return getIndexAndCellID(for: section).1
     }
     
     func getCellReusableIdentifier(for indexPath: IndexPath) -> String {
-        switch indexPath.section {
-            
-        case 0:
-            return "TwoLabelsCell"
-        case 1:
-            return "DatePickerCell"
-        case 2:
-            return "TextFieldCell"
-        default:
-            return "TwoLablesCell"
-        }
+        return getIndexAndCellID(for: indexPath.section, row: indexPath.row).0.rawValue
     }
 }

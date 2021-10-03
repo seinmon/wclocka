@@ -82,9 +82,10 @@ class BaseTableViewController: UITableViewController, NSFetchedResultsController
     public func setupNavigationBar() {
         title = presenter?.viewControllerTitle
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                                 target: self,
-                                                                 action: #selector((addNewItems)))
+        self.navigationItem
+            .rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                  target: self,
+                                                  action: #selector((didSelectPrimaryBarButtonItem)))
         tableViewStateDidChange()
     }
     
@@ -128,7 +129,7 @@ class BaseTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     @objc
-    public func addNewItems() {
+    public func didSelectPrimaryBarButtonItem() {
         presenter?.didSelectBarButtonItem()
     }
     

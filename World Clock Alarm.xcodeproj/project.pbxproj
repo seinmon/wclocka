@@ -21,6 +21,7 @@
 		AB5C0B5F2544FCCB0024C3C8 /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */; };
 		AB5C0B672545021F0024C3C8 /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */; };
 		AB5C0B7525450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */; };
+		AB6E5A032709A9860075ED93 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E5A022709A9860075ED93 /* SwitchCell.swift */; };
 		AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA202518CE3600F27947 /* AppDelegate.swift */; };
 		AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA222518CE3600F27947 /* SceneDelegate.swift */; };
 		AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */; };
@@ -87,6 +88,7 @@
 		AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
 		AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+instantiateInitialViewController.swift"; path = "World Clock Alarm/Front-end/UIStoryboard+instantiateInitialViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AB6E5A022709A9860075ED93 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Clock Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA202518CE3600F27947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB76AA222518CE3600F27947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				AB2F42DA251DFA1700AF660B /* NewTimezone */,
 				AB2F42DB251DFA2200AF660B /* WorldClock */,
 				AB2F42DC251DFA2D00AF660B /* Reminders */,
+				AB2F42DD251DFA3700AF660B /* ReminderDetails */,
 				AB2F42D2251DF9AA00AF660B /* Resources */,
 			);
 			path = "Front-end";
@@ -227,7 +230,6 @@
 				ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */,
 				ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */,
 				AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */,
-				AB2F42DD251DFA3700AF660B /* ReminderDetails */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -235,6 +237,7 @@
 		AB2F42DD251DFA3700AF660B /* ReminderDetails */ = {
 			isa = PBXGroup;
 			children = (
+				AB6E5A022709A9860075ED93 /* SwitchCell.swift */,
 				ABF14A1427086C8A00832160 /* TextFieldCell.swift */,
 				ABF14A0E2707219A00832160 /* TwoLabelsCell.swift */,
 				ABF14A162708792100832160 /* DatePickerCell.swift */,
@@ -488,6 +491,7 @@
 				ABF14A1527086C8A00832160 /* TextFieldCell.swift in Sources */,
 				AB976EA226EA69CE001409E0 /* Timezone+CoreDataProperties.swift in Sources */,
 				ABC9F22327049A4C00CF5D53 /* ReminderDetailsCoordinator.swift in Sources */,
+				AB6E5A032709A9860075ED93 /* SwitchCell.swift in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,
 				AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */,
 				ABF14A172708792100832160 /* DatePickerCell.swift in Sources */,

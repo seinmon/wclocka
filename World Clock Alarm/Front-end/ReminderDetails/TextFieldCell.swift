@@ -5,6 +5,9 @@
 
 import UIKit
 
-class DatePickerCell: UITableViewCell {
+class TextFieldCell: UITableViewCell, CellConfigurable {
 
+    func configure(with data: Any) {
+        
+    }
 }
