@@ -12,6 +12,7 @@ class ReminderViewModel {
     public var notificationTime: Date?
     public var reoccuring: Bool = true
     public var timezone: Timezone?
+    public var notification: Bool = false
     
     func write(_ data: Any) {
         if let entry = data as? Reminder {
@@ -19,6 +20,9 @@ class ReminderViewModel {
             self.title = entry.title
             self.details = entry.details
             self.notificationTime = entry.notificationTime
+            if notificationTime != nil {
+                notification = true
+            }
             self.reoccuring = entry.reoccuring
         } else if let entry = data as? Timezone {
             self.timezone = entry
@@ -73,21 +77,15 @@ class ReminderDetailsPresenter {
         case 0:
             return (CellID.TwoLabels, 1)
         case 1:
-            return (CellID.TextField, 2)
+            return (CellID.TextField, 1)
         case 2:
-            /*If the notificationTime is not set, it will only show the time switch.
-             *If notificationTime is set, then it will also show datePicker and reoccuring switch. */
             if let rowIndex = row {
-                if (rowIndex % 2 == 1 && getRowCount(inSection: section) > 2) {
+                if (rowIndex % 2 == 1 && getRowCount(inSection: section) >= 2) {
                     return (CellID.DatePicker, getRowCount(inSection: section) + 1)
                 }
             }
             
-            if dataSource.notificationTime != nil {
-                return (CellID.Switch, 3)
-            }
-            
-            return (CellID.Switch, 1)
+            return (dataSource.notification ? (CellID.Switch, 2) : (CellID.Switch, 1))
         case 3:
             return (CellID.DeleteButton, 1)
         default:
@@ -110,7 +108,7 @@ extension ReminderDetailsPresenter: Presenter {
     }
     
     func getSectionCount() -> Int {
-        return (dataSource.title.isEmpty
+        return (oldData == nil
                 ? (CellSectionIndex.SwitchAndPicker.rawValue + 1)
                 : (CellSectionIndex.DeleteButton.rawValue + 1))
     }
@@ -148,5 +146,9 @@ extension ReminderDetailsPresenter: Presenter {
             
             viewController.dismiss(animated: true)
         }
+    }
+    
+    func dismissCompletion() {
+        coordinator.start()
     }
 }

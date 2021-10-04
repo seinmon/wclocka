@@ -55,6 +55,12 @@ class ReminderDetailsTableViewController: BaseTableViewController {
         tableViewStateDidChange()
     }
     
+    @objc
+    override func cancel() {
+        presenter?.dismissCompletion()
+        dismiss(animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView,
                             heightForHeaderInSection section: Int) -> CGFloat {
         return 4

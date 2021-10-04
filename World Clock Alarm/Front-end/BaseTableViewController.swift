@@ -91,7 +91,10 @@ class BaseTableViewController: UITableViewController, NSFetchedResultsController
     
     @objc
     public func cancel() {
-        dismiss(animated: true)
+        dismiss(animated: true, completion: { [unowned self] in
+            self.presenter?.dismissCompletion()
+            
+        })
     }
     
     public func tableViewStateDidChange() {
@@ -134,10 +137,9 @@ class BaseTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     public func setupTableView() {
-        self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
         let footerView = UIView()
         tableView.tableFooterView = footerView
-        clearsSelectionOnViewWillAppear = true
     }
     
     public func setupContextualActions(for indexPath: IndexPath) -> [UIContextualAction] {

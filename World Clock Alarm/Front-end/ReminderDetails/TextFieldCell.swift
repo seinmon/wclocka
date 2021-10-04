@@ -12,9 +12,6 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
     var indexPath: IndexPath?
     
     func configure(with data: Any) {
-        var placeholder: String?
-        var text: String?
-        
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)),
                             for: .editingChanged)
         
@@ -23,21 +20,12 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
         }
         
         dataSource = data.0
-        indexPath = data.1
         viewController = data.2
         
-        if (indexPath?.row == 0) {
-            placeholder = "Reminder title"
-            text = dataSource?.title
-        } else if (indexPath?.row == 1) {
-            placeholder = "Notes"
-            text = dataSource?.details
-        }
+        textField.placeholder = "Reminder title"
         
-        textField.placeholder = placeholder
-        
-        if !(text?.isEmpty ?? true) {
-            textField.text = text
+        if !(dataSource?.title.isEmpty ?? true) {
+            textField.text = dataSource?.title
         }
         
         toggleSaveButton()
@@ -46,20 +34,14 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
     @objc
     func textFieldDidChange(_ sender: UITextField) {
         if let text = sender.text {
-            if (indexPath?.row == 0) {
-                dataSource?.title = text
-            } else if (indexPath?.row == 1) {
-                dataSource?.details = text
-            }
+            dataSource?.title = text
         }
         
         toggleSaveButton()
     }
     
     private func toggleSaveButton() {
-        if (indexPath?.row == 0) {
-            viewController?.navigationItem.rightBarButtonItem?
-                .isEnabled = !(textField.text?.isEmpty ?? false)
-        }
+        viewController?.navigationItem.rightBarButtonItem?
+            .isEnabled = !(textField.text?.isEmpty ?? false)
     }
 }

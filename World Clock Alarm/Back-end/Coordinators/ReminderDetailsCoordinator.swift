@@ -8,4 +8,8 @@ class ReminderDetailsCoordinator: ChildCoordinator {
     override func start(with data: Any) {
         parentCoordinator?.delegate?.didReceiveNewData(data)
     }
+    
+    override func start() {
+        parentCoordinator?.delegate?.didMoveBackwardsWithNoData()
+    }
 }

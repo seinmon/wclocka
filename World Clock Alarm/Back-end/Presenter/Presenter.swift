@@ -23,6 +23,7 @@ protocol Presenter: AnyObject {
     func filterDataSource(text: String?)
     @discardableResult func deleteFromDataSource(indexPath: IndexPath) -> Bool
     func updateDataSource(at indexPath: IndexPath, to data: Any)
+    func dismissCompletion()
 }
 
 extension Presenter {
@@ -35,6 +36,7 @@ extension Presenter {
     func filterDataSource(text: String?) { }
     func deleteFromDataSource(indexPath: IndexPath) -> Bool { return false }
     func updateDataSource(at indexPath: IndexPath, to data: Any) { }
+    func dismissCompletion() { }
 }
 
 /* Presenter protocol is the basic functionality a presenter needs to offer, and it does not include

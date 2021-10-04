@@ -15,4 +15,9 @@ protocol Coordinator: AnyObject {
 
 protocol CoordinatorDelegate: AnyObject {
     func didReceiveNewData(_ data: Any)
+    func didMoveBackwardsWithNoData()
+}
+
+extension CoordinatorDelegate {
+    func didMoveBackwardsWithNoData() { }
 }
