@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/seinmon/Documents/Projects/Xcode/wclocka/wClocka.xcodeproj">
    </FileRef>
 </Workspace>

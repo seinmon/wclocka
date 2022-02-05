@@ -24,11 +24,10 @@
 		AB6E5A032709A9860075ED93 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E5A022709A9860075ED93 /* SwitchCell.swift */; };
 		AB76AA212518CE3600F27947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA202518CE3600F27947 /* AppDelegate.swift */; };
 		AB76AA232518CE3600F27947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA222518CE3600F27947 /* SceneDelegate.swift */; };
-		AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */; };
+		AB76AA2B2518CE3700F27947 /* wClocka.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA292518CE3700F27947 /* wClocka.xcdatamodeld */; };
 		AB76AA2D2518CE3C00F27947 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA2C2518CE3C00F27947 /* Assets.xcassets */; };
 		AB76AA302518CE3C00F27947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA2E2518CE3C00F27947 /* LaunchScreen.storyboard */; };
-		AB76AA3B2518CE3C00F27947 /* World_Clock_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA3A2518CE3C00F27947 /* World_Clock_AlarmTests.swift */; };
-		AB76AA462518CE3C00F27947 /* World_Clock_AlarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA452518CE3C00F27947 /* World_Clock_AlarmUITests.swift */; };
+		AB76AA3B2518CE3C00F27947 /* wClockaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76AA3A2518CE3C00F27947 /* wClockaTests.swift */; };
 		AB76AA5A2518D6D700F27947 /* WorldClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA592518D6D700F27947 /* WorldClock.storyboard */; };
 		AB76AA5F2518D8CF00F27947 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */; };
 		AB76AA64251A37B800F27947 /* ReminderDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB76AA63251A37B800F27947 /* ReminderDetails.storyboard */; };
@@ -64,13 +63,6 @@
 			remoteGlobalIDString = AB76AA1C2518CE3600F27947;
 			remoteInfo = "World Clock Alarm";
 		};
-		AB76AA422518CE3C00F27947 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AB76AA152518CE3600F27947 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AB76AA1C2518CE3600F27947;
-			remoteInfo = "World Clock Alarm";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -87,31 +79,28 @@
 		AB40A2D125254C2C00B31424 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		AB5C0B5E2544FCCB0024C3C8 /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		AB5C0B662545021F0024C3C8 /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
-		AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+instantiateInitialViewController.swift"; path = "World Clock Alarm/Front-end/UIStoryboard+instantiateInitialViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AB5C0B7425450A1E0024C3C8 /* UIStoryboard+instantiateInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+instantiateInitialViewController.swift"; path = "wClocka/Front-end/UIStoryboard+instantiateInitialViewController.swift"; sourceTree = SOURCE_ROOT; };
 		AB6E5A022709A9860075ED93 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
-		AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Clock Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB76AA1D2518CE3600F27947 /* wClocka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wClocka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB76AA202518CE3600F27947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB76AA222518CE3600F27947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AB76AA2A2518CE3700F27947 /* World_Clock_Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = World_Clock_Alarm.xcdatamodel; sourceTree = "<group>"; };
 		AB76AA2C2518CE3C00F27947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB76AA2F2518CE3C00F27947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB76AA312518CE3C00F27947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB76AA362518CE3C00F27947 /* World Clock AlarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "World Clock AlarmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB76AA3A2518CE3C00F27947 /* World_Clock_AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World_Clock_AlarmTests.swift; sourceTree = "<group>"; };
+		AB76AA362518CE3C00F27947 /* wClockaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wClockaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB76AA3A2518CE3C00F27947 /* wClockaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wClockaTests.swift; sourceTree = "<group>"; };
 		AB76AA3C2518CE3C00F27947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB76AA412518CE3C00F27947 /* World Clock AlarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "World Clock AlarmUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB76AA452518CE3C00F27947 /* World_Clock_AlarmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World_Clock_AlarmUITests.swift; sourceTree = "<group>"; };
-		AB76AA472518CE3C00F27947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB76AA592518D6D700F27947 /* WorldClock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorldClock.storyboard; sourceTree = "<group>"; };
 		AB76AA5E2518D8CF00F27947 /* Reminders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
 		AB76AA63251A37B800F27947 /* ReminderDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReminderDetails.storyboard; sourceTree = "<group>"; };
 		AB8E9C2F2537E26F00B25403 /* TimezoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewCell.swift; sourceTree = "<group>"; };
 		AB8E9C3F253811D500B25403 /* TimezonePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePresenter.swift; sourceTree = "<group>"; };
 		AB976E9526EA5717001409E0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		AB976E9B26EA69CE001409E0 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "World Clock Alarm/Back-end/Model/Reminder+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "World Clock Alarm/Back-end/Model/Reminder+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataClass.swift"; path = "World Clock Alarm/Back-end/Model/Timezone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataProperties.swift"; path = "World Clock Alarm/Back-end/Model/Timezone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9B26EA69CE001409E0 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "wClocka/Back-end/Model/Reminder+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "wClocka/Back-end/Model/Reminder+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataClass.swift"; path = "wClocka/Back-end/Model/Timezone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timezone+CoreDataProperties.swift"; path = "wClocka/Back-end/Model/Timezone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		ABC9F21427048D4800CF5D53 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
 		ABC9F2162704992800CF5D53 /* RemindersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewController.swift; sourceTree = "<group>"; };
 		ABC9F2182704994400CF5D53 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,7 +109,7 @@
 		ABC9F22027049A0500CF5D53 /* ReminderDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsPresenter.swift; sourceTree = "<group>"; };
 		ABC9F22227049A4C00CF5D53 /* ReminderDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsCoordinator.swift; sourceTree = "<group>"; };
 		ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCoordinator.swift; sourceTree = "<group>"; };
-		ABC9F2262704A96500CF5D53 /* World Clock Alarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "World Clock Alarm.entitlements"; sourceTree = "<group>"; };
+		ABC9F2262704A96500CF5D53 /* wClocka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wClocka.entitlements; sourceTree = "<group>"; };
 		ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewController.swift; sourceTree = "<group>"; };
 		ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		ABF14A0A270621A700832160 /* SelfManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfManagedObject.swift; sourceTree = "<group>"; };
@@ -139,13 +128,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AB76AA332518CE3C00F27947 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB76AA3E2518CE3C00F27947 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,7 +236,7 @@
 				AB976E9C26EA69CE001409E0 /* Reminder+CoreDataProperties.swift */,
 				AB976E9D26EA69CE001409E0 /* Timezone+CoreDataClass.swift */,
 				AB976E9E26EA69CE001409E0 /* Timezone+CoreDataProperties.swift */,
-				AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */,
+				AB76AA292518CE3700F27947 /* wClocka.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,9 +271,8 @@
 		AB76AA142518CE3600F27947 = {
 			isa = PBXGroup;
 			children = (
-				AB76AA1F2518CE3600F27947 /* World Clock Alarm */,
-				AB76AA392518CE3C00F27947 /* World Clock AlarmTests */,
-				AB76AA442518CE3C00F27947 /* World Clock AlarmUITests */,
+				AB76AA1F2518CE3600F27947 /* wClocka */,
+				AB76AA392518CE3C00F27947 /* wClockaTests */,
 				AB76AA1E2518CE3600F27947 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -299,48 +280,38 @@
 		AB76AA1E2518CE3600F27947 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */,
-				AB76AA362518CE3C00F27947 /* World Clock AlarmTests.xctest */,
-				AB76AA412518CE3C00F27947 /* World Clock AlarmUITests.xctest */,
+				AB76AA1D2518CE3600F27947 /* wClocka.app */,
+				AB76AA362518CE3C00F27947 /* wClockaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AB76AA1F2518CE3600F27947 /* World Clock Alarm */ = {
+		AB76AA1F2518CE3600F27947 /* wClocka */ = {
 			isa = PBXGroup;
 			children = (
-				ABC9F2262704A96500CF5D53 /* World Clock Alarm.entitlements */,
+				ABC9F2262704A96500CF5D53 /* wClocka.entitlements */,
 				AB2F42D6251DF9F400AF660B /* Back-end */,
 				AB2F42D1251DF99500AF660B /* Front-end */,
 				AB2F42CD251DF96C00AF660B /* Supporting Files */,
 			);
-			path = "World Clock Alarm";
+			path = wClocka;
 			sourceTree = "<group>";
 		};
-		AB76AA392518CE3C00F27947 /* World Clock AlarmTests */ = {
+		AB76AA392518CE3C00F27947 /* wClockaTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB76AA3A2518CE3C00F27947 /* World_Clock_AlarmTests.swift */,
+				AB76AA3A2518CE3C00F27947 /* wClockaTests.swift */,
 				AB76AA3C2518CE3C00F27947 /* Info.plist */,
 			);
-			path = "World Clock AlarmTests";
-			sourceTree = "<group>";
-		};
-		AB76AA442518CE3C00F27947 /* World Clock AlarmUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AB76AA452518CE3C00F27947 /* World_Clock_AlarmUITests.swift */,
-				AB76AA472518CE3C00F27947 /* Info.plist */,
-			);
-			path = "World Clock AlarmUITests";
+			path = wClockaTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AB76AA1C2518CE3600F27947 /* World Clock Alarm */ = {
+		AB76AA1C2518CE3600F27947 /* wClocka */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB76AA4A2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "World Clock Alarm" */;
+			buildConfigurationList = AB76AA4A2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "wClocka" */;
 			buildPhases = (
 				AB76AA192518CE3600F27947 /* Sources */,
 				AB76AA1A2518CE3600F27947 /* Frameworks */,
@@ -350,14 +321,14 @@
 			);
 			dependencies = (
 			);
-			name = "World Clock Alarm";
+			name = wClocka;
 			productName = "World Clock Alarm";
-			productReference = AB76AA1D2518CE3600F27947 /* World Clock Alarm.app */;
+			productReference = AB76AA1D2518CE3600F27947 /* wClocka.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AB76AA352518CE3C00F27947 /* World Clock AlarmTests */ = {
+		AB76AA352518CE3C00F27947 /* wClockaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB76AA4D2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "World Clock AlarmTests" */;
+			buildConfigurationList = AB76AA4D2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "wClockaTests" */;
 			buildPhases = (
 				AB76AA322518CE3C00F27947 /* Sources */,
 				AB76AA332518CE3C00F27947 /* Frameworks */,
@@ -368,28 +339,10 @@
 			dependencies = (
 				AB76AA382518CE3C00F27947 /* PBXTargetDependency */,
 			);
-			name = "World Clock AlarmTests";
+			name = wClockaTests;
 			productName = "World Clock AlarmTests";
-			productReference = AB76AA362518CE3C00F27947 /* World Clock AlarmTests.xctest */;
+			productReference = AB76AA362518CE3C00F27947 /* wClockaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AB76AA402518CE3C00F27947 /* World Clock AlarmUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB76AA502518CE3C00F27947 /* Build configuration list for PBXNativeTarget "World Clock AlarmUITests" */;
-			buildPhases = (
-				AB76AA3D2518CE3C00F27947 /* Sources */,
-				AB76AA3E2518CE3C00F27947 /* Frameworks */,
-				AB76AA3F2518CE3C00F27947 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AB76AA432518CE3C00F27947 /* PBXTargetDependency */,
-			);
-			name = "World Clock AlarmUITests";
-			productName = "World Clock AlarmUITests";
-			productReference = AB76AA412518CE3C00F27947 /* World Clock AlarmUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -407,13 +360,9 @@
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = AB76AA1C2518CE3600F27947;
 					};
-					AB76AA402518CE3C00F27947 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = AB76AA1C2518CE3600F27947;
-					};
 				};
 			};
-			buildConfigurationList = AB76AA182518CE3600F27947 /* Build configuration list for PBXProject "World Clock Alarm" */;
+			buildConfigurationList = AB76AA182518CE3600F27947 /* Build configuration list for PBXProject "wClocka" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -426,9 +375,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AB76AA1C2518CE3600F27947 /* World Clock Alarm */,
-				AB76AA352518CE3C00F27947 /* World Clock AlarmTests */,
-				AB76AA402518CE3C00F27947 /* World Clock AlarmUITests */,
+				AB76AA1C2518CE3600F27947 /* wClocka */,
+				AB76AA352518CE3C00F27947 /* wClockaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -448,13 +396,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AB76AA342518CE3C00F27947 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB76AA3F2518CE3C00F27947 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -484,7 +425,7 @@
 				AB39057A26E62B7D005B7B86 /* WorldClockCoordinator.swift in Sources */,
 				ABC9F22127049A0500CF5D53 /* ReminderDetailsPresenter.swift in Sources */,
 				ABC9F22527049A5700CF5D53 /* RemindersCoordinator.swift in Sources */,
-				AB76AA2B2518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld in Sources */,
+				AB76AA2B2518CE3700F27947 /* wClocka.xcdatamodeld in Sources */,
 				AB39058026E74BC6005B7B86 /* Coordinator.swift in Sources */,
 				AB976EA126EA69CE001409E0 /* Timezone+CoreDataClass.swift in Sources */,
 				AB976E9F26EA69CE001409E0 /* Reminder+CoreDataClass.swift in Sources */,
@@ -514,15 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB76AA3B2518CE3C00F27947 /* World_Clock_AlarmTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AB76AA3D2518CE3C00F27947 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB76AA462518CE3C00F27947 /* World_Clock_AlarmUITests.swift in Sources */,
+				AB76AA3B2518CE3C00F27947 /* wClockaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,13 +464,8 @@
 /* Begin PBXTargetDependency section */
 		AB76AA382518CE3C00F27947 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AB76AA1C2518CE3600F27947 /* World Clock Alarm */;
+			target = AB76AA1C2518CE3600F27947 /* wClocka */;
 			targetProxy = AB76AA372518CE3C00F27947 /* PBXContainerItemProxy */;
-		};
-		AB76AA432518CE3C00F27947 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AB76AA1C2518CE3600F27947 /* World Clock Alarm */;
-			targetProxy = AB76AA422518CE3C00F27947 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -675,19 +603,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "World Clock Alarm/World Clock Alarm.entitlements";
+				CODE_SIGN_ENTITLEMENTS = wClocka/wClocka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A4SX3F3V9B;
-				INFOPLIST_FILE = "World Clock Alarm/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "wClocka/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.0.3;
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.seinmon.wclocka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -701,19 +629,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "World Clock Alarm/World Clock Alarm.entitlements";
+				CODE_SIGN_ENTITLEMENTS = wClocka/wClocka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = A4SX3F3V9B;
-				INFOPLIST_FILE = "World Clock Alarm/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "wClocka/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.0.3;
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-Alarm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.seinmon.wclocka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -740,7 +668,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/World Clock Alarm.app/World Clock Alarm";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wClocka.app/wClocka";
 			};
 			name = Debug;
 		};
@@ -762,54 +690,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/World Clock Alarm.app/World Clock Alarm";
-			};
-			name = Release;
-		};
-		AB76AA512518CE3C00F27947 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A4SX3F3V9B;
-				INFOPLIST_FILE = "World Clock AlarmUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-AlarmUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "World Clock Alarm";
-			};
-			name = Debug;
-		};
-		AB76AA522518CE3C00F27947 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A4SX3F3V9B;
-				INFOPLIST_FILE = "World Clock AlarmUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seinmon.World-Clock-AlarmUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "World Clock Alarm";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wClocka.app/wClocka";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AB76AA182518CE3600F27947 /* Build configuration list for PBXProject "World Clock Alarm" */ = {
+		AB76AA182518CE3600F27947 /* Build configuration list for PBXProject "wClocka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB76AA482518CE3C00F27947 /* Debug */,
@@ -818,7 +706,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB76AA4A2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "World Clock Alarm" */ = {
+		AB76AA4A2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "wClocka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB76AA4B2518CE3C00F27947 /* Debug */,
@@ -827,7 +715,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB76AA4D2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "World Clock AlarmTests" */ = {
+		AB76AA4D2518CE3C00F27947 /* Build configuration list for PBXNativeTarget "wClockaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB76AA4E2518CE3C00F27947 /* Debug */,
@@ -836,25 +724,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB76AA502518CE3C00F27947 /* Build configuration list for PBXNativeTarget "World Clock AlarmUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AB76AA512518CE3C00F27947 /* Debug */,
-				AB76AA522518CE3C00F27947 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AB76AA292518CE3700F27947 /* World_Clock_Alarm.xcdatamodeld */ = {
+		AB76AA292518CE3700F27947 /* wClocka.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				AB76AA2A2518CE3700F27947 /* World_Clock_Alarm.xcdatamodel */,
 			);
 			currentVersion = AB76AA2A2518CE3700F27947 /* World_Clock_Alarm.xcdatamodel */;
-			path = World_Clock_Alarm.xcdatamodeld;
+			path = wClocka.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
