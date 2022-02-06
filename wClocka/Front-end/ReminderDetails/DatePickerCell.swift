@@ -18,6 +18,8 @@ class DatePickerCell: UITableViewCell, CellConfigurable {
         
         if let notificationTime = dataSource?.notificationTime {
             picker.date = notificationTime
+        } else {
+            dataSource?.notificationTime = picker.date
         }
     }
     

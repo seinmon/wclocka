@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LC4-UD-dgm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LC4-UD-dgm">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,13 +11,13 @@
         <!--Reminder Details Table View Controller-->
         <scene sceneID="w33-Cd-fyP">
             <objects>
-                <tableViewController id="LC4-UD-dgm" customClass="ReminderDetailsTableViewController" customModule="World_Clock_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LC4-UD-dgm" customClass="ReminderDetailsTableViewController" customModule="wClocka" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cEN-Xx-ccJ">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TwoLabelsCell" id="dQe-KP-rL4" customClass="TwoLabelsCell" customModule="World_Clock_Alarm" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TwoLabelsCell" id="dQe-KP-rL4" customClass="TwoLabelsCell" customModule="wClocka" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dQe-KP-rL4" id="5Bf-vl-jDe">
@@ -55,15 +55,15 @@
                                     <outlet property="timeZoneTitle" destination="HCt-93-9ED" id="Fw7-5h-pYE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="hoM-vN-8Kh" customClass="TextFieldCell" customModule="World_Clock_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114.66666603088379" width="428" height="53"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="hoM-vN-8Kh" customClass="TextFieldCell" customModule="wClocka" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="114.66666603088379" width="428" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hoM-vN-8Kh" id="Ph8-nY-Tmq">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="53"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter reminder title/description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rnb-P5-0g9">
-                                            <rect key="frame" x="16" y="16" width="396" height="21"/>
+                                            <rect key="frame" x="16" y="16" width="396" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -80,8 +80,8 @@
                                     <outlet property="textField" destination="rnb-P5-0g9" id="yV4-2e-cgv"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="CKx-M0-ypA" customClass="SwitchCell" customModule="World_Clock_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="167.66666603088379" width="428" height="47"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="CKx-M0-ypA" customClass="SwitchCell" customModule="wClocka" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="168.66666603088379" width="428" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CKx-M0-ypA" id="Ekc-Dt-2TC">
                                     <rect key="frame" x="0.0" y="0.0" width="428" height="47"/>
@@ -118,8 +118,8 @@
                                     <outlet property="switchLabel" destination="Rlp-2l-VDb" id="BUd-T9-j2C"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" id="4Ha-x2-i2O" customClass="DatePickerCell" customModule="World_Clock_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="214.66666603088379" width="428" height="232"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" id="4Ha-x2-i2O" customClass="DatePickerCell" customModule="wClocka" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="215.66666603088379" width="428" height="232"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Ha-x2-i2O" id="3jm-NK-NrS">
                                     <rect key="frame" x="0.0" y="0.0" width="428" height="232"/>
@@ -145,7 +145,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteButtonCell" id="vdA-6D-2fA">
-                                <rect key="frame" x="0.0" y="446.66666603088379" width="428" height="58.333332061767578"/>
+                                <rect key="frame" x="0.0" y="447.66666603088379" width="428" height="58.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vdA-6D-2fA" id="Vew-Sg-MrK">
                                     <rect key="frame" x="0.0" y="0.0" width="428" height="58.333332061767578"/>

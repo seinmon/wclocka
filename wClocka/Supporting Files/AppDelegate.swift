@@ -3,6 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import Foundation
+import UserNotifications
 import UIKit
 import CoreData
 
@@ -20,6 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             coordinator = MainCoordinator(window: window)
         }
         
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = self
+        
         return true
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler:
+                                @escaping (UNNotificationPresentationOptions) -> Void) {
+            
+        completionHandler([.alert, .sound])
     }
 }

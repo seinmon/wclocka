@@ -7,7 +7,7 @@ import CoreData
 
 
 public class Timezone: NSManagedObject {
-    private var timezone: TimeZone! {
+    public var timezone: TimeZone! {
         TimeZone(identifier: zoneIdentifier)
     }
     

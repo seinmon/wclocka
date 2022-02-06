@@ -20,9 +20,7 @@ class ReminderViewModel {
             self.title = entry.title
             self.details = entry.details
             self.notificationTime = entry.notificationTime
-            if notificationTime != nil {
-                notification = true
-            }
+            self.notification = (notificationTime != nil)
             self.reoccuring = entry.reoccuring
         } else if let entry = data as? Timezone {
             self.timezone = entry
@@ -134,6 +132,9 @@ extension ReminderDetailsPresenter: Presenter {
             databaseManager.saveData(data: dataSource)
         }
         
+        scheduleNotification(notificationTime: dataSource.notificationTime,
+                             timezone: dataSource.timezone!)
+        
         viewController.dismiss(animated: true)
     }
     
@@ -150,5 +151,44 @@ extension ReminderDetailsPresenter: Presenter {
     
     func dismissCompletion() {
         coordinator.start()
+    }
+    
+    private func scheduleNotification(notificationTime: Date?, timezone: Timezone) -> Bool {
+        guard let notificationTime = notificationTime else {
+            return false
+        }
+
+        var dateComponents = DateComponents(timeZone: timezone.timezone)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH"
+        dateFormatter.timeZone = TimeZone.current
+        print(dateFormatter.string(from: notificationTime))
+        dateComponents.hour = Int(dateFormatter.string(from: notificationTime))
+        dateFormatter.dateFormat = "mm"
+        print(dateFormatter.string(from: notificationTime))
+        dateComponents.minute = Int(dateFormatter.string(from: notificationTime))
+           
+        // Create the trigger as a repeating event.
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
+                                                    repeats: true)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "wClocka"
+        content.body = dataSource.timezone!.zoneTitle + ": " + dataSource.title
+        content.sound = .default
+        
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString,
+                    content: content, trigger: trigger)
+
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+           if error != nil {
+              // Handle any errors.
+           }
+        }
+        
+        return true
     }
 }
