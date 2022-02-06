@@ -3,6 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import UIKit
+import UserNotifications
 
 class SwitchCell: UITableViewCell, CellConfigurable {
     @IBOutlet weak var switchLabel: UILabel!
@@ -21,7 +22,21 @@ class SwitchCell: UITableViewCell, CellConfigurable {
         viewController = data.2
         
         switchLabel.text = "Notification"
-        switchButton.isOn = (dataSource?.notification ?? false)
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings {[weak self] settings in
+            if (settings.authorizationStatus == .denied) {
+                DispatchQueue.main.async {
+                    self?.switchLabel.isEnabled = false
+                    self?.switchButton.isEnabled = false
+                    self?.switchButton.isOn = false
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.switchButton.isOn = (self?.dataSource?.notification ?? false)
+                }
+            }
+        }
     }
     
     @IBAction func switchTouchUpInside(_ sender: UISwitch) {
@@ -30,11 +45,27 @@ class SwitchCell: UITableViewCell, CellConfigurable {
         }
         
         dataSource?.notification = switchButton.isOn
- 
+        
         if (switchButton.isOn) {
-            viewController.tableView.insertRows(at: [IndexPath(row: (indexPath?.row ?? 0) + 1,
-                                                               section: indexPath?.section ?? 2)],
-                                                with: .automatic)
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound, .badge]) {[weak self] granted, error in
+                
+                if let error = error {
+                    print("BEATCH")
+                }
+                
+                if granted {
+                    DispatchQueue.main.async {
+                        viewController.tableView.insertRows(at: [IndexPath(row: (self?.indexPath?.row ?? 0) + 1,
+                                                                           section: self?.indexPath?.section ?? 2)],
+                                                            with: .automatic)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.switchButton.isOn = false
+                    }
+                }
+            }
         } else {
             viewController.tableView.deleteRows(at: [IndexPath(row: (indexPath?.row ?? 0) + 1,
                                                                section: indexPath?.section ?? 2)],
