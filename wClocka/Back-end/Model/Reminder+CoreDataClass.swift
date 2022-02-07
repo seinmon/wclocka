@@ -19,6 +19,7 @@ extension Reminder: SelfManagedObject {
             self.title = entry.title
             self.details = entry.details
             self.notificationTime = entry.notificationTime
+            self.notificationUUID = entry.notificationUUID
             self.reoccuring = entry.reoccuring
     }
     
@@ -31,6 +32,7 @@ extension Reminder: SelfManagedObject {
         self.title = entry.title
         self.details = entry.details
         self.notificationTime = entry.notificationTime
+        self.notificationUUID = entry.notificationUUID
         self.reoccuring = entry.reoccuring
     }
 }

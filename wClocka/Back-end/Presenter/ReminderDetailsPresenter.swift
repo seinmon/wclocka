@@ -10,6 +10,7 @@ class ReminderViewModel {
     public var title: String = ""
     public var details: String?
     public var notificationTime: Date?
+    public var notificationUUID: String?
     public var reoccuring: Bool = true
     public var timezone: Timezone?
     public var notification: Bool = false
@@ -20,6 +21,7 @@ class ReminderViewModel {
             self.title = entry.title
             self.details = entry.details
             self.notificationTime = entry.notificationTime
+            self.notificationUUID = entry.notificationUUID
             self.notification = (notificationTime != nil)
             self.reoccuring = entry.reoccuring
         } else if let entry = data as? Timezone {
@@ -90,6 +92,48 @@ class ReminderDetailsPresenter {
             return (CellID.TwoLabels, 0)
         }
     }
+    
+    private func convertToLocalTime(_ time: Date, timezone: TimeZone) -> DateComponents {
+        var dateComponents = DateComponents(timeZone: timezone)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH"
+        print(dateFormatter.string(from: time))
+        dateComponents.hour = Int(dateFormatter.string(from: time))
+        dateFormatter.dateFormat = "mm"
+        print(dateFormatter.string(from: time))
+        dateComponents.minute = Int(dateFormatter.string(from: time))
+        return dateComponents
+    }
+    
+    private func scheduleNotification(notificationTime: Date, timezone: TimeZone) {
+        let trigger = UNCalendarNotificationTrigger(dateMatching:
+                                                        convertToLocalTime(notificationTime,
+                                                                           timezone: timezone),
+                                                    repeats: true)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "wClocka"
+        content.body = dataSource.timezone!.zoneTitle + ": " + dataSource.title
+        content.sound = .default
+        
+        let request = UNNotificationRequest(identifier: dataSource.notificationUUID!,
+                                            content: content, trigger: trigger)
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                // Handle any errors.
+            }
+        }
+    }
+    
+    private func cancelNotification() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        if let uuidString = dataSource.notificationUUID {
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [uuidString])
+        }
+    }
 }
 
 extension ReminderDetailsPresenter: Presenter {
@@ -125,6 +169,11 @@ extension ReminderDetailsPresenter: Presenter {
     
     func didSelectBarButtonItem() {
         let databaseManager = DatabaseTransactionManager<Reminder>()
+        
+        if dataSource.notificationUUID == nil {
+            dataSource.notificationUUID = UUID().uuidString
+        }
+        
         if let oldData = oldData {
             databaseManager.update(oldData, newData: dataSource)
             coordinator.start(with: oldData)
@@ -132,8 +181,13 @@ extension ReminderDetailsPresenter: Presenter {
             databaseManager.saveData(data: dataSource)
         }
         
-        scheduleNotification(notificationTime: dataSource.notificationTime,
-                             timezone: dataSource.timezone!)
+        if let notificationTime = dataSource.notificationTime {
+            if let timezone = dataSource.timezone?.timezone {
+                scheduleNotification(notificationTime: notificationTime, timezone: timezone)
+            }
+        } else {
+            cancelNotification()
+        }
         
         viewController.dismiss(animated: true)
     }
@@ -142,6 +196,7 @@ extension ReminderDetailsPresenter: Presenter {
         if (indexPath.section == CellSectionIndex.DeleteButton.rawValue) {
             let databaseManager = DatabaseTransactionManager<Reminder>()
             if let oldData = oldData {
+                cancelNotification()
                 databaseManager.delete(oldData)
             }
             
@@ -151,44 +206,5 @@ extension ReminderDetailsPresenter: Presenter {
     
     func dismissCompletion() {
         coordinator.start()
-    }
-    
-    private func scheduleNotification(notificationTime: Date?, timezone: Timezone) -> Bool {
-        guard let notificationTime = notificationTime else {
-            return false
-        }
-
-        var dateComponents = DateComponents(timeZone: timezone.timezone)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH"
-        dateFormatter.timeZone = TimeZone.current
-        print(dateFormatter.string(from: notificationTime))
-        dateComponents.hour = Int(dateFormatter.string(from: notificationTime))
-        dateFormatter.dateFormat = "mm"
-        print(dateFormatter.string(from: notificationTime))
-        dateComponents.minute = Int(dateFormatter.string(from: notificationTime))
-           
-        // Create the trigger as a repeating event.
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
-                                                    repeats: true)
-        
-        let content = UNMutableNotificationContent()
-        content.title = "wClocka"
-        content.body = dataSource.timezone!.zoneTitle + ": " + dataSource.title
-        content.sound = .default
-        
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString,
-                    content: content, trigger: trigger)
-
-        // Schedule the request with the system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-           if error != nil {
-              // Handle any errors.
-           }
-        }
-        
-        return true
     }
 }

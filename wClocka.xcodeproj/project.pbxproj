@@ -735,6 +735,7 @@
 			currentVersion = AB76AA2A2518CE3700F27947 /* World_Clock_Alarm.xcdatamodel */;
 			path = wClocka.xcdatamodeld;
 			sourceTree = "<group>";
+			usesTabs = 0;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

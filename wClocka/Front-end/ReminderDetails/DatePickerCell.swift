@@ -23,8 +23,7 @@ class DatePickerCell: UITableViewCell, CellConfigurable {
         }
     }
     
-    @IBAction func valueDidChange(_ sender: UIDatePicker) {
-        debugPrint("didChangeVal")
+        @IBAction func valueDidChange(_ sender: UIDatePicker) {
         dataSource?.notificationTime = picker.date
     }
     
