@@ -11,7 +11,7 @@ class TimezoneCoordinator: ChildCoordinator {
         parentCoordinator?.delegate?.didReceiveNewData(data)
     }
     
-    deinit {
-        debugPrint("timezone coordinator is being deinitialized")
-    }
+//    deinit {
+//        debugPrint("timezone coordinator is being deinitialized")
+//    }
 }

@@ -4,7 +4,7 @@
 
 import UIKit
 
-class TextFieldCell: UITableViewCell, CellConfigurable {
+class TextFieldCell: UITableViewCell, CellConfigurable, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     weak var dataSource: ReminderViewModel?
@@ -22,6 +22,7 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
         dataSource = data.0
         viewController = data.2
         
+        textField.delegate = self
         textField.placeholder = "Reminder title"
         
         if !(dataSource?.title.isEmpty ?? true) {
@@ -29,6 +30,11 @@ class TextFieldCell: UITableViewCell, CellConfigurable {
         }
         
         toggleSaveButton()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @objc

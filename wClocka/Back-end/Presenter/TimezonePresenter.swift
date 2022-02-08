@@ -73,9 +73,9 @@ class TimezonePresenter {
         return timezoneDict
     }
     
-    deinit {
-        debugPrint("timezone presenter is being deinitialized")
-    }
+//    deinit {
+//        debugPrint("timezone presenter is being deinitialized")
+//    }
 }
 
 extension TimezonePresenter: Presenter {

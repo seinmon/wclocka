@@ -18,25 +18,23 @@ class SwitchCell: UITableViewCell, CellConfigurable {
             return
         }
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didEnterForeground),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        
         dataSource = data.0
+        indexPath = data.1
         viewController = data.2
         
         switchLabel.text = "Notification"
-        
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings {[weak self] settings in
-            if (settings.authorizationStatus == .denied) {
-                DispatchQueue.main.async {
-                    self?.switchLabel.isEnabled = false
-                    self?.switchButton.isEnabled = false
-                    self?.switchButton.isOn = false
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self?.switchButton.isOn = (self?.dataSource?.notification ?? false)
-                }
-            }
-        }
+        didEnterForeground()
+    }
+    
+    @objc
+    func didEnterForeground() {
+        NotificationManager.authorizationStatusHandlers(enabledHandler: enableSwitch,
+                                                        disabledHandler: disableSwitch)
     }
     
     @IBAction func switchTouchUpInside(_ sender: UISwitch) {
@@ -44,34 +42,34 @@ class SwitchCell: UITableViewCell, CellConfigurable {
             return
         }
         
+        
         dataSource?.notification = switchButton.isOn
         
         if (switchButton.isOn) {
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound, .badge]) {[weak self] granted, error in
-                
-                if let error = error {
-                    print("BEATCH")
-                }
-                
-                if granted {
-                    DispatchQueue.main.async {
-                        viewController.tableView.insertRows(at: [IndexPath(row: (self?.indexPath?.row ?? 0) + 1,
-                                                                           section: self?.indexPath?.section ?? 2)],
-                                                            with: .automatic)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self?.switchButton.isOn = false
-                    }
-                }
-            }
+            NotificationManager.requestAuthorisation(successHandler: { () in
+                viewController.tableView
+                    .insertRows(at: [IndexPath(row: (self.indexPath?.row ?? 0) + 1,
+                                               section: self.indexPath?.section ?? 2)],
+                                with: .automatic)},
+                                                     failHandler: disableSwitch)
         } else {
             viewController.tableView.deleteRows(at: [IndexPath(row: (indexPath?.row ?? 0) + 1,
                                                                section: indexPath?.section ?? 2)],
                                                 with: .automatic)
             dataSource?.notificationTime = nil
         }
+    }
+    
+    private func enableSwitch() {
+        switchLabel.isEnabled = true
+        switchButton.isEnabled = true
+        switchButton.isOn = (dataSource?.notification ?? false)
+    }
+    
+    private func disableSwitch() {
+        switchLabel.isEnabled = false
+        switchButton.isEnabled = false
+        switchButton.isOn = false
     }
 }
 

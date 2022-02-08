@@ -46,6 +46,7 @@
 		ABC9F22127049A0500CF5D53 /* ReminderDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22027049A0500CF5D53 /* ReminderDetailsPresenter.swift */; };
 		ABC9F22327049A4C00CF5D53 /* ReminderDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22227049A4C00CF5D53 /* ReminderDetailsCoordinator.swift */; };
 		ABC9F22527049A5700CF5D53 /* RemindersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */; };
+		ABDC076E27B1AFCE00B0C8BA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDC076D27B1AFCE00B0C8BA /* NotificationManager.swift */; };
 		ABEFB93A2537D6E900F7B4EE /* TimezoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */; };
 		ABEFB93F2537D77700F7B4EE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */; };
 		ABF14A0B270621A700832160 /* SelfManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF14A0A270621A700832160 /* SelfManagedObject.swift */; };
@@ -110,6 +111,7 @@
 		ABC9F22227049A4C00CF5D53 /* ReminderDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailsCoordinator.swift; sourceTree = "<group>"; };
 		ABC9F22427049A5700CF5D53 /* RemindersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCoordinator.swift; sourceTree = "<group>"; };
 		ABC9F2262704A96500CF5D53 /* wClocka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wClocka.entitlements; sourceTree = "<group>"; };
+		ABDC076D27B1AFCE00B0C8BA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		ABEFB9392537D6E900F7B4EE /* TimezoneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneTableViewController.swift; sourceTree = "<group>"; };
 		ABEFB93E2537D77700F7B4EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		ABF14A0A270621A700832160 /* SelfManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfManagedObject.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				ABF14A0C2706248700832160 /* GlobalTypeAliases.swift */,
 				AB976E9526EA5717001409E0 /* DatabaseManager.swift */,
 				ABF14A0A270621A700832160 /* SelfManagedObject.swift */,
+				ABDC076D27B1AFCE00B0C8BA /* NotificationManager.swift */,
 				AB39058326E7659D005B7B86 /* Model */,
 				AB5C0B5A2544FC900024C3C8 /* Coordinators */,
 				AB40A2D625254C7700B31424 /* Presenter */,
@@ -431,6 +434,7 @@
 				AB976E9F26EA69CE001409E0 /* Reminder+CoreDataClass.swift in Sources */,
 				ABF14A1527086C8A00832160 /* TextFieldCell.swift in Sources */,
 				AB976EA226EA69CE001409E0 /* Timezone+CoreDataProperties.swift in Sources */,
+				ABDC076E27B1AFCE00B0C8BA /* NotificationManager.swift in Sources */,
 				ABC9F22327049A4C00CF5D53 /* ReminderDetailsCoordinator.swift in Sources */,
 				AB6E5A032709A9860075ED93 /* SwitchCell.swift in Sources */,
 				AB2F42C0251DF92F00AF660B /* BaseTableViewController.swift in Sources */,

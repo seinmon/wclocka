@@ -56,6 +56,14 @@ extension RemindersPresenter: CoreDataPresenter {
             return false
         }
         
+        
+        if managedObject.notificationTime != nil {
+            if let notificationUUID = managedObject.notificationUUID {
+                let notificationManager = NotificationManager()
+                notificationManager.cancelNotification(identifier: notificationUUID)
+            }
+        }
+        
         databaseManager.delete(managedObject)
         return true
     }

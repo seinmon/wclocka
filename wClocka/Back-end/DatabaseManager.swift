@@ -14,7 +14,7 @@ fileprivate struct DatabaseConstants {
         let container = NSPersistentContainer(name: "wClocka")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                fatalError("PersistentContainer Unrecoverable Error: \(error), \(error.userInfo)")
             }
         })
         return container
@@ -28,7 +28,7 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
         self.context = DatabaseConstants.persistentContainer.viewContext
     }
     
-    func fetch(sortDescriptor: NSSortDescriptor,
+    internal func fetch(sortDescriptor: NSSortDescriptor,
                predicate: NSPredicate? = nil) -> NSFetchedResultsController<Model>? {
         guard let request = Model.fetchRequest() as? NSFetchRequest<Model> else {
             return nil
@@ -48,34 +48,33 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
             return fetchedResults
             
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return nil
+            fatalError("Could not fetch NSFetchedResultsController: \(error), \(error.userInfo)")
         }
     }
     
-    func saveData(data: Any) {
+    internal func saveData(data: Any) {
         let model = Model(context: context)
         model.write(data)
         saveContext()
     }
     
-    func update(_ oldData: SelfManagedObject, newData: Any) {
+    internal func update(_ oldData: SelfManagedObject, newData: Any) {
         oldData.update(to: newData)
         saveContext()
     }
     
-    func delete(_ object: NSManagedObject) {
+    internal func delete(_ object: NSManagedObject) {
         context.delete(object)
         saveContext()
     }
     
-    func saveContext () {
+    internal func saveContext () {
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                fatalError("Unrecoverable error in saving context: \(nserror), \(nserror.userInfo)")
             }
         }
     }

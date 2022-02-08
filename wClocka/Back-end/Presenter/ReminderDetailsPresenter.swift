@@ -92,48 +92,6 @@ class ReminderDetailsPresenter {
             return (CellID.TwoLabels, 0)
         }
     }
-    
-    private func convertToLocalTime(_ time: Date, timezone: TimeZone) -> DateComponents {
-        var dateComponents = DateComponents(timeZone: timezone)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH"
-        print(dateFormatter.string(from: time))
-        dateComponents.hour = Int(dateFormatter.string(from: time))
-        dateFormatter.dateFormat = "mm"
-        print(dateFormatter.string(from: time))
-        dateComponents.minute = Int(dateFormatter.string(from: time))
-        return dateComponents
-    }
-    
-    private func scheduleNotification(notificationTime: Date, timezone: TimeZone) {
-        let trigger = UNCalendarNotificationTrigger(dateMatching:
-                                                        convertToLocalTime(notificationTime,
-                                                                           timezone: timezone),
-                                                    repeats: true)
-        
-        let content = UNMutableNotificationContent()
-        content.title = "wClocka"
-        content.body = dataSource.timezone!.zoneTitle + ": " + dataSource.title
-        content.sound = .default
-        
-        let request = UNNotificationRequest(identifier: dataSource.notificationUUID!,
-                                            content: content, trigger: trigger)
-        
-        // Schedule the request with the system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                // Handle any errors.
-            }
-        }
-    }
-    
-    private func cancelNotification() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        if let uuidString = dataSource.notificationUUID {
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [uuidString])
-        }
-    }
 }
 
 extension ReminderDetailsPresenter: Presenter {
@@ -181,12 +139,20 @@ extension ReminderDetailsPresenter: Presenter {
             databaseManager.saveData(data: dataSource)
         }
         
+        let notificationManager = NotificationManager()
+        
         if let notificationTime = dataSource.notificationTime {
             if let timezone = dataSource.timezone?.timezone {
-                scheduleNotification(notificationTime: notificationTime, timezone: timezone)
+                let notificationManager = NotificationManager()
+                notificationManager
+                    .scheduleNotification(
+                        notificationTime: notificationTime,
+                        timezone: timezone,
+                        identifier: dataSource.notificationUUID!,
+                        message: dataSource.timezone!.zoneTitle + ": " + dataSource.title)
             }
         } else {
-            cancelNotification()
+            notificationManager.cancelNotification(identifier: dataSource.notificationUUID!)
         }
         
         viewController.dismiss(animated: true)
@@ -196,7 +162,11 @@ extension ReminderDetailsPresenter: Presenter {
         if (indexPath.section == CellSectionIndex.DeleteButton.rawValue) {
             let databaseManager = DatabaseTransactionManager<Reminder>()
             if let oldData = oldData {
-                cancelNotification()
+                if dataSource.notification {
+                    let notificationManager = NotificationManager()
+                    notificationManager.cancelNotification(identifier: dataSource.notificationUUID!)
+                }
+                
                 databaseManager.delete(oldData)
             }
             
