@@ -51,9 +51,9 @@ extension RemindersPresenter: CoreDataPresenter {
         return "ReminderCell"
     }
     
-    func deleteFromDataSource(indexPath: IndexPath) -> Bool {
+    func deleteFromDataSource(indexPath: IndexPath) {
         guard let managedObject = dataSource?.object(at: indexPath) else {
-            return false
+            return
         }
         
         
@@ -65,7 +65,6 @@ extension RemindersPresenter: CoreDataPresenter {
         }
         
         databaseManager.delete(managedObject)
-        return true
     }
 }
 

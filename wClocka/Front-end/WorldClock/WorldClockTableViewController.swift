@@ -35,8 +35,21 @@ class WorldClockTableViewController: BaseTableViewController, ContextualActionOw
     */
     
     func didSelectDeleteAction(for indexPath: IndexPath) {
-        if (!(presenter?.deleteFromDataSource(indexPath: indexPath) ?? true)) {
-            //TODO: Show Alert if there are reminders for that timezone
+        if ((presenter?.showDeletionWarning(indexPath: indexPath) ?? false)) {
+            let alert = UIAlertController(title: "Delete Time Zone?",
+                                          message: "This action will delete this time zone and its reminders.",
+                                          preferredStyle: .alert)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[unowned self] _ in
+                self.presenter?.deleteFromDataSource(indexPath: indexPath)
+            }
+            
+            alert.addAction(deleteAction)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            self.present(alert, animated: true)
+            
+        } else {
+            presenter?.deleteFromDataSource(indexPath: indexPath)
         }
     }
 }

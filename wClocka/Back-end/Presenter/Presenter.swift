@@ -21,7 +21,8 @@ protocol Presenter: AnyObject {
     func didSelectBarButtonItem()
     func didSelectRow(at indexPath: IndexPath)
     func filterDataSource(text: String?)
-    @discardableResult func deleteFromDataSource(indexPath: IndexPath) -> Bool
+    func showDeletionWarning(indexPath: IndexPath) -> Bool
+    func deleteFromDataSource(indexPath: IndexPath)
     func updateDataSource(at indexPath: IndexPath, to data: Any)
     func dismissCompletion()
 }
@@ -34,7 +35,8 @@ extension Presenter {
     func didSelectRow(at indexPath: IndexPath) { }
     func didSelectBarButtonItem() { coordinator.start() }
     func filterDataSource(text: String?) { }
-    func deleteFromDataSource(indexPath: IndexPath) -> Bool { return false }
+    func showDeletionWarning(indexPath: IndexPath) -> Bool { return false }
+    func deleteFromDataSource(indexPath: IndexPath) { }
     func updateDataSource(at indexPath: IndexPath, to data: Any) { }
     func dismissCompletion() { }
 }

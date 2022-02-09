@@ -14,6 +14,13 @@ class DatePickerCell: UITableViewCell, CellConfigurable {
             return
         }
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didEnterForeground),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        
+        didEnterForeground()
+        
         dataSource = data.0
         
         if let notificationTime = dataSource?.notificationTime {
@@ -30,4 +37,9 @@ class DatePickerCell: UITableViewCell, CellConfigurable {
         print(picker.date)
     }
     
+    @objc
+    func didEnterForeground() {
+        NotificationManager.authorizationStatusHandlers(enabledHandler: {[unowned self] in self.picker.isEnabled = true} ,
+                                                        disabledHandler: {[unowned self] in self.picker.isEnabled = false})
+    }
 }

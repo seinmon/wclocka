@@ -32,17 +32,24 @@ extension WorldClockPresenter: CoreDataPresenter {
         return "WorldClockCell"
     }
     
-    func deleteFromDataSource(indexPath: IndexPath) -> Bool {
+    func showDeletionWarning(indexPath: IndexPath) -> Bool {
         guard let managedObject = dataSource?.object(at: indexPath) else {
             return false
         }
         
         if (managedObject.reminders?.count ?? 0) > 0 {
-            return false
+            return true
+        }
+        
+        return false
+    }
+    
+    func deleteFromDataSource(indexPath: IndexPath) {
+        guard let managedObject = dataSource?.object(at: indexPath) else {
+            return
         }
         
         databaseManager.delete(managedObject)
-        return true
     }
 }
 
