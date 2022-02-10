@@ -28,6 +28,8 @@ class SwitchCell: UITableViewCell, CellConfigurable {
         viewController = data.2
         
         switchLabel.text = "Notification"
+        switchButton.isOn = (dataSource?.notification ?? false)
+        
         didEnterForeground()
     }
     
