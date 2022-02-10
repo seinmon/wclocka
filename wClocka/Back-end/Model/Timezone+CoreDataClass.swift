@@ -36,14 +36,10 @@ public class Timezone: NSManagedObject {
     }
     
     private func getGMTOffset(of timezone: TimeZone) -> String {
-        let targetTimezoneHours = timezone.secondsFromGMT()/3600
-        let targetTimezoneMinutes = abs(timezone.secondsFromGMT()/60) % 60
-        
-        let currentTimezoneHours = TimeZone.current.secondsFromGMT()/3600
-        let currentTimezoneMinutes = abs(TimeZone.current.secondsFromGMT()/60) % 60
-        return String(format: "%+.2d:%.2d",
-                      (targetTimezoneHours - currentTimezoneHours),
-                      (targetTimezoneMinutes - currentTimezoneMinutes))
+        let offset = timezone.secondsFromGMT() - TimeZone.current.secondsFromGMT()
+        let offsetHours = offset/3600
+        let offsetMinutes = abs(offset/60) % 60
+        return String(format: "%+.2d:%.2d", offsetHours, offsetMinutes)
     }
     
     private func getTime(at timezone: TimeZone?) -> String {
