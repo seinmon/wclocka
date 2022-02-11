@@ -1,15 +1,12 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: 'status: pending, type: bug'
-assignees: ''
+### Runtime Environment:
+Device:
+OS:
+App Version:
+Locale:
 
----
+### Current Behavior:
 
 ### Expected Behavior:
-
-### Actual Behavior:
 
 ### Steps to Reproduce:
 1. 
@@ -17,9 +14,4 @@ assignees: ''
 3. 
 4.
 
-### Device Information:
- - Device: 
- - OS: 
- - App Version: 
-
-### Additional Context:
+### Video/Screenshots:
