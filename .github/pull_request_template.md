@@ -1,5 +1,7 @@
-### Summary of the Changes:
+#### Type:
+
+#### Summary of the Changes:
 
 **Related issue:**
 
-### List of Dependencies (if available):
+#### Videos/Screenshots:
