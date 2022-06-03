@@ -5,8 +5,19 @@
 import Foundation
 import UIKit
 
-class RemindersCoordinator: ChildCoordinator {
-    override func start(with data: Any) {
+class RemindersCoordinator: Coordinator {
+    weak var parentCoordinator: Coordinator?
+    weak var delegate: CoordinatorDelegate?
+    
+    required init(parentCoordinator: Coordinator) {
+        self.parentCoordinator = parentCoordinator
+    }
+    
+    func start(with data: Any? = nil) {
+        guard let data = data else {
+            return
+        }
+        
         let reminderDetailsViewController = UIStoryboard
             .instantiateInitialViewController(of: .reminderDetails)
         
@@ -20,6 +31,5 @@ class RemindersCoordinator: ChildCoordinator {
             rootViewController: reminderDetailsViewController)
         
         navigationController?.present(reminderDetailsNavigationController, animated: true)
-       
     }
 }

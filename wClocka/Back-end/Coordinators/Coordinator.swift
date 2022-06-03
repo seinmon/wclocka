@@ -5,12 +5,25 @@
 import Foundation
 import UIKit
 
+/**
+ * An interface to implement the navigation between view controllers.
+ */
 protocol Coordinator: AnyObject {
+    var parentCoordinator: Coordinator? {get set}
     var delegate: CoordinatorDelegate? {get set}
-//    var splitViewController: UISplitViewController? {get set}
     var navigationController: UINavigationController? {get set}
-    func start()
-    func start(with data: Any)
+    init(parentCoordinator: Coordinator)
+    func start(with data: Any?)
+}
+
+extension Coordinator {
+    var navigationController: UINavigationController? {
+        get {
+            parentCoordinator?.navigationController
+        } set { }
+    }
+
+    func start(with data: Any?) { }
 }
 
 protocol CoordinatorDelegate: AnyObject {

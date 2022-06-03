@@ -5,13 +5,17 @@
 import Foundation
 import UIKit
 
-class TimezoneCoordinator: ChildCoordinator {
+class TimezoneCoordinator: Coordinator {
+    weak var parentCoordinator: Coordinator?
+    weak var delegate: CoordinatorDelegate?
     
-    override func start(with data: Any) {
-        parentCoordinator?.delegate?.didReceiveNewData(data)
+    required init(parentCoordinator: Coordinator) {
+        self.parentCoordinator = parentCoordinator
     }
     
-//    deinit {
-//        debugPrint("timezone coordinator is being deinitialized")
-//    }
+    func start(with data: Any?) {
+        if let data = data {
+            parentCoordinator?.delegate?.didReceiveNewData(data)
+        }
+    }
 }

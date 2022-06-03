@@ -6,21 +6,9 @@ import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
+    var parentCoordinator: Coordinator?
     var delegate: CoordinatorDelegate?
     weak var window: UIWindow?
-    
-    /*
-    lazy var splitViewController: UISplitViewController? = {
-        let splitViewController = PrimarySplitViewController()
-        splitViewController.viewControllers = initializeViewControllers()
-        
-        if #available(iOS 13, *) {
-            splitViewController.primaryBackgroundStyle = .sidebar
-        }
-        
-        return splitViewController
-    }()
-    */
     
     lazy var navigationController: UINavigationController? = {
         let worldClockController = UIStoryboard.instantiateInitialViewController(of: .worldClock)
@@ -34,46 +22,19 @@ class MainCoordinator: Coordinator {
         
     }()
     
+    /// Initialize the starting point of the application.
     init(window: UIWindow?) {
         self.window = window
         self.start()
     }
     
-    func start(with data: Any) {}
+    required init(parentCoordinator: Coordinator) {
+        self.parentCoordinator = nil
+    }
     
-    func start() {
+    func start(with data: Any? = nil) {
         window?.rootViewController = navigationController //splitViewController
         window?.backgroundColor = UIColor.black
         window?.makeKeyAndVisible()
     }
-    
-    /*
-    private func initializeViewControllers() -> [UIViewController] {
-        /// Initialize masterViewController
-        let worldClockController = UIStoryboard.instantiateInitialViewController(of: .worldClock)
-        let worldClockCoordinator = WorldClockCoordinator(parentCoordinator: self)
-        let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator,
-                                                      controller: worldClockController)
-        
-        worldClockCoordinator.delegate = worldClockPresenter
-        worldClockController.presenter = worldClockPresenter
-        
-        let masterNavigationController = UINavigationController(rootViewController:
-                                                                worldClockController)
-        
-        /// Initialize detailsViewController
-        let remindersController = UIStoryboard.instantiateInitialViewController(of: .reminders)
-        let remindersCoordinator = WorldClockCoordinator(parentCoordinator: worldClockCoordinator)
-        let remindersPresenter = WorldClockPresenter(coordinator: remindersCoordinator,
-                                                      controller: remindersController)
-        
-        remindersCoordinator.delegate = remindersPresenter
-        remindersController.presenter = remindersPresenter
-        
-        let detailsNavigationController = UINavigationController(rootViewController:
-                                                                remindersController)
-        
-        return [masterNavigationController, detailsNavigationController]
-    }
-     */
 }

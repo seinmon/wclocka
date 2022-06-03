@@ -4,12 +4,19 @@
 
 import Foundation
 
-class ReminderDetailsCoordinator: ChildCoordinator {
-    override func start(with data: Any) {
-        parentCoordinator?.delegate?.didReceiveNewData(data)
+class ReminderDetailsCoordinator: Coordinator {
+    weak var parentCoordinator: Coordinator?
+    weak var delegate: CoordinatorDelegate?
+    
+    required init(parentCoordinator: Coordinator) {
+        self.parentCoordinator = parentCoordinator
     }
     
-    override func start() {
+    func start(with data: Any? = nil) {
+        if let data = data {
+            parentCoordinator?.delegate?.didReceiveNewData(data)
+        }
+    
         parentCoordinator?.delegate?.didMoveBackwardsWithNoData()
     }
 }
