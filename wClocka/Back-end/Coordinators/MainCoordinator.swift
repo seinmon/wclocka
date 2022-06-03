@@ -7,11 +7,12 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
-    var delegate: CoordinatorDelegate?
+    weak var delegate: CoordinatorDelegate?
     weak var window: UIWindow?
     
     lazy var navigationController: UINavigationController? = {
-        let worldClockController = UIStoryboard.instantiateInitialViewController(of: .worldClock)
+        let worldClockController = UIStoryboard.instantiateInitialViewController(of:
+                .worldClock) as! BaseTableViewController
         let worldClockCoordinator = WorldClockCoordinator(parentCoordinator: self)
         let worldClockPresenter = WorldClockPresenter(coordinator: worldClockCoordinator,
                                                       controller: worldClockController)
@@ -22,7 +23,6 @@ class MainCoordinator: Coordinator {
         
     }()
     
-    /// Initialize the starting point of the application.
     init(window: UIWindow?) {
         self.window = window
         self.start()
@@ -33,7 +33,7 @@ class MainCoordinator: Coordinator {
     }
     
     func start(with data: Any? = nil) {
-        window?.rootViewController = navigationController //splitViewController
+        window?.rootViewController = navigationController
         window?.backgroundColor = UIColor.black
         window?.makeKeyAndVisible()
     }

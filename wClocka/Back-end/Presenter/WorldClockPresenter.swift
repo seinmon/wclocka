@@ -8,7 +8,7 @@ import CoreData
 
 class WorldClockPresenter {
     internal let coordinator: Coordinator
-    internal let viewController: UIViewController
+    internal unowned let viewController: UIViewController
     internal var dataSource: NSFetchedResultsController<Timezone>?
     private lazy var databaseManager = DatabaseTransactionManager<Timezone>()
     

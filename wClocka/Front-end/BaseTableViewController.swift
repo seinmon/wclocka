@@ -12,6 +12,8 @@ protocol ContextualActionOwner: UITableViewController {
 
 class BaseTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
+    var presenter: Presenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()

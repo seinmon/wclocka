@@ -34,7 +34,7 @@ class ReminderDetailsPresenter {
     typealias RowCount = Int
     
     internal let coordinator: Coordinator
-    internal let viewController: UIViewController
+    internal unowned let viewController: UIViewController
     private var dataSource: ReminderViewModel
     private var oldData: Reminder?
     
@@ -175,6 +175,6 @@ extension ReminderDetailsPresenter: Presenter {
     }
     
     func dismissCompletion() {
-        coordinator.start()
+        coordinator.start(with: nil)
     }
 }

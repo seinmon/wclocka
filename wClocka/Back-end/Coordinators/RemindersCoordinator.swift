@@ -19,7 +19,7 @@ class RemindersCoordinator: Coordinator {
         }
         
         let reminderDetailsViewController = UIStoryboard
-            .instantiateInitialViewController(of: .reminderDetails)
+            .instantiateInitialViewController(of: .reminderDetails) as! BaseTableViewController
         
         let reminderDetailsCoordinator = ReminderDetailsCoordinator(parentCoordinator: self)
         let reminderDetailsPresenter = ReminderDetailsPresenter(data: data,

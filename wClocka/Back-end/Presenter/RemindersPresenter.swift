@@ -8,7 +8,7 @@ import CoreData
 
 class RemindersPresenter {
     internal let coordinator: Coordinator
-    internal let viewController: UIViewController
+    internal unowned let viewController: UIViewController
     internal var dataSource: NSFetchedResultsController<Reminder>?
     private var timezone: Timezone?
     private lazy var databaseManager = DatabaseTransactionManager<Reminder>()
@@ -33,7 +33,6 @@ class RemindersPresenter {
                                                            timezone.zoneTitle))
         dataSource?.delegate = viewController as? RemindersTableViewController
     }
-    
 }
 
 extension RemindersPresenter: CoreDataPresenter {

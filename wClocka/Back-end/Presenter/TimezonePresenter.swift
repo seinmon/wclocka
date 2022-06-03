@@ -11,7 +11,7 @@ class TimezonePresenter {
     
     //MARK: - Properties
     internal let coordinator: Coordinator
-    internal let viewController: UIViewController
+    internal unowned let viewController: UIViewController
     private var allData: [TimezoneSection] = []
     private var dataSource: [TimezoneSection] = []
     private var isFilteringDataSource: Bool = false
@@ -72,10 +72,6 @@ class TimezonePresenter {
         
         return timezoneDict
     }
-    
-//    deinit {
-//        debugPrint("timezone presenter is being deinitialized")
-//    }
 }
 
 extension TimezonePresenter: Presenter {

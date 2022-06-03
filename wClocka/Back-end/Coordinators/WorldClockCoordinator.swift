@@ -16,7 +16,8 @@ class WorldClockCoordinator: Coordinator {
     func start(with data: Any? = nil) {
         if let data = data as? Timezone {
         
-            let remindersViewController = UIStoryboard.instantiateInitialViewController(of: .reminders)
+            let remindersViewController = UIStoryboard.instantiateInitialViewController(of:
+                    .reminders) as! BaseTableViewController
             
             let remindersCoordinator = RemindersCoordinator(parentCoordinator: self)
             let remindersPresenter = RemindersPresenter(timezone: data,
@@ -30,7 +31,7 @@ class WorldClockCoordinator: Coordinator {
 
         } else {
             let timezoneViewController = UIStoryboard.instantiateInitialViewController(of:
-                    .timezone)
+                    .timezone) as! BaseTableViewController
             
             let timezoneCoordinator = TimezoneCoordinator(parentCoordinator: self)
             let timezonePresenter = TimezonePresenter(coordinator: timezoneCoordinator,

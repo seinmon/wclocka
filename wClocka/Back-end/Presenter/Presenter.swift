@@ -33,7 +33,7 @@ extension Presenter {
     func getSectionHeaderTitle(for section: Int) -> String? { nil }
     func getSectionIndexTitles() -> [String]? { nil }
     func didSelectRow(at indexPath: IndexPath) { }
-    func didSelectBarButtonItem() { coordinator.start() }
+    func didSelectBarButtonItem() { coordinator.start(with: nil) }
     func filterDataSource(text: String?) { }
     func showDeletionWarning(indexPath: IndexPath) -> Bool { return false }
     func deleteFromDataSource(indexPath: IndexPath) { }
@@ -41,8 +41,11 @@ extension Presenter {
     func dismissCompletion() { }
 }
 
-/* Presenter protocol is the basic functionality a presenter needs to offer, and it does not include
- * use of CoreData as a persistent container. If the use of CoreData is needed, then presenters
+/**
+ * A presenter with core data as its data source
+ *
+ * Presenter protocol has the basic functionality a presenter needs to offer, but it does not include
+ * CoreData as a persistent container. If the use of CoreData is needed, then presenters
  * should conform to CoreDataPresenter, thereby adding default coreData functionality. */
 protocol CoreDataPresenter: Presenter {
     associatedtype Model: SelfManagedObject
