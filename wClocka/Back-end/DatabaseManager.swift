@@ -30,7 +30,7 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
         self.context = StaticDatabaseConstants.persistentContainer.viewContext
     }
     
-    internal func fetchResultsContainer(sortDescriptor: NSSortDescriptor,
+    internal func fetchResultsController(sortDescriptor: NSSortDescriptor,
                                         predicate: NSPredicate? = nil)
     -> NSFetchedResultsController<Model>? {
         guard let request = Model.fetchRequest() as? NSFetchRequest<Model> else {
