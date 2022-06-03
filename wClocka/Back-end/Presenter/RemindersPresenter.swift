@@ -27,8 +27,10 @@ class RemindersPresenter {
         self.timezone = timezone
         
         dataSource = databaseManager
-            .fetch(sortDescriptor: NSSortDescriptor(key: #keyPath(Reminder.title), ascending: true),
-                   predicate: NSPredicate(format: "timezone.zoneTitle == %@", timezone.zoneTitle))
+            .fetchResultsController(sortDescriptor: NSSortDescriptor(key: #keyPath(Reminder.title),
+                                                                     ascending: true),
+                                    predicate: NSPredicate(format: "timezone.zoneTitle == %@",
+                                                           timezone.zoneTitle))
         dataSource?.delegate = viewController as? RemindersTableViewController
     }
     

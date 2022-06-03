@@ -16,9 +16,8 @@ class WorldClockPresenter {
         self.coordinator = coordinator
         self.viewController = controller
         
-        dataSource = databaseManager.fetch(sortDescriptor:
-                                            NSSortDescriptor(key: #keyPath(Timezone.zoneTitle),
-                                                             ascending: true))
+        dataSource = databaseManager.fetchResultsController(sortDescriptor: NSSortDescriptor(
+            key: #keyPath(Timezone.zoneTitle), ascending: true))
         dataSource?.delegate = viewController as? WorldClockTableViewController
     }
 }
