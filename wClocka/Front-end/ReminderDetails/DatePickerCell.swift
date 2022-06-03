@@ -26,15 +26,12 @@ class DatePickerCell: UITableViewCell, CellConfigurable {
         if let notificationTime = dataSource?.notificationTime {
             picker.date = notificationTime
         } else {
-            picker.timeZone = dataSource?.timezone?.timezone
             dataSource?.notificationTime = picker.date
-            print(picker.date)
         }
     }
     
     @IBAction func valueDidChange(_ sender: UIDatePicker) {
         dataSource?.notificationTime = picker.date
-        print(picker.date)
     }
     
     @objc
