@@ -5,15 +5,17 @@
 import Foundation
 import CoreData
 
-fileprivate struct DatabaseConstants {
+/// Static constants that are required for Core Data
+fileprivate struct StaticDatabaseConstants {
     fileprivate static var managedObjectContext: NSManagedObjectContext {
-        return DatabaseConstants.persistentContainer.viewContext
+        return StaticDatabaseConstants.persistentContainer.viewContext
     }
     
     fileprivate static var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "wClocka")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
+                // TODO: - Show an alert that there is an unrecoverable error
                 fatalError("PersistentContainer Unrecoverable Error: \(error), \(error.userInfo)")
             }
         })
@@ -25,11 +27,12 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
     weak var context: NSManagedObjectContext!
     
     init() {
-        self.context = DatabaseConstants.persistentContainer.viewContext
+        self.context = StaticDatabaseConstants.persistentContainer.viewContext
     }
     
-    internal func fetch(sortDescriptor: NSSortDescriptor,
-               predicate: NSPredicate? = nil) -> NSFetchedResultsController<Model>? {
+    internal func fetchResultsContainer(sortDescriptor: NSSortDescriptor,
+                                        predicate: NSPredicate? = nil)
+    -> NSFetchedResultsController<Model>? {
         guard let request = Model.fetchRequest() as? NSFetchRequest<Model> else {
             return nil
         }
@@ -48,6 +51,7 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
             return fetchedResults
             
         } catch let error as NSError {
+            // TODO: - Show an alert that there is an unrecoverable error (maybe?)
             fatalError("Could not fetch NSFetchedResultsController: \(error), \(error.userInfo)")
         }
     }
@@ -74,6 +78,7 @@ class DatabaseTransactionManager<Model: SelfManagedObject> {
                 try context.save()
             } catch {
                 let nserror = error as NSError
+                // TODO: - Show an alert that there is an unrecoverable error
                 fatalError("Unrecoverable error in saving context: \(nserror), \(nserror.userInfo)")
             }
         }
