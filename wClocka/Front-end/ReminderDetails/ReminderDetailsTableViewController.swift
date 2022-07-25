@@ -6,16 +6,16 @@ import Foundation
 import UIKit
 
 class ReminderDetailsTableViewController: BaseTableViewController {
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setBackgroundColor()
         tableView.reloadData()
     }
-    
+
     private func setBackgroundColor() {
         if #available(iOS 13, *) {
-            if (traitCollection.userInterfaceStyle == .dark) {
+            if traitCollection.userInterfaceStyle == .dark {
                 tableView.backgroundColor = .systemBackground
             } else {
                 tableView.backgroundColor = .secondarySystemBackground
@@ -24,12 +24,12 @@ class ReminderDetailsTableViewController: BaseTableViewController {
             tableView.backgroundColor = UIColor(red: 242.0, green: 242.0, blue: 247.0, alpha: 1)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView,
                             willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         if #available(iOS 13, *) {
-            if (traitCollection.userInterfaceStyle == .dark) {
+            if traitCollection.userInterfaceStyle == .dark {
                 cell.backgroundColor = .secondarySystemBackground
             } else {
                 cell.backgroundColor = .systemBackground
@@ -37,12 +37,12 @@ class ReminderDetailsTableViewController: BaseTableViewController {
         } else {
             cell.backgroundColor = .white
         }
-        
-        if (indexPath.section != 3) {
+
+        if indexPath.section != 3 {
             cell.selectionStyle = .none
         }
     }
-    
+
     override func setupNavigationBar() {
         title = presenter?.viewControllerTitle
         self.navigationItem
@@ -54,13 +54,13 @@ class ReminderDetailsTableViewController: BaseTableViewController {
                                                                 action: #selector(cancel))
         tableViewStateDidChange()
     }
-    
+
     @objc
     override func cancel() {
         presenter?.dismissCompletion()
         dismiss(animated: true)
     }
-    
+
     override func tableView(_ tableView: UITableView,
                             heightForHeaderInSection section: Int) -> CGFloat {
         return 4

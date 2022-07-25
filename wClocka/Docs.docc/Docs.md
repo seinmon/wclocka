@@ -4,32 +4,25 @@ A timezone based reminder app
 
 ## Overview
 
-This documentation is focused on the technical aspects of the project. It can be used by other developers to make contributions to the codebase, or create derivates of wClocka.
+Welcome to the wClocka (World Clock Alarm) project documentation. This documentation is focused on the technical aspects of the project, to support other developers when making contributions to the codebase or in creating their own derivates. Understanding the content of Core and Helpers sections should be sufficient to get a general understanding of the project. 
 
 ## Topics
 
-### Navigation
+### Core
 - ``Coordinator``
-- ``MainCoordinator``
-- ``ChildCoordinator``
-
-### Logic
+- ``CoordinatorDelegate``
 - ``Presenter``
-- ``NotificationManager``
-
-### Database
 - ``SelfManagedObject``
 - ``CoreDataPresenter``
-- ``DatabaseTransactionManager``
-
-### Front-end
 - ``CellConfigurable``
-- ``StoryboardName``
 - ``BaseTableViewController``
+- ``StoryboardName``
+- ``ContextualActionOwner``
 
-### Creating Time Zones
-- ``TimezonePresenter``
-- ``TimezoneCoordinator``
-- ``TimezoneTableViewController``
-- ``TimezoneTableViewCell``
+### Helpers
+- ``DatabaseTransactionManager``
+- ``NotificationManager``
+
+### Type Aliases
 - ``NewTimezoneRow``
+- ``ReminderDetailsCell``

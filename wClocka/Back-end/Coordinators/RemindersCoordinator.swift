@@ -8,28 +8,29 @@ import UIKit
 class RemindersCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
     weak var delegate: CoordinatorDelegate?
-    
+
     required init(parentCoordinator: Coordinator) {
         self.parentCoordinator = parentCoordinator
     }
-    
+
     func start(with data: Any? = nil) {
         guard let data = data else {
             return
         }
-        
+
+        // swiftlint:disable force_cast
         let reminderDetailsViewController = UIStoryboard
             .instantiateInitialViewController(of: .reminderDetails) as! BaseTableViewController
-        
+
         let reminderDetailsCoordinator = ReminderDetailsCoordinator(parentCoordinator: self)
         let reminderDetailsPresenter = ReminderDetailsPresenter(data: data,
                                                          coordinator: reminderDetailsCoordinator,
                                                          controller: reminderDetailsViewController)
         reminderDetailsViewController.presenter = reminderDetailsPresenter
-        
+
         let reminderDetailsNavigationController = UINavigationController(
             rootViewController: reminderDetailsViewController)
-        
+
         navigationController?.present(reminderDetailsNavigationController, animated: true)
     }
 }

@@ -11,7 +11,7 @@ extension UIStoryboard {
         guard let initialViewController = storyboard.instantiateInitialViewController() else {
             fatalError("Failed to downcast initialViewController")
         }
-        
+
         return initialViewController
     }
 }

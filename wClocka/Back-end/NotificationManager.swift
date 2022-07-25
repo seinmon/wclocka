@@ -7,24 +7,22 @@ import Foundation
 import UserNotifications
 
 class NotificationManager {
-    
     internal static func authorizationStatusHandlers(enabledHandler: @escaping () -> Void,
                                                      disabledHandler: @escaping () -> Void) {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings {settings in
-            if (settings.authorizationStatus == .denied) {
+            if settings.authorizationStatus == .denied {
                 DispatchQueue.main.async {
                     disabledHandler()
                 }
-            }
-            else if (settings.authorizationStatus == .authorized) {
+            } else if settings.authorizationStatus == .authorized {
                 DispatchQueue.main.async {
                     enabledHandler()
                 }
             }
         }
     }
-    
+
     internal static func requestAuthorisation(successHandler: @escaping () -> Void,
                                               failHandler: @escaping () -> Void) {
         let center = UNUserNotificationCenter.current()
@@ -32,7 +30,7 @@ class NotificationManager {
             if let error = error {
                 fatalError("Notification permission error: \(error)")
             }
-            
+
             if granted {
                 DispatchQueue.main.async {
                     successHandler()
@@ -44,7 +42,7 @@ class NotificationManager {
             }
         }
     }
-    
+
     internal func scheduleNotification(notificationTime: Date,
                                        timezone: TimeZone,
                                        identifier: String,
@@ -53,16 +51,16 @@ class NotificationManager {
                                                         convertToLocalTime(notificationTime,
                                                                            timezone: timezone),
                                                     repeats: true)
-        
+
         let content = UNMutableNotificationContent()
         content.title = "wClocka"
         content.body = message
         content.sound = .default
-        
+
         let request = UNNotificationRequest(identifier: identifier,
                                             content: content,
                                             trigger: trigger)
-        
+
         // Schedule the request with the system.
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
@@ -71,19 +69,19 @@ class NotificationManager {
             }
         }
     }
-    
+
     internal func cancelNotification(identifier: String) {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
     }
-    
+
     private func convertToLocalTime(_ time: Date, timezone: TimeZone) -> DateComponents {
         var dateComponents = DateComponents(timeZone: timezone)
         dateComponents.hour = getTimeSlice(of: time, format: "HH")
         dateComponents.minute = getTimeSlice(of: time, format: "mm")
         return dateComponents
     }
-    
+
     private func getTimeSlice(of date: Date, format: String) -> Int? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

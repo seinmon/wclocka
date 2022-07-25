@@ -7,7 +7,7 @@ import CoreData
 
 @objc(Reminder)
 public class Reminder: NSManagedObject {
-    
+
 }
 
 extension Reminder: SelfManagedObject {
@@ -22,12 +22,12 @@ extension Reminder: SelfManagedObject {
             self.notificationUUID = entry.notificationUUID
             self.reoccuring = entry.reoccuring
     }
-    
+
     func update(to newData: Any) {
         guard let entry = newData as? ReminderViewModel else {
             return
         }
-        
+
         self.timezone = entry.timezone
         self.title = entry.title
         self.details = entry.details

@@ -6,10 +6,20 @@ import Foundation
 import UIKit
 
 /**
- * An interface to implement the navigation between view controllers.
+ * Implements the navigation and data tramission between view controllers.
  */
 protocol Coordinator: AnyObject {
+
+    /**
+     * Holds a reference to the coordinator that started current view controller.
+     * It is useful for backward navigation and accessing the main UINavigationController of the application.
+     */
     var parentCoordinator: Coordinator? {get set}
+
+    /**
+     * An interface that receives updates from coordinator events.
+     * Updates are usually used to react to the movement between view controllers.
+     */
     var delegate: CoordinatorDelegate? {get set}
     var navigationController: UINavigationController? {get set}
     init(parentCoordinator: Coordinator)
@@ -17,6 +27,7 @@ protocol Coordinator: AnyObject {
 }
 
 extension Coordinator {
+    // swiftlint:disable unused_setter_value
     var navigationController: UINavigationController? {
         get {
             parentCoordinator?.navigationController

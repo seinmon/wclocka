@@ -14,7 +14,7 @@ class ReminderViewModel {
     public var reoccuring: Bool = true
     public var timezone: Timezone?
     public var notification: Bool = false
-    
+
     func write(_ data: Any) {
         if let entry = data as? Reminder {
             self.timezone = entry.timezone
@@ -32,64 +32,63 @@ class ReminderViewModel {
 
 class ReminderDetailsPresenter {
     typealias RowCount = Int
-    
+
     internal let coordinator: Coordinator
     internal unowned let viewController: UIViewController
     private var dataSource: ReminderViewModel
     private var oldData: Reminder?
-    
+
     private enum CellID: String {
-        case TwoLabels = "TwoLabelsCell"
-        case TextField = "TextFieldCell"
-        case Switch = "SwitchCell"
-        case DatePicker = "DatePickerCell"
-        case DeleteButton = "DeleteButtonCell"
+        case twoLabelsCell = "TwoLabelsCell"
+        case textFieldCell = "TextFieldCell"
+        case switchCell = "SwitchCell"
+        case datePickerCell = "DatePickerCell"
+        case deleteButtonCell = "DeleteButtonCell"
     }
-    
+
     private enum CellSectionIndex: Int {
-        case TwoLabels = 0
-        case TextField = 1
-        case SwitchAndPicker = 2
-        case DeleteButton = 3
+        case twoLabelsCell = 0
+        case textFieldCell = 1
+        case switchAndPickerCell = 2
+        case deleteButtonCell = 3
     }
-    
+
     required init(coordinator: Coordinator,
                   controller: UIViewController) {
         self.coordinator = coordinator
         self.viewController = controller
         self.dataSource = ReminderViewModel()
     }
-    
+
     convenience init(data: Any, coordinator: Coordinator, controller: UIViewController) {
         self.init(coordinator: coordinator, controller: controller)
-        
+
         if let data = data as? Reminder {
             self.oldData = data
         }
-        
+
         dataSource.write(data)
     }
-    
-    
-    private func getCellIDAndRowCount(for section: Int, row: Int? = nil) -> (CellID, RowCount){
+
+    private func getCellIDAndRowCount(for section: Int, row: Int? = nil) -> (CellID, RowCount) {
         switch section {
-            
+
         case 0:
-            return (CellID.TwoLabels, 1)
+            return (CellID.twoLabelsCell, 1)
         case 1:
-            return (CellID.TextField, 1)
+            return (CellID.textFieldCell, 1)
         case 2:
             if let rowIndex = row {
-                if (rowIndex % 2 == 1 && getRowCount(inSection: section) >= 2) {
-                    return (CellID.DatePicker, getRowCount(inSection: section) + 1)
+                if rowIndex % 2 == 1 && getRowCount(inSection: section) >= 2 {
+                    return (CellID.datePickerCell, getRowCount(inSection: section) + 1)
                 }
             }
-            
-            return (dataSource.notification ? (CellID.Switch, 2) : (CellID.Switch, 1))
+
+            return (dataSource.notification ? (CellID.switchCell, 2) : (CellID.switchCell, 1))
         case 3:
-            return (CellID.DeleteButton, 1)
+            return (CellID.deleteButtonCell, 1)
         default:
-            return (CellID.TwoLabels, 0)
+            return (CellID.twoLabelsCell, 0)
         }
     }
 }
@@ -99,48 +98,48 @@ extension ReminderDetailsPresenter: Presenter {
         if !dataSource.title.isEmpty {
             return dataSource.title
         }
-        
+
         return "Create Reminder"
     }
-    
+
     subscript(indexPath: IndexPath) -> Any {
         return (dataSource, indexPath, viewController)
     }
-    
+
     func getSectionCount() -> Int {
         return (oldData == nil
-                ? (CellSectionIndex.SwitchAndPicker.rawValue + 1)
-                : (CellSectionIndex.DeleteButton.rawValue + 1))
+                ? (CellSectionIndex.switchAndPickerCell.rawValue + 1)
+                : (CellSectionIndex.deleteButtonCell.rawValue + 1))
     }
-    
+
     func getSectionHeaderTitle(for section: Int) -> String? {
         return " "
     }
-    
+
     func getRowCount(inSection section: Int) -> Int {
         return getCellIDAndRowCount(for: section).1
     }
-    
+
     func getCellReusableIdentifier(for indexPath: IndexPath) -> String {
         return getCellIDAndRowCount(for: indexPath.section, row: indexPath.row).0.rawValue
     }
-    
+
     func didSelectBarButtonItem() {
         let databaseManager = DatabaseTransactionManager<Reminder>()
-        
+
         if dataSource.notificationUUID == nil {
             dataSource.notificationUUID = UUID().uuidString
         }
-        
+
         if let oldData = oldData {
             databaseManager.update(oldData, newData: dataSource)
             coordinator.start(with: oldData)
         } else {
             databaseManager.saveData(data: dataSource)
         }
-        
+
         let notificationManager = NotificationManager()
-        
+
         if let notificationTime = dataSource.notificationTime {
             if let timezone = dataSource.timezone?.timezone {
                 let notificationManager = NotificationManager()
@@ -154,26 +153,26 @@ extension ReminderDetailsPresenter: Presenter {
         } else {
             notificationManager.cancelNotification(identifier: dataSource.notificationUUID!)
         }
-        
+
         viewController.dismiss(animated: true)
     }
-    
+
     func didSelectRow(at indexPath: IndexPath) {
-        if (indexPath.section == CellSectionIndex.DeleteButton.rawValue) {
+        if indexPath.section == CellSectionIndex.deleteButtonCell.rawValue {
             let databaseManager = DatabaseTransactionManager<Reminder>()
             if let oldData = oldData {
                 if dataSource.notification {
                     let notificationManager = NotificationManager()
                     notificationManager.cancelNotification(identifier: dataSource.notificationUUID!)
                 }
-                
+
                 databaseManager.delete(oldData)
             }
-            
+
             viewController.dismiss(animated: true)
         }
     }
-    
+
     func dismissCompletion() {
         coordinator.start(with: nil)
     }

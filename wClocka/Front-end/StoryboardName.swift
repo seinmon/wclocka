@@ -4,6 +4,7 @@
 
 import Foundation
 
+/// List of all storyboard files that help in initializing view controllers
 public enum StoryboardName: String {
     case timezone = "NewTimezone"
     case worldClock = "WorldClock"

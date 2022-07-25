@@ -9,21 +9,20 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
     var coordinator: Coordinator?
-    
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions:
-                        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if #available(iOS 13, *) { } else {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if #unavailable(iOS 13) {
             window = UIWindow(frame: UIScreen.main.bounds)
             coordinator = MainCoordinator(window: window)
         }
-        
+
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self
-        
+
         return true
     }
 }
@@ -33,7 +32,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler:
                                 @escaping (UNNotificationPresentationOptions) -> Void) {
-            
+
         completionHandler([.alert, .sound])
     }
 }

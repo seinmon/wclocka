@@ -5,7 +5,6 @@
 import Foundation
 import CoreData
 
-
 extension Timezone {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Timezone> {

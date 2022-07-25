@@ -58,19 +58,17 @@ extension CoreDataPresenter {
     }
 
     subscript(indexPath: IndexPath) -> Any {
-        get {
-            return dataSource?.fetchedObjects?[indexPath.row] as Any
-        }
+        return dataSource?.fetchedObjects?[indexPath.row] as Any
     }
-    
+
     func getSectionCount() -> Int {
         return dataSource?.sections?.count ?? 0
     }
-    
+
     func getRowCount(inSection section: Int) -> Int {
         dataSource?.fetchedObjects?.count ?? 0
     }
-    
+
     func didSelectRow(at indexPath: IndexPath) {
         coordinator.start(with: self[indexPath])
     }

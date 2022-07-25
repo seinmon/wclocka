@@ -7,16 +7,16 @@ import Foundation
 class ReminderDetailsCoordinator: Coordinator {
     weak var parentCoordinator: Coordinator?
     weak var delegate: CoordinatorDelegate?
-    
+
     required init(parentCoordinator: Coordinator) {
         self.parentCoordinator = parentCoordinator
     }
-    
+
     func start(with data: Any? = nil) {
         if let data = data {
             parentCoordinator?.delegate?.didReceiveNewData(data)
         }
-    
+
         parentCoordinator?.delegate?.didMoveBackwardsWithNoData()
     }
 }

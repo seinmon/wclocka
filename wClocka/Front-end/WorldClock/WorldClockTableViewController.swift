@@ -9,13 +9,13 @@ class WorldClockTableViewController: BaseTableViewController, ContextualActionOw
 
     override public func tableViewStateDidChange() {
         super.tableViewStateDidChange()
-        if (presenter?.dataSourceIsEmpty ?? false) {
+        if presenter?.dataSourceIsEmpty ?? false {
             self.navigationItem.leftBarButtonItem = nil
         } else {
             self.navigationItem.leftBarButtonItem = self.editButtonItem
         }
     }
-    
+
     /*
     override func setupContextualActions(for indexPath: IndexPath) -> [UIContextualAction] {
         var actions = super.setupContextualActions(for: indexPath)
@@ -25,7 +25,7 @@ class WorldClockTableViewController: BaseTableViewController, ContextualActionOw
                                             guard let presenter = self.presenter else {
                                                 return
                                             }
-                                            
+
                                             // TODO: present an alert with textField to change title
                                             
                                             presenter.updateDataSource(at: indexPath, to: newTitle)
@@ -33,21 +33,23 @@ class WorldClockTableViewController: BaseTableViewController, ContextualActionOw
         return actions
     }
     */
-    
+
+    // TODO: - Cancel scheduled notifications too!
     func didSelectDeleteAction(for indexPath: IndexPath) {
-        if ((presenter?.showDeletionWarning(indexPath: indexPath) ?? false)) {
+        if presenter?.showDeletionWarning(indexPath: indexPath) ?? false {
             let alert = UIAlertController(title: "Delete Time Zone?",
                                           message: "This action will delete this time zone and its reminders.",
                                           preferredStyle: .alert)
-            
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {[unowned self] _ in
+
+            let deleteAction = UIAlertAction(title: "Delete",
+                                             style: .destructive) {[unowned self] _ in
                 self.presenter?.deleteFromDataSource(indexPath: indexPath)
             }
-            
+
             alert.addAction(deleteAction)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             self.present(alert, animated: true)
-            
+
         } else {
             presenter?.deleteFromDataSource(indexPath: indexPath)
         }

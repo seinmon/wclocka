@@ -5,48 +5,47 @@
 import Foundation
 import CoreData
 
-
 public class Timezone: NSManagedObject {
     public var timezone: TimeZone! {
         TimeZone(identifier: zoneIdentifier)
     }
-    
+
     @objc public var time: String {
         return getTime(at: timezone)
     }
-    
+
     @objc public var timeOffset: String {
         return getOffset(of: timezone)
     }
-    
+
     private func getOffset(of timezone: TimeZone?) -> String {
         guard let timezone = timezone else {
             return "error"
         }
-        
+
         return getDateDifference(of: timezone) + ", " + getGMTOffset(of: timezone)
     }
-    
+
     private func getDateDifference(of timezone: TimeZone) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         dateFormatter.timeZone = timezone
-        
+
         return dateFormatter.string(from: Date())
     }
-    
+
     private func getGMTOffset(of timezone: TimeZone) -> String {
         let offset = timezone.secondsFromGMT() - TimeZone.current.secondsFromGMT()
         let offsetHours = offset/3600
         let offsetMinutes = abs(offset/60) % 60
         return String(format: "%+.2d:%.2d", offsetHours, offsetMinutes)
     }
-    
+
     private func getTime(at timezone: TimeZone?) -> String {
         guard let timezone = timezone else {
             return "error"
         }
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         dateFormatter.timeZone = timezone
@@ -66,13 +65,12 @@ extension Timezone: SelfManagedObject {
             self.reminders = entry.reminders
         }
     }
-    
-    
+
     func update(to newData: Any) {
         guard let entry = newData as? String else {
             return
         }
-        
+
         self.zoneTitle = entry
     }
 }

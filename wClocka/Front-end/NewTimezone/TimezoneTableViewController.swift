@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 
 class TimezoneTableViewController: BaseTableViewController {
-    
+
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.sizeToFit()
@@ -14,7 +14,7 @@ class TimezoneTableViewController: BaseTableViewController {
         searchBar.delegate = self
         return searchBar
     }()
-    
+
     override func setupNavigationBar() {
         navigationItem.titleView = searchBar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,

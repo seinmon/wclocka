@@ -7,7 +7,6 @@
 import Foundation
 import CoreData
 
-
 extension Reminder {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Reminder> {

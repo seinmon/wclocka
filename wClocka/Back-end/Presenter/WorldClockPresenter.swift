@@ -11,13 +11,13 @@ class WorldClockPresenter {
     internal unowned let viewController: UIViewController
     internal var dataSource: NSFetchedResultsController<Timezone>?
     private lazy var databaseManager = DatabaseTransactionManager<Timezone>()
-    
+
     required init(coordinator: Coordinator, controller: UIViewController) {
         self.coordinator = coordinator
         self.viewController = controller
-        
-        dataSource = databaseManager.fetchResultsController(sortDescriptor: NSSortDescriptor(
-            key: #keyPath(Timezone.zoneTitle), ascending: true))
+
+        dataSource = databaseManager.fetch(sortDescriptor: [NSSortDescriptor(
+            key: #keyPath(Timezone.zoneTitle), ascending: true)])
         dataSource?.delegate = viewController as? WorldClockTableViewController
     }
 }
@@ -26,28 +26,34 @@ extension WorldClockPresenter: CoreDataPresenter {
     var viewControllerTitle: String {
         return "Time Zones"
     }
-    
+
     func getCellReusableIdentifier(for indexPath: IndexPath) -> String {
         return "WorldClockCell"
     }
-    
+
     func showDeletionWarning(indexPath: IndexPath) -> Bool {
         guard let managedObject = dataSource?.object(at: indexPath) else {
             return false
         }
-        
+
         if (managedObject.reminders?.count ?? 0) > 0 {
             return true
         }
-        
+
         return false
     }
-    
+
     func deleteFromDataSource(indexPath: IndexPath) {
         guard let managedObject = dataSource?.object(at: indexPath) else {
             return
         }
-        
+
+        // swiftlint:disable force_cast
+        let notificationManager = NotificationManager()
+        for reminder in managedObject.reminders as! Set<Reminder> {
+            notificationManager.cancelNotification(identifier: reminder.notificationUUID!)
+        }
+
         databaseManager.delete(managedObject)
     }
 }
@@ -60,16 +66,14 @@ extension WorldClockPresenter: CoordinatorDelegate {
             }
         }
     }
-    
+
     private func isDuplicate(_ newData: NewTimezoneRow) -> Bool {
-        if let dataSource = dataSource?.fetchedObjects  {
-            for entry in dataSource {
-                if entry.zoneTitle == newData.0 {
+        if let dataSource = dataSource?.fetchedObjects {
+            for entry in dataSource where entry.zoneTitle == newData.0 {
                     return true
-                }
             }
         }
-        
+
         return false
     }
 }

@@ -6,27 +6,27 @@ import Foundation
 import UIKit
 
 class RemindersTableViewCell: UITableViewCell, CellConfigurable {
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     var reminder: Reminder!
-    
+
     func configure(with data: Any) {
         guard let reminder = data as? Reminder else {
             return
         }
-        
+
         self.reminder = reminder
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didEnterForeground),
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
-        
+
         titleLabel.text = reminder.title
         didEnterForeground()
     }
-    
+
     @objc
     func didEnterForeground() {
         if let notificationTime = reminder.notificationTime {
