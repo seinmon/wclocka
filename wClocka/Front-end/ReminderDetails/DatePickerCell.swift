@@ -23,6 +23,8 @@ class DatePickerCell: UITableViewCell, CellConfigurable {
 
         dataSource = data.0
 
+        picker.timeZone = dataSource?.timezone?.timezone
+
         if let notificationTime = dataSource?.notificationTime {
             picker.date = notificationTime
         } else {

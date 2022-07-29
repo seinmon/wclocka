@@ -6,7 +6,17 @@
 import Foundation
 import UserNotifications
 
+/**
+ * Notification Center related functionalities
+ */
 class NotificationManager {
+    /**
+     * Get the status of notifcation authorization
+     *
+     * - Parameters:
+     *  - enabledHandler: Handle authorized notifications
+     *  - disabledHandler: Handle disabled notifcations
+     */
     internal static func authorizationStatusHandlers(enabledHandler: @escaping () -> Void,
                                                      disabledHandler: @escaping () -> Void) {
         let center = UNUserNotificationCenter.current()
@@ -23,6 +33,13 @@ class NotificationManager {
         }
     }
 
+    /**
+     * Request permission for notifications
+     *
+     * - Parameters:
+     *  - successHandler: Handle notifications when the permission is granted
+     *  - failHandler: Handle notifcations when permission is not granted
+     */
     internal static func requestAuthorisation(successHandler: @escaping () -> Void,
                                               failHandler: @escaping () -> Void) {
         let center = UNUserNotificationCenter.current()
@@ -43,13 +60,23 @@ class NotificationManager {
         }
     }
 
+    /**
+     * Schedule a notifcation
+     *
+     * - Parameters:
+     *  - notifcationTime: time of the notifcation
+     *  - timezone: time zone of receiving notifcation
+     *  - identifier: unique identifier for the scheduled notifcation
+     *  - message: message of notification
+     */
     internal func scheduleNotification(notificationTime: Date,
                                        timezone: TimeZone,
                                        identifier: String,
                                        message: String) {
-        let trigger = UNCalendarNotificationTrigger(dateMatching:
-                                                        convertToLocalTime(notificationTime,
-                                                                           timezone: timezone),
+        var dateComponent = DateComponents()
+        dateComponent.hour = getTimeSlice(of: notificationTime, format: "HH")
+        dateComponent.minute = getTimeSlice(of: notificationTime, format: "mm")
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent,
                                                     repeats: true)
 
         let content = UNMutableNotificationContent()
@@ -70,18 +97,25 @@ class NotificationManager {
         }
     }
 
+    /**
+     * Cancel a scheduled notification
+     *
+     * - Parameters: Unique identifier of a scheduled notification
+     */
     internal func cancelNotification(identifier: String) {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
     }
 
-    private func convertToLocalTime(_ time: Date, timezone: TimeZone) -> DateComponents {
-        var dateComponents = DateComponents(timeZone: timezone)
-        dateComponents.hour = getTimeSlice(of: time, format: "HH")
-        dateComponents.minute = getTimeSlice(of: time, format: "mm")
-        return dateComponents
-    }
-
+    /**
+     * Get a certain part of the date/time
+     *
+     * - Parameters:
+     *  - date: time to slice
+     *  - format: specific format to use for slicing
+     *
+     *  - Returns: a certain part of the time
+     */
     private func getTimeSlice(of date: Date, format: String) -> Int? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
